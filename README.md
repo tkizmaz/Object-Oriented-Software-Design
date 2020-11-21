@@ -1,8 +1,11 @@
 # CSE3063
-CSE3063 first project using Java.
 
-Kodlama için Visual Studio Code ve Github birlikte çalışıyorlar.
-Tavsiyem Visual Studio Code kurmanız, bu sayede kolayca anlaşırız
-Kurduktan sonra java için extension kuracaksınız onların linkini atacağım.
-https://code.visualstudio.com/docs/languages/java
-Direkt buradaki Install the Coding Pack for Java - Windows kurarsanız hepsini kuracak, Visual Studio Code ve Javayı.
+Group 15
+
+150119634 Mustafa Gürel
+150119863 Taha Kızmaz 
+150119654 Mehmet Nusret Odabaşı
+150119620 Hafsa Ulusal
+150119752 Ayça İdil Kaya
+150119728 Ecem Çeşmeciler
+150119073 Zeynep Naz Akyokuş
