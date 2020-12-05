@@ -1,9 +1,11 @@
 package iteration1;
+
 import java.util.ArrayList;
 import java.util.List;
 
 //imports that we use for list and arrays
 public class User {
+    
     //identify the variables on the class
     private long userID;
     private String username;

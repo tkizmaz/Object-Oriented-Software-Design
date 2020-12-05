@@ -1,5 +1,7 @@
 package iteration1;
+
 public class Label {
+    
     //Label class is created
     private long LabelID;
     private String LabelText;

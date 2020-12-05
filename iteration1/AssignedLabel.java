@@ -1,7 +1,6 @@
 package iteration1;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
+import java.time.LocalDateTime;
 
 class AssignedLabel {
 
@@ -9,9 +8,6 @@ class AssignedLabel {
     private long classLabelID[];
     private long userID;
     private LocalDateTime time;
-    /*public LocalDateTime datetime = LocalDateTime.now();
-    public DateTimeFormatter nice_version_date = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
-    System.out.println(nice_version_date);*/
 
 // set instance ID
     public void setInstanceID(long instanceID){

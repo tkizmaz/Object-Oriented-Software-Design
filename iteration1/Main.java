@@ -1,7 +1,9 @@
 package iteration1;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
 class Main {
     public static void main(String[] args) {
         List<List<AssignedLabel>> assignedLabel=new ArrayList<>();
