@@ -10,14 +10,17 @@ class Main {
         String fileName = myObj.nextLine();
         JSONHandler readJS = new JSONHandler();
         readJS.readDataset(fileName);
-        readJS.readUsers("users.json");
+        Scanner userFileobj = new Scanner(System.in);
+        System.out.println("Enter user file");
+        String userFileName = userFileobj.nextLine();
+        readJS.readUsers(userFileName);
         readJS.getDataset().getUsers().forEach(user->{
 
             user.makeAssignment(readJS.getDataset().getLabels(), readJS.getDataset().getInstances(),readJS.getDataset().getMaximumLabels());
             assignedLabel.add(user.getAssignments());
         });
         
-        readJS.writeJSON("./iteration1/sampleOutput2.json", assignedLabel);
+        readJS.writeJSON("sampleOutput2.json", assignedLabel);
         
     }
 
