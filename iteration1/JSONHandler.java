@@ -28,26 +28,26 @@ public class JSONHandler {
         List<Instance> instanceList = new ArrayList<Instance>();
         Dataset newDataset = new Dataset();
 
-        JSONParser jsonParser = new JSONParser();
+        JSONParser jsonParser = new JSONParser(); //create JSONparser
 
-        try(FileReader reader = new FileReader(fileName)){
+        try(FileReader reader = new FileReader(fileName)){ //try to read the file
 
-            Object obj = jsonParser.parse(reader);
+            Object obj = jsonParser.parse(reader); // read that file
 
-            JSONObject jsonObject = (JSONObject) obj;
+            JSONObject jsonObject = (JSONObject) obj; // create JSONobject to pull the data
             
-            long databaseID = (long) jsonObject.get("dataset id");
+            long databaseID = (long) jsonObject.get("dataset id");  //get, gets the corresponding data
             String datasetName = (String) jsonObject.get("dataset name");
             long maxLabels = (long) jsonObject.get("maximum number of labels per instance");
             JSONArray labels = (JSONArray) jsonObject.get("class labels");
             JSONArray instances = (JSONArray) jsonObject.get("instances");
 
-            newDataset.setDatasetID(databaseID);
+            newDataset.setDatasetID(databaseID); // getting all the data and create corresponding Dataset object
             newDataset.setDatasetName(datasetName);
             newDataset.setMaximumLabels(maxLabels);
 
 
-            labels.forEach(entry-> {
+            labels.forEach(entry-> { //getting label because it is in JSONArray
                 JSONObject label = (JSONObject) entry;
                 Label eachLabel = new Label();
                 eachLabel.setLabelID((long) label.get("label id"));
@@ -55,7 +55,7 @@ public class JSONHandler {
                 labelList.add(eachLabel);
             });
 
-            instances.forEach(entry->{
+            instances.forEach(entry->{ //getting isntances because it is in JSONArray
                 JSONObject instance = (JSONObject) entry;
                 Instance eachInstance = new Instance();
                 eachInstance.setInstanceID((long) instance.get("id"));
@@ -63,13 +63,13 @@ public class JSONHandler {
                 instanceList.add(eachInstance);
             });
 
-            newDataset.setLabels(labelList);
-            newDataset.setInstances(instanceList);
-            this.dataset = newDataset;
+            newDataset.setLabels(labelList); // setting label for that dataset
+            newDataset.setInstances(instanceList); // setting instances for that dataset
+            this.dataset = newDataset; 
             
         }
 
-        catch(IOException ie){
+        catch(IOException ie){ // exception catching
             ie.printStackTrace();
         }
         catch(ParseException ie){
@@ -81,7 +81,7 @@ public class JSONHandler {
 
     public Dataset getDataset(){
 
-        return this.dataset;
+        return this.dataset; //getter for Dataset
 
     }
 
@@ -89,11 +89,11 @@ public class JSONHandler {
 
         this.inputUserFile = userFile;
 
-        List<User> userList = new ArrayList<>();
+        List<User> userList = new ArrayList<>(); //creating userList to append
 
         JSONParser jsonParser = new JSONParser();
 
-        try(FileReader reader = new FileReader(userFile)){
+        try(FileReader reader = new FileReader(userFile)){ 
 
             Object obj = jsonParser.parse(reader);
 
@@ -101,7 +101,7 @@ public class JSONHandler {
 
             JSONArray users = (JSONArray) jsonObject.get("users");
 
-            users.forEach(entry->{
+            users.forEach(entry->{ //getting all the informations in loop
 
                 JSONObject user = (JSONObject) entry;
                 User eachUser = new User();
@@ -125,13 +125,13 @@ public class JSONHandler {
     }
 
     public void writeJSON(String filename, List<List<AssignedLabel>> assignedLabelList){
-        
+        //This function takes filename as an argument to give output. List<List<AssignedLabel>> HOLDS all of the assigned Labels and we need to loop through it.
 
         JSONObject samplObject = new JSONObject();
-        samplObject.put("dataset id", this.dataset.getDatasetID());
+        samplObject.put("dataset id", this.dataset.getDatasetID()); // put, puts corresponding set of data
         samplObject.put("dataset name", this.dataset.getDatasetName());
         samplObject.put("maximum number", this.dataset.getMaximumLabels());
-        JSONArray classLabels = new JSONArray();
+        JSONArray classLabels = new JSONArray(); //creating JSONarray to fill in with labels because it is an array, we need for loop
         for(int i=0;i<this.dataset.getLabels().size();i++){
             JSONObject labelDetails = new JSONObject();
             labelDetails.put("label id", this.dataset.getLabels().get(i).getLabelID());
@@ -139,21 +139,21 @@ public class JSONHandler {
             classLabels.add(labelDetails);
         }
 
-        samplObject.put("class labels", classLabels);
+        samplObject.put("class labels", classLabels); //putting classlabels
 
 
-        JSONArray classInstances = new JSONArray();
-        for(int i=0;i<this.dataset.getInstances().size();i++){
+        JSONArray classInstances = new JSONArray(); 
+        for(int i=0;i<this.dataset.getInstances().size();i++){ //creating JSONarray to fill in with instances because it is an array, we need for loop
             JSONObject instanceDetails = new JSONObject();
             instanceDetails.put("id", this.dataset.getInstances().get(i).getInstanceID());
             instanceDetails.put("instance", this.dataset.getInstances().get(i).getInstanceText());
             classInstances.add(instanceDetails);
         }
 
-        samplObject.put("instances", classInstances);
+        samplObject.put("instances", classInstances); //putting instances
 
         JSONArray users = new JSONArray();
-        for(int i=0;i<this.dataset.getUsers().size();i++){
+        for(int i=0;i<this.dataset.getUsers().size();i++){ //looping through users to put to JSON
             JSONObject userDetails = new JSONObject();
             userDetails.put("user id", this.dataset.getUsers().get(i).getUserID());
             userDetails.put("user name", this.dataset.getUsers().get(i).getUsername());
@@ -161,7 +161,7 @@ public class JSONHandler {
             users.add(userDetails);
         }
 
-        samplObject.put("users",users);
+        samplObject.put("users",users); //putting to jsonfile
 
         JSONArray assignedLabel = new JSONArray();
         for(int i=0;i<assignedLabelList.size();i++){

@@ -20,7 +20,7 @@ class Main {
             assignedLabel.add(user.getAssignments());
         });
         
-        readJS.writeJSON("sampleOutput2.json", assignedLabel);
+        readJS.writeJSON("SampleOutput.json", assignedLabel);
         
     }
 
