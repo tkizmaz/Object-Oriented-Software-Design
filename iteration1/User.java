@@ -1,13 +1,15 @@
 import java.util.ArrayList;
 import java.util.List;
-
+//imports that we use for list and arrays
 public class User {
+    //identify the variables on the class
     private long userID;
     private String username;
     private String userType;
     private RandomLabellingMechanism randomLabeling = new RandomLabellingMechanism();
     private List<AssignedLabel> assigneds = new ArrayList<AssignedLabel>();
 
+    //get and set functions that set user information
     public long getUserID() {
         return userID;
     }
@@ -32,6 +34,7 @@ public class User {
         this.userType = userType;
     }
 
+    // make assignment to create lists 
     public void makeAssignment(List<Label> label,List<Instance> instance,long maxLabels){
         randomLabeling.setUserID(this.userID);
         randomLabeling.setLabels(label);
@@ -39,7 +42,7 @@ public class User {
         randomLabeling.setAssignedLabels(maxLabels);
         this.assigneds= randomLabeling.getAssignedLabels();
     }
-    
+    //assignedlabels should be in a list to store them
     public List<AssignedLabel> getAssignments(){
         return this.assigneds;
     }
