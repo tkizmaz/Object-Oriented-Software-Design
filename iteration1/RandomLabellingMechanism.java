@@ -49,8 +49,20 @@ public class RandomLabellingMechanism extends LabellingMechanism{
             // to clearify array size
             long classLabels[] = new long[this.arraySize];
             // it fill the inside of the array with random numbers
+
             for(int p=0;p < this.arraySize;p++){
-                classLabels[p] = rand.nextInt(this.labels.size())+1;
+                
+                int x= rand.nextInt(this.labels.size());
+
+                for(long k : classLabels){
+                    if(k == x){
+                        System.out.println("here");
+                        x= rand.nextInt(this.labels.size());
+                    }
+                }
+                classLabels[p]=x;
+
+
             }
             // to assign the random labels to instances
             AssignedLabel newAssignment = new AssignedLabel();
