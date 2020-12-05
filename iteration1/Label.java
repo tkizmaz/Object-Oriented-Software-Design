@@ -1,14 +1,15 @@
+package iteration1;
 public class Label {
     //Label class is created
-    private int LabelID;
+    private long LabelID;
     private String LabelText;
     //attributes are defined
 
-    public void setLabelID(int id){
+    public void setLabelID(long id){
         this.LabelID=id;
         //a set method is created to set the value of a specific variable LabelID
     }
-    public int getLabelID(){
+    public long getLabelID(){
         return LabelID;
         //a get method is created to retrieve the value of a specific variable LabelID within a class
     }

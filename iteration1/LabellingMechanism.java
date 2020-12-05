@@ -1,5 +1,5 @@
+package iteration1;
 // This class was created to use polymorphism in the next stages.
-
 public class LabellingMechanism{
 
     public void makeLabelling(int userID){

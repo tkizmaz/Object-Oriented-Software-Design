@@ -1,3 +1,4 @@
+package iteration1;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -16,7 +17,7 @@ class Main {
             assignedLabel.add(user.getAssignments());
         });
         
-        readJS.writeJSON("sampleOutput2.json", assignedLabel);
+        readJS.writeJSON("./iteration1/sampleOutput2.json", assignedLabel);
         
     }
 
