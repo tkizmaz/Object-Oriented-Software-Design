@@ -1,18 +1,17 @@
 package iteration1;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Arrays; 
 import java.util.Random;
-import java.lang.reflect.Array;
 import java.time.LocalDateTime;
 
 public class RandomLabellingMechanism extends LabellingMechanism{
+    
     private long userID;
     private int arraySize;
     private List<Instance> instances = new ArrayList<Instance>();
     private List<Label> labels = new ArrayList<Label>();
     private List<AssignedLabel> assignedLabels = new ArrayList<AssignedLabel>();
-    private List<Array> classLabelList = new ArrayList<Array>();
 
     Random rand = new Random();
 
@@ -48,8 +47,8 @@ public class RandomLabellingMechanism extends LabellingMechanism{
             }
             // to clearify array size
             long classLabels[] = new long[this.arraySize];
-            
-            // it fill the inside of the array with random numbers
+
+            // it fill the inside of the array with random labels
             for(int p=0;p < this.arraySize;p++){
                 int x= rand.nextInt(this.labels.size());
                 for(long k : classLabels){

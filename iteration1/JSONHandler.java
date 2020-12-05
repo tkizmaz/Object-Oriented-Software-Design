@@ -1,23 +1,19 @@
 package iteration1;
-import java.io.FileNotFoundException;
+
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.Dictionary;
-import java.util.Iterator;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import javax.xml.crypto.Data;
-import java.io.*;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 public class JSONHandler {
-
+    
     private String inputFileName;
     private String inputUserFile;
     private Dataset dataset;
