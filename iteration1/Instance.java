@@ -16,5 +16,4 @@ public class  Instance {
     public String getInstanceText(){
         return InstanceText;
     }
-
 }
