@@ -45,7 +45,7 @@ public class RandomLabellingMechanism extends LabellingMechanism{
             else{
                 this.arraySize = rand.nextInt((int)maxLabels)+1;
             }
-            // to clearify array size
+            // to clearify array size2
             long classLabels[] = new long[this.arraySize];
 
             // it fill the inside of the array with random labels
