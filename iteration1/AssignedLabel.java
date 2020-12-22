@@ -6,6 +6,7 @@ class AssignedLabel {
 
     private long instanceID;
     private long classLabelID[];
+    private User currentUser;
     private long userID;
     private LocalDateTime time;
 
@@ -17,10 +18,14 @@ class AssignedLabel {
     public void setClassLabelID(long[] classLabelID){
         this.classLabelID = classLabelID;
     }
+
+    public void setUser(User currentUser){
+        this.currentUser = currentUser;
+    }
   
 // set user ID
-    public void setUserID(long userID){
-        this.userID = userID;
+    public void setUserID(){
+        this.userID = currentUser.getUserID();
     }
 // set current time
     public void setTime(LocalDateTime time){
@@ -41,6 +46,10 @@ class AssignedLabel {
 // get current  time
     public LocalDateTime getLocalTime(){
         return this.time;
+    }
+
+    public User getUser(){
+        return this.currentUser;
     }
 
 

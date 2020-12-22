@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 
 public class RandomLabellingMechanism extends LabellingMechanism{
     
-    private long userID;
+    private User currentUser;
     private int arraySize;
     private List<Instance> instances = new ArrayList<Instance>();
     private List<Label> labels = new ArrayList<Label>();
@@ -16,8 +16,8 @@ public class RandomLabellingMechanism extends LabellingMechanism{
     Random rand = new Random();
 
     // to set userID
-    public void setUserID(long userID){
-        this.userID = userID;
+    public void setUser(User currentUser){
+        this.currentUser = currentUser;
     }
 
     // to set instances list
@@ -34,7 +34,7 @@ public class RandomLabellingMechanism extends LabellingMechanism{
     public void setAssignedLabels(long maxLabels){
         // to create an assignedLabel list object called assigneds
         List<AssignedLabel> assigneds = new ArrayList<AssignedLabel>();
-
+        
         //to go through samples one by one and tag them
         for(int i=0; i<this.instances.size(); i++){
             // if maxLabels equals to one, sentiment labelling is performed.
@@ -62,7 +62,7 @@ public class RandomLabellingMechanism extends LabellingMechanism{
             // to assign the random labels to instances
             AssignedLabel newAssignment = new AssignedLabel();
             newAssignment.setClassLabelID(classLabels);
-            newAssignment.setUserID(this.userID);
+            newAssignment.setUser(this.currentUser);
             newAssignment.setTime(LocalDateTime.now());
             newAssignment.setInstanceID(instances.get(i).getInstanceID());
             assigneds.add(newAssignment); 
@@ -71,8 +71,8 @@ public class RandomLabellingMechanism extends LabellingMechanism{
     } 
     
     // getter for userID
-    public long getUserID(){
-        return this.userID;
+    public User getUser(){
+        return this.currentUser;
     }
 
     // getter for assignedLabel

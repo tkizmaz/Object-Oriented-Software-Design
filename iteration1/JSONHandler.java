@@ -168,9 +168,7 @@ public class JSONHandler {
                 assignedLabelDetails.put("user id", assignedLabelList.get(i).get(p).getUserID());
                 assignedLabelDetails.put("datetime", assignedLabelList.get(i).get(p).getLocalTime());
                 assignedLabel.add(assignedLabelDetails);
-
             }
- 
         }
 
         samplObject.put("class label assignments",assignedLabel);

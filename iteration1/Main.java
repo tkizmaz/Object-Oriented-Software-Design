@@ -18,7 +18,7 @@ class Main {
         readJS.readUsers(userFileName);
         readJS.getDataset().getUsers().forEach(user->{
 
-            user.makeAssignment(readJS.getDataset().getLabels(), readJS.getDataset().getInstances(),readJS.getDataset().getMaximumLabels());
+            user.makeAssignment(readJS.getDataset());
             assignedLabel.add(user.getAssignments());
         });
         

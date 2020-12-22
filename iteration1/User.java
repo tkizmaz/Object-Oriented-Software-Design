@@ -39,11 +39,11 @@ public class User {
     }
 
     // make assignment to create lists 
-    public void makeAssignment(List<Label> label,List<Instance> instance,long maxLabels){
-        randomLabeling.setUserID(this.userID);
-        randomLabeling.setLabels(label);
-        randomLabeling.setInstances(instance);
-        randomLabeling.setAssignedLabels(maxLabels);
+    public void makeAssignment(Dataset currentDataset){
+        randomLabeling.setUser(this);
+        randomLabeling.setLabels(currentDataset.getLabels());
+        randomLabeling.setInstances(currentDataset.getInstances());
+        randomLabeling.setAssignedLabels(currentDataset.getMaximumLabels());
         this.assigneds= randomLabeling.getAssignedLabels();
     }
     //assignedlabels should be in a list to store them
