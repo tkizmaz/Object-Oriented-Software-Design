@@ -14,16 +14,61 @@ import org.json.simple.parser.ParseException;
 
 public class JSONHandler {
     
-    private String inputFileName;
-    private String inputUserFile;
     private Dataset dataset;
+
+    public void readConfigFile(){
+
+        List<User> userList = new ArrayList<>(); //creating userList to append
+        JSONParser jsonParser = new JSONParser();
+
+        try(FileReader reader = new FileReader("D:/GitHub/CSE3063/iteration2/config.json")){
+            Object obj = jsonParser.parse(reader);
+            JSONObject jsonObject = (JSONObject) obj;
+
+            long currentDatasetId=(long) jsonObject.get("currentDatasetId");
+
+            JSONArray datasets = (JSONArray) jsonObject.get("datasets");
+
+            datasets.forEach(entry->{
+                JSONObject dataset = (JSONObject) entry;
+                long datasetId=(long) dataset.get("dataset_id");
+                String datasetPath=(String) dataset.get("path");
+                if(currentDatasetId==datasetId){
+                    readDataset(datasetPath); //dataset id eklemeli miyim Dosyanın içindeki mi olacak
+                    System.out.println(datasetPath);
+                    System.out.println(datasetId);
+                }
+                
+
+            });
+
+            JSONArray users = (JSONArray) jsonObject.get("users");
+
+            users.forEach(entry->{ //getting all the informations in loop
+
+                JSONObject user = (JSONObject) entry;
+                User eachUser = new User();
+                eachUser.setUserID((long)user.get("user id"));
+                eachUser.setUsername((String)user.get("user name"));
+                eachUser.setUserType((String)user.get("user type"));
+                userList.add(eachUser);
+
+            });
+            this.dataset.setUsers(userList);
+        }
+            catch(IOException ie){ // exception catching
+                ie.printStackTrace();
+            }
+            catch(ParseException ie){
+                ie.printStackTrace();
+            }
+    }
 
     public void readDataset(String fileName){
         this.inputFileName = fileName;
         List<Label> labelList = new ArrayList<Label>();
         List<Instance> instanceList = new ArrayList<Instance>();
         Dataset newDataset = new Dataset();
-
         JSONParser jsonParser = new JSONParser(); //create JSONparser
 
         try(FileReader reader = new FileReader(fileName)){ //try to read the file
@@ -78,45 +123,6 @@ public class JSONHandler {
     public Dataset getDataset(){
 
         return this.dataset; //getter for Dataset
-
-    }
-
-    public void readUsers(String userFile){
-
-        this.inputUserFile = userFile;
-
-        List<User> userList = new ArrayList<>(); //creating userList to append
-
-        JSONParser jsonParser = new JSONParser();
-
-        try(FileReader reader = new FileReader(userFile)){ 
-
-            Object obj = jsonParser.parse(reader);
-
-            JSONObject jsonObject = (JSONObject) obj;
-
-            JSONArray users = (JSONArray) jsonObject.get("users");
-
-            users.forEach(entry->{ //getting all the informations in loop
-
-                JSONObject user = (JSONObject) entry;
-                User eachUser = new User();
-                eachUser.setUserID((long)user.get("user id"));
-                eachUser.setUsername((String)user.get("user name"));
-                eachUser.setUserType((String)user.get("user type"));
-                userList.add(eachUser);
-
-            });
-            this.dataset.setUsers(userList);
-        }
-
-        catch(IOException ie){
-            ie.printStackTrace();
-        }
-        catch(ParseException ie){
-            ie.printStackTrace();
-        }
-
 
     }
 

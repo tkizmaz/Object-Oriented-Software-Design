@@ -24,8 +24,8 @@ class AssignedLabel {
     }
   
 // set user ID
-    public void setUserID(){
-        this.userID = currentUser.getUserID();
+    public void setUserID(long userID){
+        this.userID = userID;
     }
 // set current time
     public void setTime(LocalDateTime time){

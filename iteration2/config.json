@@ -1,0 +1,62 @@
+{
+  "currentDatasetId": 2,
+  "datasets": [
+    {
+      "dataset_id": 1,
+      "dataset_name": "SampleDataset1",
+      "path": "iteration2/SampleDataset1.json",
+      "number_of_users": 3
+    },
+    {
+      "dataset_id": 2,
+      "dataset_name": "SampleDataset2",
+      "path": "iteration2/SampleDataset2.json",
+      "number_of_users": 5
+    },
+    {
+      "dataset_id": 3,
+      "dataset_name": "SampleDataset3",
+      "path": "iteration2/SampleDataset1.json",
+      "number_of_users": 4
+    },
+    {
+      "dataset_id": 4,
+      "dataset_name": "SampleDataset4",
+      "path": "iteration2/SampleDataset2.json",
+      "number_of_users": 6
+    }
+  ],
+
+  "users": [
+    {
+      "user id": 1,
+      "user name": "RandomLabelingMechanism1",
+      "user type": "RandomBot"
+    },
+    {
+      "user id": 2,
+      "user name": "RandomLabelingMechanism2",
+      "user type": "RandomBot"
+    },
+    {
+      "user id": 3,
+      "user name": "RandomLabelingMechanism3",
+      "user type": "RandomBot"
+    },
+    {
+      "user id": 4,
+      "user name": "RandomLabelingMechanism4",
+      "user type": "RandomBot"
+    },
+    {
+      "user id": 5,
+      "user name": "RandomLabelingMechanism5",
+      "user type": "RandomBot"
+    },
+    {
+      "user id": 6,
+      "user name": "RandomLabelingMechanism6",
+      "user type": "RandomBot"
+    }
+  ]
+}

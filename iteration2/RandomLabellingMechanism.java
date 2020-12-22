@@ -62,7 +62,7 @@ public class RandomLabellingMechanism extends LabellingMechanism{
             // to assign the random labels to instances
             AssignedLabel newAssignment = new AssignedLabel();
             newAssignment.setClassLabelID(classLabels);
-            newAssignment.setUser(this.currentUser);
+            newAssignment.setUserID(this.currentUser.getUserID());
             newAssignment.setTime(LocalDateTime.now());
             newAssignment.setInstanceID(instances.get(i).getInstanceID());
             assigneds.add(newAssignment); 
