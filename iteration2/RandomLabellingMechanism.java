@@ -48,20 +48,20 @@ public class RandomLabellingMechanism extends LabellingMechanism{
             // to clearify array size2
 
             int randomizedLabelCount = rand.nextInt(this.arraySize+1);
-            long classLabels[] = new long[randomizedLabelCount];
+            Label classLabels[] = new Label[randomizedLabelCount];
             // it fill the inside of the array with random labels
             if(randomizedLabelCount>0){
                 double chance=this.currentUser.getConsistencyCheckProbability()*100;
-
+                System.out.println("HELLOS");
                 for(int p=0;p < randomizedLabelCount;p++){
-                    int x= rand.nextInt(this.labels.size())+1;
-                    for(long k : classLabels){
+                    Label x = this.labels.get(rand.nextInt(this.labels.size()));
+                    for(Label k : classLabels){
                         while(k == x){
-                            x= rand.nextInt(this.labels.size());
+                            x= this.labels.get(rand.nextInt(this.labels.size()));
                         }
                     }
 
-                    classLabels[p]=x;
+                    classLabels[p] = x;
                 }
 
                 AssignedLabel newAssignment = new AssignedLabel();
@@ -69,18 +69,19 @@ public class RandomLabellingMechanism extends LabellingMechanism{
                     System.out.println("CHANCE OCCURED on" + this.currentUser.getUserID());
                     long oldAssignmentCount =this.currentUser.getAssignments().size();
                     long whichAssignment = (long)rand.nextInt((int)oldAssignmentCount);
-                    this.currentUser.getAssignments().get((int)whichAssignment).setClassLabelID(classLabels);
-                    this.currentUser.getAssignments().get((int)whichAssignment).setUserID(this.currentUser.getUserID());
-                    this.currentUser.getAssignments().get((int)whichAssignment).setTime(LocalDateTime.now());
-                    this.currentUser.getAssignments().get((int)whichAssignment).setInstanceID(instances.get(i).getInstanceID());
-                    
+                    newAssignment.setClassLabelID(this.currentUser.getAssignments().get((int)whichAssignment).getClassLabelID());
+                    newAssignment.setInstanceID(this.currentUser.getAssignments().get((int)whichAssignment).getInstanceID());
+                    newAssignment.setTime(this.currentUser.getAssignments().get((int)whichAssignment).getLocalTime());
+                    newAssignment.setUser(this.currentUser);
+                    assigneds.add(newAssignment);
+                    currentUser.getAssignments().add(newAssignment);
                     }
                     
                 else{
                     newAssignment.setClassLabelID(classLabels);
-                    newAssignment.setUserID(this.currentUser.getUserID());
+                    newAssignment.setUser(this.currentUser);
                     newAssignment.setTime(LocalDateTime.now());
-                    newAssignment.setInstanceID(instances.get(i).getInstanceID());
+                    newAssignment.setInstanceID(instances.get(i));
                     assigneds.add(newAssignment); 
                     currentUser.getAssignments().add(newAssignment);
                     this.assignedLabels = assigneds;

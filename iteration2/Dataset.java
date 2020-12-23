@@ -2,9 +2,10 @@ package iteration2;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Dataset {
-    private completenesssPercentage;
+    private float completenesssPercentage;
     private long numberofUsers;
     private long datasetID;
     private String datasetName;
@@ -12,6 +13,7 @@ public class Dataset {
     private List<User> userList = new ArrayList<User>(); //list attribute for users 
     private List<Label> labels=new ArrayList<Label>(); //list attribute for lables
     private List <Instance> instances = new ArrayList<Instance>(); //list attribute for Instances
+    private List<AssignedLabel> assignedInstanceIDs = new ArrayList<AssignedLabel>();
 
     public void setDatasetID(long dsID){ //set method for ID of the dataset
         this.datasetID = dsID;
@@ -23,6 +25,20 @@ public class Dataset {
 
     public void setDatasetName(String dsName){ //set method for name of the dataset
         this.datasetName = dsName;
+    }
+
+    public void setCompletenessPercentage(AssignedLabel eachAssignedLabel){
+        //percentage
+        this.assignedInstanceIDs.add(eachAssignedLabel);
+        
+        //class distribution
+        
+        //list number of unique instances
+        
+
+        //numberofUsers
+        System.out.println(this.numberofUsers);
+
     }
 
     public void setMaximumLabels(long maxLabels){ //set method for number of maximum labels

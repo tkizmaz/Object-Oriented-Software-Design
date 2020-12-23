@@ -4,45 +4,37 @@ import java.time.LocalDateTime;
 
 class AssignedLabel {
 
-    private long instanceID;
-    private long classLabelID[];
+    private Instance instance;
+    private Label classLabelIDs[];
     private User currentUser;
-    private long userID;
     private LocalDateTime time;
 
 // set instance ID
-    public void setInstanceID(long instanceID){
-        this.instanceID = instanceID;
+    public void setInstanceID(Instance instanceID){
+        this.instance = instanceID;
     }
 // set  class label ID
-    public void setClassLabelID(long[] classLabelID){
-        this.classLabelID = classLabelID;
+    public void setClassLabelID(Label[] classLabelID){
+        this.classLabelIDs = classLabelID;
     }
 
     public void setUser(User currentUser){
         this.currentUser = currentUser;
     }
   
-// set user ID
-    public void setUserID(long userID){
-        this.userID = userID;
-    }
 // set current time
     public void setTime(LocalDateTime time){
         this.time=time;
     }
 // get instance ID from random labeling mechanism
-    public long getInstanceID(){
-        return this.instanceID;
+    public Instance getInstanceID(){
+        return this.instance;
     }
 //  get class label ID from random labeling mechanism
-    public long[] getClassLabelID(){
-        return this.classLabelID;
+    public Label[] getClassLabelID(){
+        return this.classLabelIDs;
     }
 //get user ID from random labeling mechanism
-    public long getUserID(){
-        return this.userID;
-    }
 // get current  time
     public LocalDateTime getLocalTime(){
         return this.time;

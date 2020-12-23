@@ -13,10 +13,7 @@ class Main {
             user.makeAssignment(readJS.getDataset());
             assignedLabel.add(user.getAssignments());
         });
-
         readJS.writeJSON("SampleOutput.json", assignedLabel);
-        
-
         }
         
 
