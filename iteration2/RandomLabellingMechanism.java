@@ -6,7 +6,6 @@ import java.util.Random;
 import java.time.LocalDateTime;
 
 public class RandomLabellingMechanism extends LabellingMechanism{
-    private JSONHandler jsonHandler= new JSONHandler();
     private User currentUser;
     private int arraySize;
     private List<Instance> instances = new ArrayList<Instance>();

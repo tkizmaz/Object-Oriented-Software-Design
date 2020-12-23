@@ -17,10 +17,6 @@ public class Dataset {
         this.datasetID = dsID;
     }
 
-    public void setCompletenessPercentage(AssignedLabel eachAssignedLabel){
-        
-    }
-
     public void setNumberofUsers(long nofusers){ //set method for ID of the dataset
         this.numberofUsers=nofusers;
     }
