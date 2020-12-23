@@ -1,6 +1,12 @@
 {
     "java.project.referencedLibraries": [
         "lib/**/*.jar",
+<<<<<<< HEAD
         "c:\\Users\\pc\\Downloads\\json-simple-1.1.1.jar"
+=======
+        "c:\\Users\\pc\\Downloads\\json-simple-1.1.1.jar",
+        "c:\\Users\\mehme\\Downloads\\json-simple-1.1.1.jar",
+        "c:\\Users\\musta\\Desktop\\json-simple-1.1.1.jar"
+>>>>>>> 2737537b0af7bee9a5a7239760b7d6affa724513
     ]
 }
