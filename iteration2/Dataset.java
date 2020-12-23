@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Dataset {
-    
+    private completenesssPercentage;
     private long numberofUsers;
     private long datasetID;
     private String datasetName;
@@ -15,6 +15,10 @@ public class Dataset {
 
     public void setDatasetID(long dsID){ //set method for ID of the dataset
         this.datasetID = dsID;
+    }
+
+    public void setCompletenessPercentage(AssignedLabel eachAssignedLabel){
+        
     }
 
     public void setNumberofUsers(long nofusers){ //set method for ID of the dataset
