@@ -146,59 +146,20 @@ public class JSONHandler {
 
     }
 
-    public void writeJSON(String filename, List<List<AssignedLabel>> assignedLabelList){
-        //This function takes filename as an argument to give output. List<List<AssignedLabel>> HOLDS all of the assigned Labels and we need to loop through it.
-
+    public void writeNewAssigneeds(String filename, List<AssignedLabel> assignedLabelList){
         JSONObject samplObject = new JSONObject();
-        samplObject.put("dataset id", this.dataset.getDatasetID()); // put, puts corresponding set of data
-        samplObject.put("dataset name", this.dataset.getDatasetName());
-        samplObject.put("maximum number", this.dataset.getMaximumLabels());
-        JSONArray classLabels = new JSONArray(); //creating JSONarray to fill in with labels because it is an array, we need for loop
-        for(int i=0;i<this.dataset.getLabels().size();i++){
-            JSONObject labelDetails = new JSONObject();
-            labelDetails.put("label id", this.dataset.getLabels().get(i).getLabelID());
-            labelDetails.put("label text", this.dataset.getLabels().get(i).getLabelText());
-            classLabels.add(labelDetails);
-        }
-
-        samplObject.put("class labels", classLabels); //putting classlabels
-
-
-        JSONArray classInstances = new JSONArray(); 
-        for(int i=0;i<this.dataset.getInstances().size();i++){ //creating JSONarray to fill in with instances because it is an array, we need for loop
-            JSONObject instanceDetails = new JSONObject();
-            instanceDetails.put("id", this.dataset.getInstances().get(i).getInstanceID());
-            instanceDetails.put("instance", this.dataset.getInstances().get(i).getInstanceText());
-            classInstances.add(instanceDetails);
-        }
-
-        samplObject.put("instances", classInstances); //putting instances
-
-        JSONArray users = new JSONArray();
-        for(int i=0;i<this.dataset.getUsers().size();i++){ //looping through users to put to JSON
-            JSONObject userDetails = new JSONObject();
-            userDetails.put("user id", this.dataset.getUsers().get(i).getUserID());
-            userDetails.put("user name", this.dataset.getUsers().get(i).getUsername());
-            userDetails.put("user type", this.dataset.getUsers().get(i).getuserType());
-            users.add(userDetails);
-        }
-
-        samplObject.put("users",users); //putting to jsonfile
-
-        JSONArray assignedLabel = new JSONArray();
+        JSONArray assignments = new JSONArray();
         for(int i=0;i<assignedLabelList.size();i++){
-            for(int p = 0; p < assignedLabelList.get(i).size();p++){
-                JSONObject assignedLabelDetails = new JSONObject();
-                assignedLabelDetails.put("instance id", assignedLabelList.get(i).get(p).getInstanceID().getInstanceID());
-                assignedLabelDetails.put("class label id",(assignedLabelList.get(i).get(p).getClassLabelID()[0].getLabelID()));
-                assignedLabelDetails.put("user id", assignedLabelList.get(i).get(p).getUser().getUserID());
-                assignedLabelDetails.put("datetime", assignedLabelList.get(i).get(p).getLocalTime());
-                assignedLabel.add(assignedLabelDetails);
-            }
+            JSONObject assignedLabelDetails = new JSONObject();
+            assignedLabelDetails.put("instance id", assignedLabelList.get(i).getInstanceID().getInstanceID());
+            assignedLabelDetails.put("class label id",(assignedLabelList.get(i).getClassLabelID()[0].getLabelID()));
+            assignedLabelDetails.put("user id", assignedLabelList.get(i).getUser().getUserID());
+            assignedLabelDetails.put("datetime", assignedLabelList.get(i).getLocalTime());
+            assignments.add(assignedLabelDetails);
+        
         }
         System.out.println("done");
-        samplObject.put("class label assignments",assignedLabel);
-        
+        samplObject.put("class label assignments", assignments);
 
         try{
             Files.write(Paths.get(filename), samplObject.toJSONString().getBytes());
@@ -206,65 +167,8 @@ public class JSONHandler {
         catch(IOException e){
             e.printStackTrace();
         }
+
     }
-
-    /*public void writeJSON2(String filename,AssignedLabel assignedLabel){
-        //This function takes filename as an argument to give output. List<List<AssignedLabel>> HOLDS all of the assigned Labels and we need to loop through it.
-        System.out.println("HELLOOOOOOOOOOOOOOOO");
-        JSONObject samplObject = new JSONObject();
-
-        JSONArray assignedLabels = new JSONArray();
-
-        JSONObject assignedLabelDetails = new JSONObject();
-        assignedLabelDetails.put("instance id", assignedLabel.getInstanceID());
-        assignedLabelDetails.put("class label id",Arrays.toString(assignedLabel.getClassLabelID()));
-        assignedLabelDetails.put("user id", assignedLabel.getUserID());
-        assignedLabelDetails.put("datetime", assignedLabel.getLocalTime());
-        assignedLabels.add(assignedLabelDetails);
-        samplObject.put("KEY", assignedLabels);
-        System.out.println("done");
-        
-
-        try{
-            Files.write(Paths.get(filename), samplObject.toJSONString().getBytes());
-        }
-        catch(IOException e){
-            e.printStackTrace();
-        }
-    }
-
-    public void writeEachLabel(){
-        JSONParser parser = new JSONParser();
-        JSONObject records = null;
-        try {
-            records = (JSONObject) parser.parse(new FileReader("iteration2/SampleDataset2.json"));
-
-        } catch (ParseException ex) {
-            ex.printStackTrace();
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-
-        JSONArray r = (JSONArray) records.get("instances");
-
-        JSONObject NewObj = new JSONObject();
-        NewObj.put("travelTime", "dasdas");
-        NewObj.put("totalDistance", "dasx");
-        NewObj.put("pace", "daz");
-        NewObj.put("kCalBurned", "kCalBurned");
-        NewObj.put("latlng", "latlng");
-        r.add(NewObj);
-
-        try (FileWriter file = new FileWriter("iteration2/SampleDataset2.json")) {
-            file.write(records.toJSONString());
-       } catch (IOException ex) {
-            ex.printStackTrace();
-       }
-
-
-
-        }*/
-    
 
 
 

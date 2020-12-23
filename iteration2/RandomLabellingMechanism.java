@@ -10,7 +10,6 @@ public class RandomLabellingMechanism extends LabellingMechanism{
     private int arraySize;
     private List<Instance> instances = new ArrayList<Instance>();
     private List<Label> labels = new ArrayList<Label>();
-    private List<AssignedLabel> assignedLabels = new ArrayList<AssignedLabel>();
 
     Random rand = new Random();
 
@@ -52,7 +51,6 @@ public class RandomLabellingMechanism extends LabellingMechanism{
             // it fill the inside of the array with random labels
             if(randomizedLabelCount>0){
                 double chance=this.currentUser.getConsistencyCheckProbability()*100;
-                System.out.println("HELLOS");
                 for(int p=0;p < randomizedLabelCount;p++){
                     Label x = this.labels.get(rand.nextInt(this.labels.size()));
                     for(Label k : classLabels){
@@ -73,8 +71,15 @@ public class RandomLabellingMechanism extends LabellingMechanism{
                     newAssignment.setInstanceID(this.currentUser.getAssignments().get((int)whichAssignment).getInstanceID());
                     newAssignment.setTime(this.currentUser.getAssignments().get((int)whichAssignment).getLocalTime());
                     newAssignment.setUser(this.currentUser);
-                    assigneds.add(newAssignment);
-                    currentUser.getAssignments().add(newAssignment);
+                    currentDataset.setAssignedLabels(newAssignment);
+                    try{
+                        Thread.sleep(500);
+                    }
+                    catch(InterruptedException exception){
+                        System.out.println("bir problem var");
+              
+                        }
+
                     }
                     
                 else{
@@ -83,8 +88,15 @@ public class RandomLabellingMechanism extends LabellingMechanism{
                     newAssignment.setTime(LocalDateTime.now());
                     newAssignment.setInstanceID(instances.get(i));
                     assigneds.add(newAssignment); 
-                    currentUser.getAssignments().add(newAssignment);
-                    this.assignedLabels = assigneds;
+                    currentDataset.setAssignedLabels(newAssignment);
+                    try{
+                        Thread.sleep(500);
+                    }
+                    catch(InterruptedException exception){
+                        System.out.println("bir problem var");
+              
+                        }
+                    }
                     
                 }
                 
@@ -94,19 +106,11 @@ public class RandomLabellingMechanism extends LabellingMechanism{
                 
 
             }
-
-            
-            
-    }
     
     // getter for userID
     public User getUser(){
         return this.currentUser;
     }
 
-    // getter for assignedLabel
-    public List<AssignedLabel> getAssignedLabels(){
-        return this.assignedLabels;
-    }
 
 }

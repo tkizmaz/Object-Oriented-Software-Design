@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Dataset {
-    private float completenesssPercentage;
     private long numberofUsers;
     private long datasetID;
     private String datasetName;
@@ -13,7 +12,7 @@ public class Dataset {
     private List<User> userList = new ArrayList<User>(); //list attribute for users 
     private List<Label> labels=new ArrayList<Label>(); //list attribute for lables
     private List <Instance> instances = new ArrayList<Instance>(); //list attribute for Instances
-    private List<AssignedLabel> assignedInstanceIDs = new ArrayList<AssignedLabel>();
+    private List<AssignedLabel> assignedLabels = new ArrayList<AssignedLabel>();
 
     public void setDatasetID(long dsID){ //set method for ID of the dataset
         this.datasetID = dsID;
@@ -27,17 +26,9 @@ public class Dataset {
         this.datasetName = dsName;
     }
 
-    public void setCompletenessPercentage(AssignedLabel eachAssignedLabel){
+    public void setAssignedLabels(AssignedLabel eachAssignedLabel){
         //percentage
-        this.assignedInstanceIDs.add(eachAssignedLabel);
-        
-        //class distribution
-        
-        //list number of unique instances
-        
-
-        //numberofUsers
-        System.out.println(this.numberofUsers);
+        this.assignedLabels.add(eachAssignedLabel);
 
     }
 
@@ -85,5 +76,8 @@ public class Dataset {
         return this.numberofUsers;
     }
 
+    public List<AssignedLabel>  getAssignedLabels(){
+        return this.assignedLabels;
+    }
 
 }
