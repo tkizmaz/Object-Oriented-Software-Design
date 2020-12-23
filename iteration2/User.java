@@ -12,6 +12,7 @@ public class User {
     private String userType;
     private RandomLabellingMechanism randomLabeling = new RandomLabellingMechanism();
     private List<AssignedLabel> assigneds = new ArrayList<AssignedLabel>();
+    private double ConsistencyCheckProbability = 0.1;
 
     //get and set functions that set user information
     public long getUserID() {
@@ -43,12 +44,15 @@ public class User {
         randomLabeling.setUser(this);
         randomLabeling.setLabels(currentDataset.getLabels());
         randomLabeling.setInstances(currentDataset.getInstances());
-        randomLabeling.setAssignedLabels(currentDataset.getMaximumLabels());
-        this.assigneds= randomLabeling.getAssignedLabels();
+        randomLabeling.setAssignedLabels(currentDataset);
     }
     //assignedlabels should be in a list to store them
     public List<AssignedLabel> getAssignments(){
         return this.assigneds;
+    }
+
+    public double getConsistencyCheckProbability(){
+        return this.ConsistencyCheckProbability;
     }
 
     

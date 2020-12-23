@@ -1,6 +1,7 @@
 package iteration2;
 
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -11,13 +12,14 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import java.util.Random;
 
 public class JSONHandler {
     
     private Dataset dataset;
+    Random rand = new Random();
 
     public void readConfigFile(){
-
         List<User> userList = new ArrayList<>(); //creating userList to append
         JSONParser jsonParser = new JSONParser();
 
@@ -26,32 +28,51 @@ public class JSONHandler {
             JSONObject jsonObject = (JSONObject) obj;
 
             long currentDatasetId=(long) jsonObject.get("currentDatasetId");
-
             JSONArray datasets = (JSONArray) jsonObject.get("datasets");
-
             datasets.forEach(entry->{
                 JSONObject dataset = (JSONObject) entry;
+                long nooffusers = (long) dataset.get("number_of_users");
                 long datasetId=(long) dataset.get("dataset_id");
                 String datasetPath=(String) dataset.get("path");
                 if(currentDatasetId==datasetId){
                     readDataset(datasetPath); //dataset id eklemeli miyim Dosyanın içindeki mi olacak
-                    System.out.println(datasetPath);
-                    System.out.println(datasetId);
+                    this.dataset.setNumberofUsers(nooffusers);
                 }
                 
 
             });
 
+            
             JSONArray users = (JSONArray) jsonObject.get("users");
+            long chosenRandomly[]= new long[(int)this.dataset.getNumberofUsers()];
+            for(int i=0; i<this.dataset.getNumberofUsers();i++){
+                int x=rand.nextInt((int)users.size())+1;
+                for(long k : chosenRandomly){
+                    while(k == x){
+                        x = rand.nextInt((int)users.size())+1;
+                    }
+                }
+                chosenRandomly[i]=x;
+            }
 
+
+            /*System.out.println(rand.nextInt((int)this.dataset.getNumberofUsers()));
+            System.out.println(rand.nextInt((int)this.dataset.getNumberofUsers()));
+            System.out.println(rand.nextInt((int)this.dataset.getNumberofUsers()));*/
             users.forEach(entry->{ //getting all the informations in loop
 
                 JSONObject user = (JSONObject) entry;
                 User eachUser = new User();
-                eachUser.setUserID((long)user.get("user id"));
-                eachUser.setUsername((String)user.get("user name"));
-                eachUser.setUserType((String)user.get("user type"));
-                userList.add(eachUser);
+                long currentUserID=(long)user.get("user id");
+                for(int i=0;i<chosenRandomly.length;i++){
+                    if((long)currentUserID==chosenRandomly[i]){
+                        eachUser.setUserID((long)user.get("user id"));
+                        eachUser.setUsername((String)user.get("user name"));
+                        eachUser.setUserType((String)user.get("user type"));
+                        userList.add(eachUser);
+                    }
+                }
+                
 
             });
             this.dataset.setUsers(userList);
@@ -65,7 +86,6 @@ public class JSONHandler {
     }
 
     public void readDataset(String fileName){
-        this.inputFileName = fileName;
         List<Label> labelList = new ArrayList<Label>();
         List<Instance> instanceList = new ArrayList<Instance>();
         Dataset newDataset = new Dataset();
@@ -167,7 +187,7 @@ public class JSONHandler {
 
         JSONArray assignedLabel = new JSONArray();
         for(int i=0;i<assignedLabelList.size();i++){
-            for(int p = 0; p < assignedLabelList.get(0).size();p++){
+            for(int p = 0; p < assignedLabelList.get(i).size();p++){
                 JSONObject assignedLabelDetails = new JSONObject();
                 assignedLabelDetails.put("instance id", assignedLabelList.get(i).get(p).getInstanceID());
                 assignedLabelDetails.put("class label id",Arrays.toString(assignedLabelList.get(i).get(p).getClassLabelID()));
@@ -176,7 +196,7 @@ public class JSONHandler {
                 assignedLabel.add(assignedLabelDetails);
             }
         }
-
+        System.out.println("done");
         samplObject.put("class label assignments",assignedLabel);
         
 
@@ -187,6 +207,64 @@ public class JSONHandler {
             e.printStackTrace();
         }
     }
+
+    /*public void writeJSON2(String filename,AssignedLabel assignedLabel){
+        //This function takes filename as an argument to give output. List<List<AssignedLabel>> HOLDS all of the assigned Labels and we need to loop through it.
+        System.out.println("HELLOOOOOOOOOOOOOOOO");
+        JSONObject samplObject = new JSONObject();
+
+        JSONArray assignedLabels = new JSONArray();
+
+        JSONObject assignedLabelDetails = new JSONObject();
+        assignedLabelDetails.put("instance id", assignedLabel.getInstanceID());
+        assignedLabelDetails.put("class label id",Arrays.toString(assignedLabel.getClassLabelID()));
+        assignedLabelDetails.put("user id", assignedLabel.getUserID());
+        assignedLabelDetails.put("datetime", assignedLabel.getLocalTime());
+        assignedLabels.add(assignedLabelDetails);
+        samplObject.put("KEY", assignedLabels);
+        System.out.println("done");
+        
+
+        try{
+            Files.write(Paths.get(filename), samplObject.toJSONString().getBytes());
+        }
+        catch(IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    public void writeEachLabel(){
+        JSONParser parser = new JSONParser();
+        JSONObject records = null;
+        try {
+            records = (JSONObject) parser.parse(new FileReader("iteration2/SampleDataset2.json"));
+
+        } catch (ParseException ex) {
+            ex.printStackTrace();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+
+        JSONArray r = (JSONArray) records.get("instances");
+
+        JSONObject NewObj = new JSONObject();
+        NewObj.put("travelTime", "dasdas");
+        NewObj.put("totalDistance", "dasx");
+        NewObj.put("pace", "daz");
+        NewObj.put("kCalBurned", "kCalBurned");
+        NewObj.put("latlng", "latlng");
+        r.add(NewObj);
+
+        try (FileWriter file = new FileWriter("iteration2/SampleDataset2.json")) {
+            file.write(records.toJSONString());
+       } catch (IOException ex) {
+            ex.printStackTrace();
+       }
+
+
+
+        }*/
+    
 
 
 

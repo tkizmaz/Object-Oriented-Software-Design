@@ -34,40 +34,44 @@ public class RandomLabellingMechanism extends LabellingMechanism{
     public void setAssignedLabels(long maxLabels){
         // to create an assignedLabel list object called assigneds
         List<AssignedLabel> assigneds = new ArrayList<AssignedLabel>();
-        
+        long classLabels[];
         //to go through samples one by one and tag them
         for(int i=0; i<this.instances.size(); i++){
             // if maxLabels equals to one, sentiment labelling is performed.
             if(maxLabels==1){
-                this.arraySize=1;
+                this.arraySize=rand.nextInt((int)maxLabels+1);
             }
             // if maxLabel not equals to one, classification will be performed.
             else{
                 this.arraySize = rand.nextInt((int)maxLabels)+1;
             }
             // to clearify array size2
-            long classLabels[] = new long[this.arraySize];
+            if(this.arraySize>0){
+                classLabels = new long[this.arraySize];
+                for(int p=0;p < this.arraySize;p++){
+                    int x= rand.nextInt(this.labels.size());
+                    for(long k : classLabels){
+                        while(k == x){
+                            x= rand.nextInt(this.labels.size());
+                        }
+                    }
+                    classLabels[p]=x;
+                }
+    
+                // to assign the random labels to instances
+                AssignedLabel newAssignment = new AssignedLabel();
+                newAssignment.setClassLabelID(classLabels);
+                newAssignment.setUser(this.currentUser);
+                newAssignment.setTime(LocalDateTime.now());
+                newAssignment.setInstanceID(instances.get(i).getInstanceID());
+                assigneds.add(newAssignment); 
+            }
+            this.assignedLabels = assigneds;
+            }
+            
 
             // it fill the inside of the array with random labels
-            for(int p=0;p < this.arraySize;p++){
-                int x= rand.nextInt(this.labels.size());
-                for(long k : classLabels){
-                    while(k == x){
-                        x= rand.nextInt(this.labels.size());
-                    }
-                }
-                classLabels[p]=x;
-            }
-
-            // to assign the random labels to instances
-            AssignedLabel newAssignment = new AssignedLabel();
-            newAssignment.setClassLabelID(classLabels);
-            newAssignment.setUser(this.currentUser);
-            newAssignment.setTime(LocalDateTime.now());
-            newAssignment.setInstanceID(instances.get(i).getInstanceID());
-            assigneds.add(newAssignment); 
-        }
-        this.assignedLabels = assigneds;
+            
     } 
     
     // getter for userID

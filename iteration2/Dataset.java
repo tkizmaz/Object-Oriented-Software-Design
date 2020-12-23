@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Dataset {
     
+    private long numberofUsers;
     private long datasetID;
     private String datasetName;
     private long maximumLabels;
@@ -14,6 +15,10 @@ public class Dataset {
 
     public void setDatasetID(long dsID){ //set method for ID of the dataset
         this.datasetID = dsID;
+    }
+
+    public void setNumberofUsers(long nofusers){ //set method for ID of the dataset
+        this.numberofUsers=nofusers;
     }
 
     public void setDatasetName(String dsName){ //set method for name of the dataset
@@ -58,6 +63,10 @@ public class Dataset {
 
     public List<User> getUsers(){ //get method for list of users 
         return this.userList;
+    }
+
+    public long getNumberofUsers(){
+        return this.numberofUsers;
     }
 
 
