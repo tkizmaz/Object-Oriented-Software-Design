@@ -29,8 +29,8 @@ public class InstancePerformance {
         return nLabelAssignments;
     }
 
-    public void setNLabelAssignments() {
-        this.nLabelAssignments = this.currentDataset.getAssignedLabels().size();;
+    public void setNLabelAssignments(int n) {
+        this.nLabelAssignments += n;
     }
 
     public int getNUniqueLabelAssignments() {
@@ -39,16 +39,15 @@ public class InstancePerformance {
 
     public void setNUniqueLabelAssignments(int nUniqueLabelAssignments) {
         this.nUniqueLabelAssignments += nUniqueLabelAssignments;
-        System.out.println("Unique Label Number: "+nUniqueLabelAssignments);
+ 
     }
 
     public int getNUniqueUsers() {
         return nUniqueUsers;
     }
 
-    public void setNUniqueUsers(int nUniqueUsers) {
-        this.nUniqueUsers = this.currentDataset.getUsers().size();
-        System.out.println("Unique User "+this.currentDataset.getUsers().size());
+    public void setNUniqueUsers(int n) {
+        this.nUniqueUsers += n;
     }
 
     public String getMostFrequentClassLabel() {
@@ -81,7 +80,6 @@ public class InstancePerformance {
 
     public void setCurrentDataset(Dataset currentDataset) {
         this.currentDataset = currentDataset;
-        System.out.println("dataset: "+currentDataset.getDatasetID());
     }
 
 }

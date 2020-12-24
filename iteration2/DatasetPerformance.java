@@ -26,11 +26,8 @@ public class DatasetPerformance {
 
     public void getUserAssigned(){
         for(int i=0;i<currentDataset.getUsers().size();i++){
-
             System.out.println(currentDataset.getUsers().get(i).getUserID()+" :"+ ((float)currentDataset.getUsers().get(i).getLabelCount() / (float)currentDataset.getInstances().size() *100));
-
-        }
-        
+        }        
     }
 
     public float getCompletenessPercentage(){

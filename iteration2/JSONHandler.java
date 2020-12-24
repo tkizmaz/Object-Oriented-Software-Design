@@ -17,6 +17,11 @@ import java.util.Random;
 public class JSONHandler {
     
     private Dataset dataset;
+    
+    private int nLabelAssignments=0;
+    private int nUniqueLabelAssignments=0;
+    private int nUniqueUsers=0;
+
     Random rand = new Random();
 
     public void readConfigFile(){
@@ -288,33 +293,36 @@ public class JSONHandler {
         }
     }
 
+    public void sumInstanceMetrics(InstancePerformance iPerformance){
+        this.nLabelAssignments+=iPerformance.getNLabelAssignments();
+        this.nUniqueLabelAssignments+=iPerformance.getNUniqueLabelAssignments();
+        this.nUniqueUsers+=iPerformance.getNUniqueUsers();
+
+        writeInstanceMetrics(iPerformance, nLabelAssignments, nUniqueLabelAssignments, nUniqueUsers);
+
+
+    }
 
 //parametre değiştirilecek
-    public void writeInstanceMetrics(Dataset dataset, UserPerformance uPerformance){
+    public void writeInstanceMetrics(InstancePerformance iPerformance,int nLabelAssignments,int nUniqueLabelAssignments,int nUniqueUsers){
         JSONObject instanceMetricObject = new JSONObject(); // Top JSON object
         JSONObject instanceObject=new JSONObject();
         JSONArray instanceMetric = new JSONArray();  //JSON object to keep user metric metrics
         JSONObject instanceMetricDetails = new JSONObject();  
 
-        for (int i=0; i<dataset.getUsers().size(); i++){
-            User cUser=dataset.getUsers().get(i);
-            if (cUser.getUserID()==uPerformance.getCurrentUser().getUserID()){
-                instanceMetricDetails.put("Total number of label assignments ", uPerformance.getNAssignedDatasets());
-                instanceMetricDetails.put("Number of unique label assignments ", uPerformance.getNInstanceLabelled());
-                instanceMetricDetails.put("Number of unique users ", uPerformance.getNInstanceLabelled());
-                instanceMetricDetails.put("Total number of unique instances labeled ", uPerformance.getNUniqueInstancesLabelled());
-                instanceMetricDetails.put("Most frequent class label and percentage ", uPerformance.getConcistencyPercentage());
-                instanceMetricDetails.put("List class labels and percentages ", uPerformance.getAvgTimeSpent());
-                instanceMetricDetails.put("Entropy ", uPerformance.getStdTimeSpent()); 
-                instanceMetric.add(instanceMetricDetails);
-                instanceObject.put("User"+dataset.getUsers().get(i).getUserID(),instanceMetric); 
-            }
-           
-        } 
-        instanceMetricObject.put("User Performance Metrics and Reports", instanceObject);
+
+        instanceMetricDetails.put("Total number of label assignments ", nLabelAssignments);
+        instanceMetricDetails.put("Number of unique label assignments ", nUniqueLabelAssignments);
+        instanceMetricDetails.put("Number of unique users ", nUniqueUsers);
+        instanceMetricDetails.put("Most frequent class label and percentage ", iPerformance.getMostFrequentClassLabel());
+        instanceMetricDetails.put("List class labels and percentages ", iPerformance.getClassLabels());
+        instanceMetricDetails.put("Entropy ", iPerformance.getEntropy()); 
+        instanceMetric.add(instanceMetricDetails);
+    
+        instanceMetricObject.put("Instance Performance Metrics and Reports", instanceMetric);
 
         try{
-            File userMetricFile = new File ("./iteration2/UPMR.json"); //open the file
+            File userMetricFile = new File ("./iteration2/IPMR.json"); //open the file
             if(!userMetricFile.exists()) { //if file does not exits create a new one
                 userMetricFile.createNewFile(); 
             }

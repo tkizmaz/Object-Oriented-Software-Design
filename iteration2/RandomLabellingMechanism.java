@@ -36,10 +36,12 @@ public class RandomLabellingMechanism extends LabellingMechanism{
     public void setAssignedLabels(Dataset currentDataset){
         DatasetPerformance performance = new DatasetPerformance();
         this.userPerformance.setNAssignedDatasets(1);
+
         
         // to create an assignedLabel list object called assigneds
         List<AssignedLabel> assigneds = new ArrayList<AssignedLabel>();
         this.userPerformance.setCurrentUser(this.currentUser); // to currentUser in UserPerformance
+        this.instancePerformance.setNUniqueUsers(1);
         this.instancePerformance.setCurrentDataset(currentDataset);
         JSONHandler readJS = new JSONHandler();
         //to go through samples one by one and tag them
@@ -111,6 +113,7 @@ public class RandomLabellingMechanism extends LabellingMechanism{
                     this.currentUser.incrementCount();
                     performance.getUserAssigned();
                     userPerformance.setNUniqueInstancesLabelled(1);
+                    instancePerformance.setNUniqueLabelAssignments(1);
                     try{
                         Thread.sleep(500);
                     }
@@ -121,7 +124,8 @@ public class RandomLabellingMechanism extends LabellingMechanism{
                 }
                 //to calculate and store the number of assigned labels by user                    
                 userPerformance.setNInstanceLabelled(1);    
-                instancePerformance.setNUniqueLabelAssignments(1);
+                instancePerformance.setNLabelAssignments(1);
+                
 
             }
             long endTime = System.currentTimeMillis();
@@ -129,6 +133,7 @@ public class RandomLabellingMechanism extends LabellingMechanism{
             userPerformance.setDatasetComplPerList(currentDataset.getDatasetID()+" %"+performance.getCompletenessPercentage());          
         }      
         readJS.writeUserMetrics(currentDataset,this.userPerformance); 
+        readJS.sumInstanceMetrics(instancePerformance);
         
     }
     
