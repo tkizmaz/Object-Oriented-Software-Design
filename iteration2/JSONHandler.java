@@ -235,7 +235,7 @@ public class JSONHandler {
 
 
         try{
-            File userMetricFile = new File ("./iteration2/UserPerformanceAndMetricsReports.json"); //open the file
+            File userMetricFile = new File ("./iteration2/DatasetPerformanceAndMetrics.json"); //open the file
             if(!userMetricFile.exists()) { //if file does not exits create a new one
                 userMetricFile.createNewFile(); 
             }
@@ -276,7 +276,7 @@ public class JSONHandler {
         userMetricObject.put("User Performance Metrics and Reports", userObject);
 
         try{
-            File userMetricFile = new File ("./iteration2/UPMR.json"); //open the file
+            File userMetricFile = new File ("./iteration2/UserPerformanceMetric.json"); //open the file
             if(!userMetricFile.exists()) { //if file does not exits create a new one
                 userMetricFile.createNewFile(); 
             }
@@ -320,7 +320,7 @@ public class JSONHandler {
         instanceMetricObject.put("Instance Performance Metrics and Reports", instanceMetric);
 
         try{
-            File userMetricFile = new File ("./iteration2/IPMR.json"); //open the file
+            File userMetricFile = new File ("./iteration2/InstancePerformanceMetric.json"); //open the file
             if(!userMetricFile.exists()) { //if file does not exits create a new one
                 userMetricFile.createNewFile(); 
             }

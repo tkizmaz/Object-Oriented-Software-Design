@@ -132,7 +132,7 @@ public class RandomLabellingMechanism extends LabellingMechanism{
             userPerformance.extendTimeSpent(endTime-startTime);
             userPerformance.setDatasetComplPerList(currentDataset.getDatasetID()+" %"+performance.getCompletenessPercentage());          
         }      
-        readJS.sumInstanceMetrics(instancePerformance,currentDataset);
+        readJS.sumInstanceMetrics(instancePerformance);
         readJS.writeUserMetrics(currentDataset,this.userPerformance); 
 
         
