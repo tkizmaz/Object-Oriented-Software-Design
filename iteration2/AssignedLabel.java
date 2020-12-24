@@ -10,11 +10,11 @@ class AssignedLabel {
     private LocalDateTime time;
 
 // set instance ID
-    public void setInstanceID(Instance instanceID){
+    public void setInstance(Instance instanceID){
         this.instance = instanceID;
     }
 // set  class label ID
-    public void setClassLabelID(Label[] classLabelID){
+    public void setClassLabel(Label[] classLabelID){
         this.classLabelIDs = classLabelID;
     }
 
@@ -27,7 +27,7 @@ class AssignedLabel {
         this.time=time;
     }
 // get instance ID from random labeling mechanism
-    public Instance getInstanceID(){
+    public Instance getInstance(){
         return this.instance;
     }
 //  get class label ID from random labeling mechanism

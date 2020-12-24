@@ -10,7 +10,7 @@ public class RandomLabellingMechanism extends LabellingMechanism{
     private int arraySize;
     private List<Instance> instances = new ArrayList<Instance>();
     private List<Label> labels = new ArrayList<Label>();
-
+    private UserPerformance userPerformance=new UserPerformance();
 
     Random rand = new Random();
 
@@ -31,11 +31,10 @@ public class RandomLabellingMechanism extends LabellingMechanism{
 
     // to set assignedLabels
     public void setAssignedLabels(Dataset currentDataset){
-        UserPerformance userPerformance=new UserPerformance();
-        userPerformance.setCurrentUser(this.currentUser); // to currentUser in UserPerformance
-        //DatasetPerformance performance = new DatasetPerformance();
+        DatasetPerformance performance = new DatasetPerformance();
         // to create an assignedLabel list object called assigneds
         List<AssignedLabel> assigneds = new ArrayList<AssignedLabel>();
+        userPerformance.setCurrentUser(this.currentUser); // to currentUser in UserPerformance
         JSONHandler readJS = new JSONHandler();
         //to go through samples one by one and tag them
         for(int i=0; i<this.instances.size(); i++){
@@ -77,12 +76,11 @@ public class RandomLabellingMechanism extends LabellingMechanism{
                     newAssignment.setTime(this.currentUser.getAssignments().get((int)whichAssignment).getLocalTime());
                     newAssignment.setUser(this.currentUser);
                     currentDataset.setAssignedLabels(newAssignment);
-                    //readJS.writeUserMetrics(newAssignment,currentDataset);
-                    //performance.setCurrentDataset(currentDataset);
-                    //performance.setCompletenessPercentage();
+                    readJS.writeUserMetrics(newAssignment,currentDataset,performance);
+                    performance.setCurrentDataset(currentDataset);
+                    performance.setCompletenessPercentage();
                     this.currentUser.setAssigneeds(newAssignment);
-                    //performance.getUserAssigned();
-                    userPerformance.setCurrentUser(this.currentUser);
+                    performance.getUserAssigned();
                     try{
                         Thread.sleep(500);
                     }
@@ -100,12 +98,12 @@ public class RandomLabellingMechanism extends LabellingMechanism{
                     newAssignment.setInstance(instances.get(i));
                     assigneds.add(newAssignment); 
                     currentDataset.setAssignedLabels(newAssignment);
-                    //readJS.writeUserMetrics(newAssignment,currentDataset);
-                    //performance.setCurrentDataset(currentDataset);
-                    //performance.setCompletenessPercentage();
+                    readJS.writeUserMetrics(newAssignment,currentDataset,performance);
+                    performance.setCurrentDataset(currentDataset);
+                    performance.setCompletenessPercentage();
                     this.currentUser.setAssigneeds(newAssignment);
                     this.currentUser.incrementCount();
-                    //performance.getUserAssigned();
+                    performance.getUserAssigned();
                     userPerformance.setNUniqueInstancesLabelled(1);
                     try{
                         Thread.sleep(500);

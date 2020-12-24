@@ -15,6 +15,20 @@ public class User {
     private double ConsistencyCheckProbability = 0.1;
     private UserPerformance userPerformance=new UserPerformance();
     
+    private int labelCount;
+    private int uniqueLabelCount;
+    
+    public void setAssigneeds(AssignedLabel assigned){
+        assigneds.add(assigned);
+    }
+
+    public void incrementCount(){
+        labelCount++;
+    }
+    
+    public void uniqueIncrementCount(){
+        uniqueLabelCount++;
+    }
 
     //get and set functions that set user information
     public long getUserID() {
@@ -60,6 +74,13 @@ public class User {
     public double getConsistencyCheckProbability(){
         return this.ConsistencyCheckProbability;
     }
+    public int getLabelCount(){
+        return this.labelCount;
+    }
+
+    public int getUniqueLabelCount(){
+        return this.uniqueLabelCount;
+    }
 
     
     public String getUserType() {
@@ -90,9 +111,6 @@ public class User {
     public void setUserPerformance(UserPerformance userPerformance) {
         this.userPerformance = userPerformance;
     }
-    
-    public void setAssigneeds(AssignedLabel assigned){
-        assigneds.add(assigned);
-    }
+
 
 }

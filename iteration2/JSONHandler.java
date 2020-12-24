@@ -1,5 +1,6 @@
 package iteration2;
 
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -13,6 +14,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import java.util.Random;
+import java.time.LocalDateTime;
 
 public class JSONHandler {
     
@@ -23,7 +25,7 @@ public class JSONHandler {
         List<User> userList = new ArrayList<>(); //creating userList to append
         JSONParser jsonParser = new JSONParser();
 
-        try(FileReader reader = new FileReader("D:/GitHub/CSE3063/iteration2/config.json")){
+        try(FileReader reader = new FileReader("./iteration2/config.json")){
             Object obj = jsonParser.parse(reader);
             JSONObject jsonObject = (JSONObject) obj;
 
@@ -148,10 +150,47 @@ public class JSONHandler {
 
     public void writeNewAssigneeds(String filename, List<AssignedLabel> assignedLabelList){
         JSONObject samplObject = new JSONObject();
+
+        samplObject.put("dataset id", this.dataset.getDatasetID()); // put, puts corresponding set of data
+        samplObject.put("dataset name", this.dataset.getDatasetName());
+        samplObject.put("maximum number", this.dataset.getMaximumLabels());
+        JSONArray classLabels = new JSONArray(); //creating JSONarray to fill in with labels because it is an array, we need for loop
+        for(int i=0;i<this.dataset.getLabels().size();i++){
+            JSONObject labelDetails = new JSONObject();
+            labelDetails.put("label id", this.dataset.getLabels().get(i).getLabelID());
+            labelDetails.put("label text", this.dataset.getLabels().get(i).getLabelText());
+            classLabels.add(labelDetails);
+        }
+
+        samplObject.put("class labels", classLabels); //putting classlabels
+
+
+        JSONArray classInstances = new JSONArray(); 
+        for(int i=0;i<this.dataset.getInstances().size();i++){ //creating JSONarray to fill in with instances because it is an array, we need for loop
+            JSONObject instanceDetails = new JSONObject();
+            instanceDetails.put("id", this.dataset.getInstances().get(i).getInstanceID());
+            instanceDetails.put("instance", this.dataset.getInstances().get(i).getInstanceText());
+            classInstances.add(instanceDetails);
+        }
+
+        samplObject.put("instances", classInstances); //putting instances
+
+        JSONArray users = new JSONArray();
+        for(int i=0;i<this.dataset.getUsers().size();i++){ //looping through users to put to JSON
+            JSONObject userDetails = new JSONObject();
+            userDetails.put("user id", this.dataset.getUsers().get(i).getUserID());
+            userDetails.put("user name", this.dataset.getUsers().get(i).getUsername());
+            userDetails.put("user type", this.dataset.getUsers().get(i).getuserType());
+            users.add(userDetails);
+        }
+
+        samplObject.put("users",users); //putting to jsonfile
+
+
         JSONArray assignments = new JSONArray();
         for(int i=0;i<assignedLabelList.size();i++){
             JSONObject assignedLabelDetails = new JSONObject();
-            assignedLabelDetails.put("instance id", assignedLabelList.get(i).getInstanceID().getInstanceID());
+            assignedLabelDetails.put("instance id", assignedLabelList.get(i).getInstance().getInstanceID());
             assignedLabelDetails.put("class label id",(assignedLabelList.get(i).getClassLabelID()[0].getLabelID()));
             assignedLabelDetails.put("user id", assignedLabelList.get(i).getUser().getUserID());
             assignedLabelDetails.put("datetime", assignedLabelList.get(i).getLocalTime());
@@ -170,6 +209,47 @@ public class JSONHandler {
 
     }
 
+    public void writeUserMetrics(AssignedLabel assignedLabel,Dataset currentDataset,DatasetPerformance datasetPerformance){
+        JSONObject userMetricObject = new JSONObject(); // Top JSON object
+        JSONArray userMetric = new JSONArray();  //JSON object to keep user metric metrics
+        JSONObject userMetricDetails = new JSONObject();  
+        
+        userMetricObject.put("Number of users assigned to this dataset", currentDataset.getNumberofUsers());
+
+        userMetricDetails.put("UserID", assignedLabel.getUser().getUserID());
+        userMetricDetails.put("InstanceID",assignedLabel.getInstance().getInstanceID());
+        userMetricDetails.put("ClassLabelID",(assignedLabel.getClassLabelID()[0].getLabelID()));
+        userMetricDetails.put("Time", assignedLabel.getLocalTime());
+        userMetric.add(userMetricDetails);
+        
+        
+        userMetricObject.put(("Reports for Dataset "+ currentDataset.getDatasetID()), userMetric); 
+
+        JSONArray datasetMetric = new JSONArray();
+        JSONObject datasetMetricDetails = new JSONObject();
+        datasetMetricDetails.put("Dataset "+currentDataset.getDatasetID() + " Percentage",datasetPerformance.getCompletenessPercentage());
+        datasetMetric.add(datasetMetricDetails);
+
+        userMetricObject.put("Repots", datasetMetric);
+
+
+        try{
+            File userMetricFile = new File ("./iteration2/UserPerformanceAndMetricsReports.json"); //open the file
+            if(!userMetricFile.exists()) { //if file does not exits create a new one
+                userMetricFile.createNewFile(); 
+            }
+
+            if(userMetricFile.exists() && !userMetricFile.isDirectory()) { //is exist append it
+                FileWriter file = new FileWriter(userMetricFile,true);
+                file.write("\n"+userMetricObject.toJSONString()+"\n");
+                file.flush();
+                file.close();
+            }
+        }
+        catch(IOException e){
+            e.printStackTrace();
+        }
+    }
 
 
 }
