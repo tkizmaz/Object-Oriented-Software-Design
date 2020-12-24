@@ -298,9 +298,7 @@ public class JSONHandler {
         this.nUniqueLabelAssignments+=iPerformance.getNUniqueLabelAssignments();
         this.nUniqueUsers+=iPerformance.getNUniqueUsers();
 
-        writeInstanceMetrics(iPerformance, nLabelAssignments, nUniqueLabelAssignments, nUniqueUsers);
-
-
+        writeInstanceMetrics(iPerformance, this.nLabelAssignments, this.nUniqueLabelAssignments, this.nUniqueUsers);
     }
 
 //parametre değiştirilecek
