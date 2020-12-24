@@ -39,17 +39,17 @@ public class UserPerformance {
 
 
     public void setNAssignedDatasets(int nAssignedDatasets) {
-        this.nAssignedDatasets = nAssignedDatasets;
+        this.nAssignedDatasets += nAssignedDatasets;
     }
 
  
-    public List<String> getDatasetComplPerList() {
-        return datasetComplPerList;
+    public String getDatasetComplPerList() {
+        return datasetComplPerList.get(0);
     }
 
 
-    public void setDatasetComplPerList(List<String> datasetComplPerList) { //Taha'dan
-        this.datasetComplPerList = datasetComplPerList;
+    public void setDatasetComplPerList(String datasetComplPerList) { 
+        this.datasetComplPerList.add("Dataset "+datasetComplPerList);
     }
 
 
@@ -61,7 +61,6 @@ public class UserPerformance {
  
     public void setNInstanceLabelled(int n) {
         this.nInstanceLabelled += n;
-        //System.out.println("User: "+currentUser.getUserID()+"   # labelled Instance: "+this.nInstanceLabelled);
     }
 
 
@@ -72,7 +71,6 @@ public class UserPerformance {
   
     public void setNUniqueInstancesLabelled(int n) {
         this.nUniqueInstancesLabelled += n;
-        //System.out.println("User: "+currentUser.getUserID()+"   # unique labelled Instance: "+this.nUniqueInstancesLabelled);
     }
 
  
@@ -94,11 +92,9 @@ public class UserPerformance {
         float sum=0;
         float tho=1000;
         for(int i=0; i<this.timeSpent.size(); i++){
-           // System.out.println("User: "+currentUser.getUserID()+" time spent:"+timeSpent.get(i)+" sum: "+sum);
             sum += timeSpent.get(i);
         }      
         this.avgTimeSpent = sum/(nInstanceLabelled*tho);
-        //System.out.println("User: "+currentUser.getUserID()+" Avg Time Spent: "+this.avgTimeSpent);
     }
 
     public float getStdTimeSpent() {
@@ -112,7 +108,6 @@ public class UserPerformance {
             
         }
         this.stdTimeSpent =(float) Math.sqrt(standardDeviation/timeSpent.size());
-        //System.out.println("User: "+currentUser.getUserID()+" Std : "+ this.stdTimeSpent);
     }
 
     public void extendTimeSpent(long passedTime){
