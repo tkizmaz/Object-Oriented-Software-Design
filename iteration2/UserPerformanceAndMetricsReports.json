@@ -1,36 +1,112 @@
 
-{"Repots":[{"Dataset 1 Percentage":0.0}],"Reports for Dataset 1":[{"ClassLabelID":3,"InstanceID":1,"UserID":1,"Time":2020-12-24T04:51:37.553574900}],"Number of users assigned to this dataset":3}
+{"Reports for Dataset 1":[{"ClassLabelID":2,"InstanceID":3,"UserID":1,"Time":2020-12-24T18:24:42.676490500}],"Reports":[{"User iteration2.User@dfd3711 Percentage":0.0,"Dataset 1 Percentage":0.0}],"Number of users assigned to this dataset":3}
 
-{"Repots":[{"Dataset 1 Percentage":10.0}],"Reports for Dataset 1":[{"ClassLabelID":2,"InstanceID":3,"UserID":1,"Time":2020-12-24T04:51:38.081724900}],"Number of users assigned to this dataset":3}
+{"Reports for Dataset 1":[{"ClassLabelID":1,"InstanceID":5,"UserID":1,"Time":2020-12-24T18:24:43.198005400}],"Reports":[{"User iteration2.User@dfd3711 Percentage":0.0,"Dataset 1 Percentage":10.0}],"Number of users assigned to this dataset":3}
 
-{"Repots":[{"Dataset 1 Percentage":20.0}],"Reports for Dataset 1":[{"ClassLabelID":1,"InstanceID":4,"UserID":1,"Time":2020-12-24T04:51:38.583749500}],"Number of users assigned to this dataset":3}
+{"Reports for Dataset 1":[{"ClassLabelID":3,"InstanceID":7,"UserID":1,"Time":2020-12-24T18:24:43.712641900}],"Reports":[{"User iteration2.User@dfd3711 Percentage":0.0,"Dataset 1 Percentage":20.0}],"Number of users assigned to this dataset":3}
 
-{"Repots":[{"Dataset 1 Percentage":30.000002}],"Reports for Dataset 1":[{"ClassLabelID":3,"InstanceID":6,"UserID":1,"Time":2020-12-24T04:51:39.084851900}],"Number of users assigned to this dataset":3}
+{"Reports for Dataset 1":[{"ClassLabelID":1,"InstanceID":9,"UserID":1,"Time":2020-12-24T18:24:44.226707900}],"Reports":[{"User iteration2.User@dfd3711 Percentage":0.0,"Dataset 1 Percentage":30.000002}],"Number of users assigned to this dataset":3}
 
-{"Repots":[{"Dataset 1 Percentage":40.0}],"Reports for Dataset 1":[{"ClassLabelID":2,"InstanceID":8,"UserID":1,"Time":2020-12-24T04:51:39.585945600}],"Number of users assigned to this dataset":3}
+{"Reports for Dataset 1":[{"ClassLabelID":3,"InstanceID":1,"UserID":2,"Time":2020-12-24T18:24:44.731725200}],"Reports":[{"User iteration2.User@dfd3711 Percentage":0.0,"Dataset 1 Percentage":0.0}],"Number of users assigned to this dataset":3}
 
-{"Repots":[{"Dataset 1 Percentage":50.0}],"Reports for Dataset 1":[{"ClassLabelID":2,"InstanceID":10,"UserID":1,"Time":2020-12-24T04:51:40.089655}],"Number of users assigned to this dataset":3}
+{"Reports for Dataset 1":[{"ClassLabelID":1,"InstanceID":3,"UserID":2,"Time":2020-12-24T18:24:45.250524500}],"Reports":[{"User iteration2.User@dfd3711 Percentage":0.0,"Dataset 1 Percentage":50.0}],"Number of users assigned to this dataset":3}
 
-{"Repots":[{"Dataset 1 Percentage":0.0}],"Reports for Dataset 1":[{"ClassLabelID":1,"InstanceID":2,"UserID":2,"Time":2020-12-24T04:51:40.590927200}],"Number of users assigned to this dataset":3}
+{"Reports for Dataset 1":[{"ClassLabelID":1,"InstanceID":7,"UserID":2,"Time":2020-12-24T18:24:45.754584500}],"Reports":[{"User iteration2.User@dfd3711 Percentage":0.0,"Dataset 1 Percentage":50.0}],"Number of users assigned to this dataset":3}
 
-{"Repots":[{"Dataset 1 Percentage":70.0}],"Reports for Dataset 1":[{"ClassLabelID":3,"InstanceID":4,"UserID":2,"Time":2020-12-24T04:51:41.092042}],"Number of users assigned to this dataset":3}
+{"Reports for Dataset 1":[{"ClassLabelID":3,"InstanceID":9,"UserID":2,"Time":2020-12-24T18:24:46.262589400}],"Reports":[{"User iteration2.User@dfd3711 Percentage":0.0,"Dataset 1 Percentage":50.0}],"Number of users assigned to this dataset":3}
 
-{"Repots":[{"Dataset 1 Percentage":70.0}],"Reports for Dataset 1":[{"ClassLabelID":3,"InstanceID":5,"UserID":2,"Time":2020-12-24T04:51:41.593539}],"Number of users assigned to this dataset":3}
+{"Reports for Dataset 1":[{"ClassLabelID":2,"InstanceID":10,"UserID":2,"Time":2020-12-24T18:24:46.764520400}],"Reports":[{"User iteration2.User@dfd3711 Percentage":0.0,"Dataset 1 Percentage":50.0}],"Number of users assigned to this dataset":3}
 
-{"Repots":[{"Dataset 1 Percentage":80.0}],"Reports for Dataset 1":[{"ClassLabelID":3,"InstanceID":6,"UserID":2,"Time":2020-12-24T04:51:42.094767100}],"Number of users assigned to this dataset":3}
+{"Reports for Dataset 1":[{"ClassLabelID":1,"InstanceID":1,"UserID":3,"Time":2020-12-24T18:24:47.273538200}],"Reports":[{"User iteration2.User@dfd3711 Percentage":0.0,"Dataset 1 Percentage":0.0}],"Number of users assigned to this dataset":3}
 
-{"Repots":[{"Dataset 1 Percentage":80.0}],"Reports for Dataset 1":[{"ClassLabelID":2,"InstanceID":8,"UserID":2,"Time":2020-12-24T04:51:42.596115900}],"Number of users assigned to this dataset":3}
+{"Reports for Dataset 1":[{"ClassLabelID":3,"InstanceID":4,"UserID":3,"Time":2020-12-24T18:24:47.777718900}],"Reports":[{"User iteration2.User@dfd3711 Percentage":0.0,"Dataset 1 Percentage":60.000004}],"Number of users assigned to this dataset":3}
 
-{"Repots":[{"Dataset 1 Percentage":80.0}],"Reports for Dataset 1":[{"ClassLabelID":3,"InstanceID":9,"UserID":2,"Time":2020-12-24T04:51:43.098196300}],"Number of users assigned to this dataset":3}
+{"Reports for Dataset 1":[{"ClassLabelID":2,"InstanceID":5,"UserID":3,"Time":2020-12-24T18:24:48.280328700}],"Reports":[{"User iteration2.User@dfd3711 Percentage":0.0,"Dataset 1 Percentage":70.0}],"Number of users assigned to this dataset":3}
 
-{"Repots":[{"Dataset 1 Percentage":90.0}],"Reports for Dataset 1":[{"ClassLabelID":1,"InstanceID":10,"UserID":2,"Time":2020-12-24T04:51:43.599353500}],"Number of users assigned to this dataset":3}
+{"Reports for Dataset 1":[{"ClassLabelID":1,"InstanceID":6,"UserID":3,"Time":2020-12-24T18:24:48.785705800}],"Reports":[{"User iteration2.User@dfd3711 Percentage":0.0,"Dataset 1 Percentage":70.0}],"Number of users assigned to this dataset":3}
 
-{"Repots":[{"Dataset 1 Percentage":0.0}],"Reports for Dataset 1":[{"ClassLabelID":3,"InstanceID":2,"UserID":5,"Time":2020-12-24T04:51:44.100613600}],"Number of users assigned to this dataset":3}
+{"Reports for Dataset 1":[{"ClassLabelID":3,"InstanceID":9,"UserID":3,"Time":2020-12-24T18:24:49.288693300}],"Reports":[{"User iteration2.User@dfd3711 Percentage":0.0,"Dataset 1 Percentage":80.0}],"Number of users assigned to this dataset":3}
 
-{"Repots":[{"Dataset 1 Percentage":90.0}],"Reports for Dataset 1":[{"ClassLabelID":2,"InstanceID":3,"UserID":5,"Time":2020-12-24T04:51:44.602726900}],"Number of users assigned to this dataset":3}
+{"Reports for Dataset 1":[{"ClassLabelID":2,"InstanceID":10,"UserID":3,"Time":2020-12-24T18:24:49.794637800}],"Reports":[{"User iteration2.User@dfd3711 Percentage":0.0,"Dataset 1 Percentage":80.0}],"Number of users assigned to this dataset":3}
 
-{"Repots":[{"Dataset 1 Percentage":90.0}],"Reports for Dataset 1":[{"ClassLabelID":1,"InstanceID":4,"UserID":5,"Time":2020-12-24T04:51:45.104331}],"Number of users assigned to this dataset":3}
+{"Reports for Dataset 1":[{"ClassLabelID":1,"InstanceID":1,"UserID":1,"Time":2020-12-24T18:25:35.665805}],"Reports":[{"User iteration2.User@dfd3711 Percentage":0.0,"Dataset 1 Percentage":0.0}],"Number of users assigned to this dataset":3}
 
-{"Repots":[{"Dataset 1 Percentage":90.0}],"Reports for Dataset 1":[{"ClassLabelID":3,"InstanceID":5,"UserID":5,"Time":2020-12-24T04:51:45.605817700}],"Number of users assigned to this dataset":3}
+{"Reports for Dataset 1":[{"ClassLabelID":3,"InstanceID":6,"UserID":1,"Time":2020-12-24T18:25:36.177430600}],"Reports":[{"User iteration2.User@dfd3711 Percentage":0.0,"Dataset 1 Percentage":10.0}],"Number of users assigned to this dataset":3}
 
-{"Repots":[{"Dataset 1 Percentage":90.0}],"Reports for Dataset 1":[{"ClassLabelID":3,"InstanceID":6,"UserID":5,"Time":2020-12-24T04:51:46.107596}],"Number of users assigned to this dataset":3}
+{"Reports for Dataset 1":[{"ClassLabelID":2,"InstanceID":7,"UserID":1,"Time":2020-12-24T18:25:36.684246900}],"Reports":[{"User iteration2.User@dfd3711 Percentage":0.0,"Dataset 1 Percentage":20.0}],"Number of users assigned to this dataset":3}
+
+{"Reports for Dataset 1":[{"ClassLabelID":3,"InstanceID":9,"UserID":1,"Time":2020-12-24T18:25:37.192499100}],"Reports":[{"User iteration2.User@dfd3711 Percentage":0.0,"Dataset 1 Percentage":30.000002}],"Number of users assigned to this dataset":3}
+
+{"Reports for Dataset 1":[{"ClassLabelID":2,"InstanceID":3,"UserID":2,"Time":2020-12-24T18:25:37.696007700}],"Reports":[{"User iteration2.User@dfd3711 Percentage":0.0,"Dataset 1 Percentage":0.0}],"Number of users assigned to this dataset":3}
+
+{"Reports for Dataset 1":[{"ClassLabelID":3,"InstanceID":9,"UserID":2,"Time":2020-12-24T18:25:38.200946100}],"Reports":[{"User iteration2.User@dfd3711 Percentage":0.0,"Dataset 1 Percentage":50.0}],"Number of users assigned to this dataset":3}
+
+{"Reports for Dataset 1":[{"ClassLabelID":2,"InstanceID":1,"UserID":3,"Time":2020-12-24T18:25:38.701208700}],"Reports":[{"User iteration2.User@dfd3711 Percentage":0.0,"Dataset 1 Percentage":0.0}],"Number of users assigned to this dataset":3}
+
+{"Reports for Dataset 1":[{"ClassLabelID":1,"InstanceID":2,"UserID":3,"Time":2020-12-24T18:25:39.204594700}],"Reports":[{"User iteration2.User@dfd3711 Percentage":0.0,"Dataset 1 Percentage":50.0}],"Number of users assigned to this dataset":3}
+
+{"Reports for Dataset 1":[{"ClassLabelID":1,"InstanceID":6,"UserID":3,"Time":2020-12-24T18:25:39.709403700}],"Reports":[{"User iteration2.User@dfd3711 Percentage":0.0,"Dataset 1 Percentage":60.000004}],"Number of users assigned to this dataset":3}
+
+{"Reports for Dataset 1":[{"ClassLabelID":1,"InstanceID":8,"UserID":3,"Time":2020-12-24T18:25:40.228723200}],"Reports":[{"User iteration2.User@dfd3711 Percentage":0.0,"Dataset 1 Percentage":60.000004}],"Number of users assigned to this dataset":3}
+
+{"Reports for Dataset 1":[{"ClassLabelID":3,"InstanceID":1,"UserID":2,"Time":2020-12-24T18:29:28.237426500}],"Reports":[{"Dataset 1 Percentage":0.0,"User 2 Percentage":0.0}],"Number of users assigned to this dataset":3}
+
+{"Reports for Dataset 1":[{"ClassLabelID":2,"InstanceID":6,"UserID":2,"Time":2020-12-24T18:29:28.746546600}],"Reports":[{"Dataset 1 Percentage":10.0,"User 2 Percentage":0.0}],"Number of users assigned to this dataset":3}
+
+{"Reports for Dataset 1":[{"ClassLabelID":1,"InstanceID":8,"UserID":2,"Time":2020-12-24T18:29:29.248351800}],"Reports":[{"Dataset 1 Percentage":20.0,"User 2 Percentage":0.0}],"Number of users assigned to this dataset":3}
+
+{"Reports for Dataset 1":[{"ClassLabelID":1,"InstanceID":9,"UserID":2,"Time":2020-12-24T18:29:29.751413600}],"Reports":[{"Dataset 1 Percentage":30.000002,"User 2 Percentage":0.0}],"Number of users assigned to this dataset":3}
+
+{"Reports for Dataset 1":[{"ClassLabelID":1,"InstanceID":1,"UserID":3,"Time":2020-12-24T18:29:30.254514400}],"Reports":[{"Dataset 1 Percentage":0.0,"User 2 Percentage":0.0}],"Number of users assigned to this dataset":3}
+
+{"Reports for Dataset 1":[{"ClassLabelID":1,"InstanceID":2,"UserID":3,"Time":2020-12-24T18:29:30.759927600}],"Reports":[{"Dataset 1 Percentage":40.0,"User 2 Percentage":0.0}],"Number of users assigned to this dataset":3}
+
+{"Reports for Dataset 1":[{"ClassLabelID":1,"InstanceID":3,"UserID":3,"Time":2020-12-24T18:29:31.267113800}],"Reports":[{"Dataset 1 Percentage":50.0,"User 2 Percentage":0.0}],"Number of users assigned to this dataset":3}
+
+{"Reports for Dataset 1":[{"ClassLabelID":3,"InstanceID":5,"UserID":3,"Time":2020-12-24T18:29:31.782691900}],"Reports":[{"Dataset 1 Percentage":60.000004,"User 2 Percentage":0.0}],"Number of users assigned to this dataset":3}
+
+{"Reports for Dataset 1":[{"ClassLabelID":2,"InstanceID":6,"UserID":3,"Time":2020-12-24T18:29:32.289815700}],"Reports":[{"Dataset 1 Percentage":70.0,"User 2 Percentage":0.0}],"Number of users assigned to this dataset":3}
+
+{"Reports for Dataset 1":[{"ClassLabelID":2,"InstanceID":7,"UserID":3,"Time":2020-12-24T18:29:32.794565500}],"Reports":[{"Dataset 1 Percentage":70.0,"User 2 Percentage":0.0}],"Number of users assigned to this dataset":3}
+
+{"Reports for Dataset 1":[{"ClassLabelID":2,"InstanceID":8,"UserID":3,"Time":2020-12-24T18:29:33.301638200}],"Reports":[{"Dataset 1 Percentage":80.0,"User 2 Percentage":0.0}],"Number of users assigned to this dataset":3}
+
+{"Reports for Dataset 1":[{"ClassLabelID":3,"InstanceID":9,"UserID":3,"Time":2020-12-24T18:29:33.817643800}],"Reports":[{"Dataset 1 Percentage":80.0,"User 2 Percentage":0.0}],"Number of users assigned to this dataset":3}
+
+{"Reports for Dataset 1":[{"ClassLabelID":1,"InstanceID":10,"UserID":3,"Time":2020-12-24T18:29:34.327114100}],"Reports":[{"Dataset 1 Percentage":80.0,"User 2 Percentage":0.0}],"Number of users assigned to this dataset":3}
+
+{"Reports for Dataset 1":[{"ClassLabelID":1,"InstanceID":1,"UserID":5,"Time":2020-12-24T18:29:34.828786100}],"Reports":[{"Dataset 1 Percentage":0.0,"User 2 Percentage":0.0}],"Number of users assigned to this dataset":3}
+
+{"Reports for Dataset 1":[{"ClassLabelID":3,"InstanceID":3,"UserID":5,"Time":2020-12-24T18:29:35.330800200}],"Reports":[{"Dataset 1 Percentage":90.0,"User 2 Percentage":0.0}],"Number of users assigned to this dataset":3}
+
+{"Reports for Dataset 1":[{"ClassLabelID":1,"InstanceID":4,"UserID":5,"Time":2020-12-24T18:29:35.838179800}],"Reports":[{"Dataset 1 Percentage":90.0,"User 2 Percentage":0.0}],"Number of users assigned to this dataset":3}
+
+{"Reports for Dataset 1":[{"ClassLabelID":2,"InstanceID":5,"UserID":5,"Time":2020-12-24T18:29:36.347840900}],"Reports":[{"Dataset 1 Percentage":100.0,"User 2 Percentage":0.0}],"Number of users assigned to this dataset":3}
+
+{"Reports for Dataset 1":[{"ClassLabelID":2,"InstanceID":8,"UserID":5,"Time":2020-12-24T18:29:36.852627500}],"Reports":[{"Dataset 1 Percentage":100.0,"User 2 Percentage":0.0}],"Number of users assigned to this dataset":3}
+
+{"Repots":[{"Dataset 1 Percentage":0.0}],"Reports for Dataset 1":[{"ClassLabelID":1,"InstanceID":4,"UserID":2,"Time":2020-12-24T18:41:15.342370900}],"Number of users assigned to this dataset":3}
+
+{"Repots":[{"Dataset 1 Percentage":10.0}],"Reports for Dataset 1":[{"ClassLabelID":1,"InstanceID":5,"UserID":2,"Time":2020-12-24T18:41:15.861033400}],"Number of users assigned to this dataset":3}
+
+{"Repots":[{"Dataset 1 Percentage":20.0}],"Reports for Dataset 1":[{"ClassLabelID":3,"InstanceID":9,"UserID":2,"Time":2020-12-24T18:41:16.365021700}],"Number of users assigned to this dataset":3}
+
+{"Repots":[{"Dataset 1 Percentage":0.0}],"Reports for Dataset 1":[{"ClassLabelID":2,"InstanceID":2,"UserID":4,"Time":2020-12-24T18:41:16.891085300}],"Number of users assigned to this dataset":3}
+
+{"Repots":[{"Dataset 1 Percentage":40.0}],"Reports for Dataset 1":[{"ClassLabelID":1,"InstanceID":6,"UserID":4,"Time":2020-12-24T18:41:17.529927900}],"Number of users assigned to this dataset":3}
+
+{"Repots":[{"Dataset 1 Percentage":50.0}],"Reports for Dataset 1":[{"ClassLabelID":2,"InstanceID":9,"UserID":4,"Time":2020-12-24T18:41:18.034049100}],"Number of users assigned to this dataset":3}
+
+{"Repots":[{"Dataset 1 Percentage":0.0}],"Reports for Dataset 1":[{"ClassLabelID":1,"InstanceID":2,"UserID":6,"Time":2020-12-24T18:41:18.552532500}],"Number of users assigned to this dataset":3}
+
+{"Repots":[{"Dataset 1 Percentage":50.0}],"Reports for Dataset 1":[{"ClassLabelID":3,"InstanceID":4,"UserID":6,"Time":2020-12-24T18:41:19.071066900}],"Number of users assigned to this dataset":3}
+
+{"Repots":[{"Dataset 1 Percentage":50.0}],"Reports for Dataset 1":[{"ClassLabelID":1,"InstanceID":5,"UserID":6,"Time":2020-12-24T18:41:19.575280}],"Number of users assigned to this dataset":3}
+
+{"Repots":[{"Dataset 1 Percentage":50.0}],"Reports for Dataset 1":[{"ClassLabelID":3,"InstanceID":6,"UserID":6,"Time":2020-12-24T18:41:20.078481300}],"Number of users assigned to this dataset":3}
+
+{"Repots":[{"Dataset 1 Percentage":50.0}],"Reports for Dataset 1":[{"ClassLabelID":2,"InstanceID":7,"UserID":6,"Time":2020-12-24T18:41:20.588105500}],"Number of users assigned to this dataset":3}
+
+{"Repots":[{"Dataset 1 Percentage":60.000004}],"Reports for Dataset 1":[{"ClassLabelID":2,"InstanceID":8,"UserID":6,"Time":2020-12-24T18:41:21.089947400}],"Number of users assigned to this dataset":3}
+
+{"Repots":[{"Dataset 1 Percentage":70.0}],"Reports for Dataset 1":[{"ClassLabelID":3,"InstanceID":9,"UserID":6,"Time":2020-12-24T18:41:21.594528700}],"Number of users assigned to this dataset":3}

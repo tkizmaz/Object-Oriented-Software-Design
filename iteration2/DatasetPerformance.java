@@ -7,10 +7,6 @@ public class DatasetPerformance {
     private Dataset currentDataset;
     private float completenessPercentage;
     private List<Long> labeledInstanceIDs = new ArrayList<Long>();
-    private List<Long> instanceLabels = new ArrayList<Long>();
-    private List<User> assignedUsers = new ArrayList<User>();
-
-
 
     public void setCurrentDataset(Dataset currentDataset){
         this.currentDataset = currentDataset;
@@ -40,10 +36,5 @@ public class DatasetPerformance {
     public float getCompletenessPercentage(){
         return this.completenessPercentage;
     }
-
-    /*public void usersCompleteness(){
-        System.out.println("I'm userlabelcount for"+this.currentDataset.getUsers().get(0).getLabelCount());
-
-    }*/
 
 }
