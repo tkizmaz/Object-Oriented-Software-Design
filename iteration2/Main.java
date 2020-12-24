@@ -4,16 +4,19 @@ class Main {
     public static void main(String[] args) {
         JSONHandler readJS = new JSONHandler();
         readJS.readConfigFile();
-        Thread[] threads; 
+        System.out.println(readJS.getDataset());
+
+        /*Thread[] threads; 
         threads = new Thread[readJS.getDataset().getUsers().size()];
         for(int i=0;i<readJS.getDataset().getUsers().size();i++){
             threads[i] = new Thread(){
                 public void run(){
                     for(int z = 0; z < readJS.getDataset().getUsers().size();z++){
+                        System.out.println(threads[z]+"started");
                         readJS.getDataset().getUsers().get(z).makeAssignment(readJS.getDataset());
+                        }
                     }
-                    
-                }
+                
             };
         }
         for(int i=0;i<readJS.getDataset().getUsers().size();i++){
@@ -27,10 +30,14 @@ class Main {
             catch(InterruptedException e){
                 e.printStackTrace();
             }
-        }
+        }*/
 
-        readJS.writeNewAssigneeds("SampleOutput2.json", readJS.getDataset().getAssignedLabels());
+        readJS.getDataset().getUsers().forEach(user->{
+            user.makeAssignment(readJS.getDataset());
+        });
         
+        readJS.writeNewAssigneeds("SampleOutput2.json", readJS.getDataset().getAssignedLabels());
+
         }
 
         

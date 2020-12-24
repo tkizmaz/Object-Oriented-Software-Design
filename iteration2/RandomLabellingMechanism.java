@@ -30,9 +30,10 @@ public class RandomLabellingMechanism extends LabellingMechanism{
 
     // to set assignedLabels
     public void setAssignedLabels(Dataset currentDataset){
+        DatasetPerformance performance = new DatasetPerformance();
         // to create an assignedLabel list object called assigneds
         List<AssignedLabel> assigneds = new ArrayList<AssignedLabel>();
-        
+        JSONHandler readJS = new JSONHandler();
         //to go through samples one by one and tag them
         for(int i=0; i<this.instances.size(); i++){
 
@@ -50,7 +51,7 @@ public class RandomLabellingMechanism extends LabellingMechanism{
             Label classLabels[] = new Label[randomizedLabelCount];
             // it fill the inside of the array with random labels
             if(randomizedLabelCount>0){
-                double chance=this.currentUser.getConsistencyCheckProbability()*100;
+                
                 for(int p=0;p < randomizedLabelCount;p++){
                     Label x = this.labels.get(rand.nextInt(this.labels.size()));
                     for(Label k : classLabels){
@@ -63,15 +64,20 @@ public class RandomLabellingMechanism extends LabellingMechanism{
                 }
 
                 AssignedLabel newAssignment = new AssignedLabel();
-                if(this.currentUser.getAssignments().size()>0&&rand.nextInt(100)<=(int)chance){
+                if(this.currentUser.getAssignments().size()>0 && (int)this.currentUser.getConsistencyCheckProbability()*100 >= rand.nextInt(100)){
                     System.out.println("CHANCE OCCURED on" + this.currentUser.getUserID());
                     long oldAssignmentCount =this.currentUser.getAssignments().size();
                     long whichAssignment = (long)rand.nextInt((int)oldAssignmentCount);
-                    newAssignment.setClassLabelID(this.currentUser.getAssignments().get((int)whichAssignment).getClassLabelID());
-                    newAssignment.setInstanceID(this.currentUser.getAssignments().get((int)whichAssignment).getInstanceID());
+                    newAssignment.setClassLabel(this.currentUser.getAssignments().get((int)whichAssignment).getClassLabelID());
+                    newAssignment.setInstance(this.currentUser.getAssignments().get((int)whichAssignment).getInstance());
                     newAssignment.setTime(this.currentUser.getAssignments().get((int)whichAssignment).getLocalTime());
                     newAssignment.setUser(this.currentUser);
                     currentDataset.setAssignedLabels(newAssignment);
+                    readJS.writeUserMetrics(newAssignment,currentDataset,performance);
+                    performance.setCurrentDataset(currentDataset);
+                    performance.setCompletenessPercentage();
+                    this.currentUser.setAssigneeds(newAssignment);
+                    performance.getUserAssigned();
                     try{
                         Thread.sleep(500);
                     }
@@ -83,12 +89,18 @@ public class RandomLabellingMechanism extends LabellingMechanism{
                     }
                     
                 else{
-                    newAssignment.setClassLabelID(classLabels);
+                    newAssignment.setClassLabel(classLabels);
                     newAssignment.setUser(this.currentUser);
                     newAssignment.setTime(LocalDateTime.now());
-                    newAssignment.setInstanceID(instances.get(i));
+                    newAssignment.setInstance(instances.get(i));
                     assigneds.add(newAssignment); 
                     currentDataset.setAssignedLabels(newAssignment);
+                    readJS.writeUserMetrics(newAssignment,currentDataset,performance);
+                    performance.setCurrentDataset(currentDataset);
+                    performance.setCompletenessPercentage();
+                    this.currentUser.setAssigneeds(newAssignment);
+                    this.currentUser.incrementCount();
+                    performance.getUserAssigned();
                     try{
                         Thread.sleep(500);
                     }

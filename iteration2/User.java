@@ -13,6 +13,20 @@ public class User {
     private RandomLabellingMechanism randomLabeling = new RandomLabellingMechanism();
     private List<AssignedLabel> assigneds = new ArrayList<AssignedLabel>();
     private double ConsistencyCheckProbability = 0.1;
+    private int labelCount;
+    private int uniqueLabelCount;
+    
+    public void setAssigneeds(AssignedLabel assigned){
+        assigneds.add(assigned);
+    }
+
+    public void incrementCount(){
+        labelCount++;
+    }
+    
+    public void uniqueIncrementCount(){
+        uniqueLabelCount++;
+    }
 
     //get and set functions that set user information
     public long getUserID() {
@@ -53,6 +67,13 @@ public class User {
 
     public double getConsistencyCheckProbability(){
         return this.ConsistencyCheckProbability;
+    }
+    public int getLabelCount(){
+        return this.labelCount;
+    }
+
+    public int getUniqueLabelCount(){
+        return this.uniqueLabelCount;
     }
 
     
