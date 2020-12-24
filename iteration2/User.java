@@ -13,6 +13,8 @@ public class User {
     private RandomLabellingMechanism randomLabeling = new RandomLabellingMechanism();
     private List<AssignedLabel> assigneds = new ArrayList<AssignedLabel>();
     private double ConsistencyCheckProbability = 0.1;
+    private UserPerformance userPerformance=new UserPerformance();
+    
 
     //get and set functions that set user information
     public long getUserID() {
@@ -45,15 +47,52 @@ public class User {
         randomLabeling.setLabels(currentDataset.getLabels());
         randomLabeling.setInstances(currentDataset.getInstances());
         randomLabeling.setAssignedLabels(currentDataset);
+        //userPerformance.setCurrentUser(this);
+       // userPerformance.setNInstanceLabelled(1);
     }
+
     //assignedlabels should be in a list to store them
     public List<AssignedLabel> getAssignments(){
         return this.assigneds;
     }
+    
 
     public double getConsistencyCheckProbability(){
         return this.ConsistencyCheckProbability;
     }
 
     
+    public String getUserType() {
+        return userType;
+    }
+
+
+    public RandomLabellingMechanism getRandomLabeling() {
+        return randomLabeling;
+    }
+
+
+    public void setRandomLabeling(RandomLabellingMechanism randomLabeling) {
+        this.randomLabeling = randomLabeling;
+    }
+
+
+    public void setConsistencyCheckProbability(double ConsistencyCheckProbability) {
+        this.ConsistencyCheckProbability = ConsistencyCheckProbability;
+    }
+
+
+    public UserPerformance getUserPerformance() {
+        return userPerformance;
+    }
+
+
+    public void setUserPerformance(UserPerformance userPerformance) {
+        this.userPerformance = userPerformance;
+    }
+    
+    public void setAssigneeds(AssignedLabel assigned){
+        assigneds.add(assigned);
+    }
+
 }
