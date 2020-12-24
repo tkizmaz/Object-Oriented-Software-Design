@@ -7,14 +7,12 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import java.util.Random;
-import java.time.LocalDateTime;
 
 public class JSONHandler {
     
@@ -37,7 +35,7 @@ public class JSONHandler {
                 long datasetId=(long) dataset.get("dataset_id");
                 String datasetPath=(String) dataset.get("path");
                 if(currentDatasetId==datasetId){
-                    readDataset(datasetPath); //dataset id eklemeli miyim Dosyanın içindeki mi olacak
+                    readDataset(datasetPath);
                     this.dataset.setNumberofUsers(nooffusers);
                 }
             });
@@ -251,36 +249,26 @@ public class JSONHandler {
 
     public void writeUserMetrics2(Dataset dataset, UserPerformance uPerformance){
         JSONObject userMetricObject = new JSONObject(); // Top JSON object
-        JSONArray user =new JSONArray();
         JSONObject userObject=new JSONObject();
         JSONArray userMetric = new JSONArray();  //JSON object to keep user metric metrics
         JSONObject userMetricDetails = new JSONObject();  
 
         for (int i=0; i<dataset.getUsers().size(); i++){
             User cUser=dataset.getUsers().get(i);
-            System.out.println("JH User: "+cUser.getUserID());
-            //User per=uPerformance.getCurrentUser();
-            System.out.println();
-            //uPerformance.getCurrentUser().get(dataset.getUsers().get(i).getUserID())
             if (cUser.getUserID()==uPerformance.getCurrentUser().getUserID()){
-                System.out.println("Denk: "+cUser.getUserID());
-            userMetricDetails.put("Number of datasets assigned", uPerformance.getNAssignedDatasets());
-            userMetricDetails.put("List of all datasets with their completeness percentage", uPerformance.getNInstanceLabelled());
-            userMetricDetails.put("Total number of instances labeled", uPerformance.getNInstanceLabelled());
-            userMetricDetails.put("Total number of unique instances labeled ", uPerformance.getNUniqueInstancesLabelled());
-            userMetricDetails.put("Consistency percentage", uPerformance.getConcistencyPercentage());
-            userMetricDetails.put("Average time spent in labeling an instance in seconds", uPerformance.getAvgTimeSpent());
-            userMetricDetails.put("Std. dev. of  time spent in labeling an instance in seconds", uPerformance.getStdTimeSpent());
-            
-            userMetric.add(userMetricDetails);
-            userObject.put("User"+dataset.getUsers().get(i).getUserID(),userMetric);
-            user.add(userObject);
-        }
-            
-        }
-        
-
-        userMetricObject.put("User Performance Metrics and Reports", user);
+                userMetricDetails.put("Number of datasets assigned", uPerformance.getNAssignedDatasets());
+                userMetricDetails.put("List of all datasets with their completeness percentage", uPerformance.getNInstanceLabelled());
+                userMetricDetails.put("Total number of instances labeled", uPerformance.getNInstanceLabelled());
+                userMetricDetails.put("Total number of unique instances labeled ", uPerformance.getNUniqueInstancesLabelled());
+                userMetricDetails.put("Consistency percentage", uPerformance.getConcistencyPercentage());
+                userMetricDetails.put("Average time spent in labeling an instance in seconds", uPerformance.getAvgTimeSpent());
+                userMetricDetails.put("Std. dev. of  time spent in labeling an instance in seconds", uPerformance.getStdTimeSpent()); 
+                userMetric.add(userMetricDetails);
+                userObject.put("User"+dataset.getUsers().get(i).getUserID(),userMetric); 
+            }
+           
+        } 
+        userMetricObject.put("User Performance Metrics and Reports", userObject);
 
         try{
             File userMetricFile = new File ("./iteration2/UPMR.json"); //open the file

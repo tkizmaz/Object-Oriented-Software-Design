@@ -3,6 +3,7 @@ package iteration2;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.function.Predicate;
 import java.time.LocalDateTime;
 
 public class RandomLabellingMechanism extends LabellingMechanism{
@@ -33,6 +34,7 @@ public class RandomLabellingMechanism extends LabellingMechanism{
     // to set assignedLabels
     public void setAssignedLabels(Dataset currentDataset){
         DatasetPerformance performance = new DatasetPerformance();
+        this.userPerformance.setNAssignedDatasets(1);
         
         // to create an assignedLabel list object called assigneds
         List<AssignedLabel> assigneds = new ArrayList<AssignedLabel>();
@@ -119,9 +121,9 @@ public class RandomLabellingMechanism extends LabellingMechanism{
                 userPerformance.setNInstanceLabelled(1);       
             }
             long endTime = System.currentTimeMillis();
-            userPerformance.extendTimeSpent(endTime-startTime);          
-        }   
-        System.out.println("PLM user: "+this.userPerformance.getCurrentUser().getUserID());    
+            userPerformance.extendTimeSpent(endTime-startTime);
+            userPerformance.setDatasetComplPerList(currentDataset.getDatasetID()+" %"+performance.getCompletenessPercentage());          
+        }      
         readJS.writeUserMetrics2(currentDataset,this.userPerformance); 
         
     }
