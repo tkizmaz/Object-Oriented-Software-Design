@@ -37,6 +37,8 @@ class Main {
         });
         
         readJS.writeNewAssigneeds("SampleOutput2.json", readJS.getDataset().getAssignedLabels());
+        
+        
 
         }
 
