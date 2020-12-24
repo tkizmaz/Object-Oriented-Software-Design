@@ -247,7 +247,7 @@ public class JSONHandler {
         }
     }
 
-    public void writeUserMetrics2(Dataset dataset, UserPerformance uPerformance){
+    public void writeUserMetrics(Dataset dataset, UserPerformance uPerformance){
         JSONObject userMetricObject = new JSONObject(); // Top JSON object
         JSONObject userObject=new JSONObject();
         JSONArray userMetric = new JSONArray();  //JSON object to keep user metric metrics
@@ -286,9 +286,49 @@ public class JSONHandler {
         catch(IOException e){
             e.printStackTrace();
         }
+    }
 
 
+//parametre değiştirilecek
+    public void writeInstanceMetrics(Dataset dataset, UserPerformance uPerformance){
+        JSONObject instanceMetricObject = new JSONObject(); // Top JSON object
+        JSONObject instanceObject=new JSONObject();
+        JSONArray instanceMetric = new JSONArray();  //JSON object to keep user metric metrics
+        JSONObject instanceMetricDetails = new JSONObject();  
 
+        for (int i=0; i<dataset.getUsers().size(); i++){
+            User cUser=dataset.getUsers().get(i);
+            if (cUser.getUserID()==uPerformance.getCurrentUser().getUserID()){
+                instanceMetricDetails.put("Total number of label assignments ", uPerformance.getNAssignedDatasets());
+                instanceMetricDetails.put("Number of unique label assignments ", uPerformance.getNInstanceLabelled());
+                instanceMetricDetails.put("Number of unique users ", uPerformance.getNInstanceLabelled());
+                instanceMetricDetails.put("Total number of unique instances labeled ", uPerformance.getNUniqueInstancesLabelled());
+                instanceMetricDetails.put("Most frequent class label and percentage ", uPerformance.getConcistencyPercentage());
+                instanceMetricDetails.put("List class labels and percentages ", uPerformance.getAvgTimeSpent());
+                instanceMetricDetails.put("Entropy ", uPerformance.getStdTimeSpent()); 
+                instanceMetric.add(instanceMetricDetails);
+                instanceObject.put("User"+dataset.getUsers().get(i).getUserID(),instanceMetric); 
+            }
+           
+        } 
+        instanceMetricObject.put("User Performance Metrics and Reports", instanceObject);
+
+        try{
+            File userMetricFile = new File ("./iteration2/UPMR.json"); //open the file
+            if(!userMetricFile.exists()) { //if file does not exits create a new one
+                userMetricFile.createNewFile(); 
+            }
+
+            if(userMetricFile.exists() && !userMetricFile.isDirectory()) { //is exist append it
+                FileWriter file = new FileWriter(userMetricFile,true);
+                file.write("\n"+instanceMetricObject.toJSONString()+"\n");
+                file.flush();
+                file.close();
+            }
+        }
+        catch(IOException e){
+            e.printStackTrace();
+        }
     }
 
 
