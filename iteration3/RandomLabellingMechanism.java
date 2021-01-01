@@ -38,7 +38,7 @@ public class RandomLabellingMechanism extends LabellingMechanism{
                 assignedLabel.setUser(this.getUser());
                 this.getUser().setAssigneeds(assignedLabel);
                 currentDataset.setAssignedLabels(assignedLabel);
-                System.out.println("User with id of: "+this.getUser().getUserID()+" created an assignment :"+ assignedLabel);
+                System.out.println("User with id of: "+this.getUser().getUserID()+" with user type "+this.getUser().getUserType() +" created an assignment :"+ assignedLabel);
             }
             else{
                 return;
@@ -53,7 +53,7 @@ public class RandomLabellingMechanism extends LabellingMechanism{
             assignedLabel.setUser(this.getUser());
             this.getUser().setAssigneeds(assignedLabel);
             currentDataset.setAssignedLabels(assignedLabel);
-            System.out.println("User with id of: "+this.getUser().getUserID()+" created an assignment :"+ assignedLabel);
+            System.out.println("User with id of: "+this.getUser().getUserID()+" with user type "+this.getUser().getUserType() +" created an assignment :"+ assignedLabel);
         }
         
         System.out.println("End of labeling");
