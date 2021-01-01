@@ -39,6 +39,7 @@ public class HumanLabelingMechanism extends LabellingMechanism {
                 assignedLabel.setUser(getUser());
                 currentDataset.setAssignedLabels(assignedLabel);
                 this.getUser().setAssigneeds(assignedLabel);
+                System.out.println("User with id of: "+this.getUser().getUserID()+" created an assignment :"+ assignedLabel);
             }
             else{
                 return;
@@ -61,6 +62,7 @@ public class HumanLabelingMechanism extends LabellingMechanism {
             assignedLabel.setUser(getUser());
             currentDataset.setAssignedLabels(assignedLabel);
             this.getUser().setAssigneeds(assignedLabel);
+            System.out.println("User with id of: "+this.getUser().getUserID()+" created an assignment :"+ assignedLabel);
         }
 
 
