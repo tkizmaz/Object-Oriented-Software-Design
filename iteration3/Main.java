@@ -36,10 +36,11 @@ class Main {
                 }
                     }
                 }                                
+                
                 break;
             }            
         }
-        readJS.writeNewAssigneeds("SampleOutput2.json", readJS.getDataset().getAssignedLabels());
+        //readJS.writeNewAssigneeds("SampleOutput2.json", readJS.getDataset().getAssignedLabels());
     }
 
     

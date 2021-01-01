@@ -42,7 +42,7 @@ public class UserPerformance {
 
    // 2- List of all datasets with their completeness percentage (e.g. dataset1 %100, dataset2 %90, dataset3 15%, dataset 4 0%)
     public String getDatasetComplPerList() {
-        return (""+ currentDataset.getAssignedLabels().size()/currentDataset.getInstances().size()*100+"%");  //returns sth like "0%"
+        return (""+ currentDataset.getAssignedLabels().size()/currentDataset.getInstances().size()*100+"%");  
     }
 
     // 3- Total number of instances labeled 
@@ -54,10 +54,13 @@ public class UserPerformance {
     public int getNUniqueInstancesLabelled() {
         long[] assignedL= new long[(int)currentUser.getAssignments().size()];
         int nUnIns=0;
-        for (AssignedLabel al : currentUser.getAssignments()){
-            if (!LongStream.of(assignedL).anyMatch(x ->x == al.getInstance().getInstanceID())){      //???
+        for (int i=0; i<currentUser.getAssignments().size(); i++){
+            assignedL[i]=currentUser.getAssignments().get(i).getInstance().getInstanceID();
+            /*
+            if (!LongStream.of(assignedL).anyMatch(x ->x == currentUser.getAssignments().get(i).getInstance().getInstanceID())){      //???
                 nUnIns++;
             }
+            */
         }
         return nUnIns;
     }

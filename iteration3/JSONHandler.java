@@ -186,7 +186,7 @@ public class JSONHandler {
         return this.dataset; //getter for Dataset
 
     }
-
+/*
     public void writeNewAssigneeds(String filename, List<AssignedLabel> assignedLabelList){
         JSONObject samplObject = new JSONObject();
 
@@ -247,29 +247,23 @@ public class JSONHandler {
         }
 
     }
+*/
+    public void writeDatasetMetrics(DatasetPerformance dPerformance){
+        Dataset dataset =dPerformance.getCurrentDataset();
+        JSONObject datasetMetricObject = new JSONObject(); // Top JSON object
+        JSONArray datasetMetric = new JSONArray();  //JSON object to keep user metric metrics
+        JSONObject datasetMetricDetails = new JSONObject();  
 
-    public void writeDatasetMetrics(AssignedLabel assignedLabel,Dataset currentDataset,DatasetPerformance datasetPerformance){
-        JSONObject userMetricObject = new JSONObject(); // Top JSON object
-        JSONArray userMetric = new JSONArray();  //JSON object to keep user metric metrics
-        JSONObject userMetricDetails = new JSONObject();  
-        
-        userMetricObject.put("Number of users assigned to this dataset", currentDataset.getNumberofUsers());
-
-        userMetricDetails.put("UserID", assignedLabel.getUser().getUserID());
-        userMetricDetails.put("InstanceID",assignedLabel.getInstance().getInstanceID());
-        userMetricDetails.put("ClassLabelID",(assignedLabel.getClassLabelID().getLabelID()));
-        userMetricDetails.put("Time", assignedLabel.getLocalTime());
-        userMetric.add(userMetricDetails);
-        
-        
-        userMetricObject.put(("Reports for Dataset "+ currentDataset.getDatasetID()), userMetric); 
-
-        JSONArray datasetMetric = new JSONArray();
-        JSONObject datasetMetricDetails = new JSONObject();
-        datasetMetricDetails.put("Dataset "+currentDataset.getDatasetID() + " Percentage",datasetPerformance.getCompletenessPercentage());
+        datasetMetricDetails.put("Completeness percentage ", dPerformance.getCompletenessPercentage());
+        datasetMetricDetails.put("Class distribution based on final instance labels", dPerformance.getDistributionOfInstanceLabels());
+        datasetMetricDetails.put("List number of unique instances for each class label ", dPerformance.getNUniqueInstancesLabelled());
+        datasetMetricDetails.put("Number of users assigned to this dataset ", dPerformance.getNumberofUsers());
+        datasetMetricDetails.put("List of users assigned and their completeness percentage ", dPerformance.getUserAssignedCompleteness());
+        datasetMetricDetails.put("List of users assigned and their consistency percentage ", dPerformance.getUserAssignedConsistecy());
         datasetMetric.add(datasetMetricDetails);
 
-        userMetricObject.put("Repots", datasetMetric);
+ 
+        datasetMetricObject.put("User Performance Metrics and Reports", datasetMetric);
 
 
         try{
@@ -280,7 +274,7 @@ public class JSONHandler {
 
             if(userMetricFile.exists() && !userMetricFile.isDirectory()) { //is exist append it
                 FileWriter file = new FileWriter(userMetricFile,true);
-                file.write("\n"+userMetricObject.toJSONString()+"\n");
+                file.write("\n"+datasetMetricObject.toJSONString()+"\n");
                 file.flush();
                 file.close();
             }
@@ -290,22 +284,24 @@ public class JSONHandler {
         }
     }
 
-    public void writeUserMetrics(Dataset dataset, UserPerformance uPerformance){
+    public void writeUserMetrics(UserPerformance uPerformance){
+        Dataset dataset = uPerformance.getCurrentDataset();
         JSONObject userMetricObject = new JSONObject(); // Top JSON object
         JSONObject userObject=new JSONObject();
         JSONArray userMetric = new JSONArray();  //JSON object to keep user metric metrics
         JSONObject userMetricDetails = new JSONObject();  
+    
 
         for (int i=0; i<dataset.getUsers().size(); i++){
             User cUser=dataset.getUsers().get(i);
-            if (cUser.getUserID()==uPerformance.getCurrentUser().getUserID()){
+            if (cUser.getUserID()==uPerformance.getCurrentUser().getUserID()){ // It only prints the current user performance metric each time
                 userMetricDetails.put("Number of datasets assigned", uPerformance.getNAssignedDatasets());
-                userMetricDetails.put("List of all datasets with their completeness percentage", uPerformance.getNInstanceLabelled());
+                userMetricDetails.put("List of all datasets with their completeness percentage", uPerformance.getDatasetComplPerList());
                 userMetricDetails.put("Total number of instances labeled", uPerformance.getNInstanceLabelled());
                 userMetricDetails.put("Total number of unique instances labeled ", uPerformance.getNUniqueInstancesLabelled());
                 userMetricDetails.put("Consistency percentage", uPerformance.getConcistencyPercentage());
-                userMetricDetails.put("Average time spent in labeling an instance in seconds", uPerformance.getAvgTimeSpent());
-                userMetricDetails.put("Std. dev. of  time spent in labeling an instance in seconds", uPerformance.getStdTimeSpent()); 
+                //userMetricDetails.put("Average time spent in labeling an instance in seconds", uPerformance.getConcistencyPercentage());
+               // userMetricDetails.put("Std. dev. of  time spent in labeling an instance in seconds", uPerformance.getConcistencyPercentage());
                 userMetric.add(userMetricDetails);
                 userObject.put("User"+dataset.getUsers().get(i).getUserID(),userMetric); 
             }
@@ -330,7 +326,7 @@ public class JSONHandler {
             e.printStackTrace();
         }
     }
-
+/*
     public void sumInstanceMetrics(InstancePerformance iPerformance){
         this.nLabelAssignments+=iPerformance.getNLabelAssignments();
         this.nUniqueLabelAssignments+=iPerformance.getNUniqueLabelAssignments();
@@ -338,20 +334,20 @@ public class JSONHandler {
 
         writeInstanceMetrics(iPerformance, this.nLabelAssignments, this.nUniqueLabelAssignments, this.nUniqueUsers);
     }
-
+*/
 //parametre değiştirilecek
-    public void writeInstanceMetrics(InstancePerformance iPerformance,int nLabelAssignments,int nUniqueLabelAssignments,int nUniqueUsers){
+    public void writeInstanceMetrics(InstancePerformance iPerformance){
         JSONObject instanceMetricObject = new JSONObject(); // Top JSON object
         JSONObject instanceObject=new JSONObject();
         JSONArray instanceMetric = new JSONArray();  //JSON object to keep user metric metrics
         JSONObject instanceMetricDetails = new JSONObject();  
 
 
-        instanceMetricDetails.put("Total number of label assignments ", nLabelAssignments);
-        instanceMetricDetails.put("Number of unique label assignments ", nUniqueLabelAssignments);
-        instanceMetricDetails.put("Number of unique users ", nUniqueUsers);
+        instanceMetricDetails.put("Total number of label assignments ", iPerformance.getNLabelAssignments());
+        instanceMetricDetails.put("Number of unique label assignments ", iPerformance.getNUniqueLabelAssignments());
+        instanceMetricDetails.put("Number of unique users ", iPerformance.getNUniqueUsers());
         instanceMetricDetails.put("Most frequent class label and percentage ", iPerformance.getMostFrequentClassLabel());
-        instanceMetricDetails.put("List class labels and percentages ", iPerformance.getClassLabels());
+        instanceMetricDetails.put("List class labels and percentages ", iPerformance.getClassLabelsPercentages());
         instanceMetricDetails.put("Entropy ", iPerformance.getEntropy()); 
         instanceMetric.add(instanceMetricDetails);
     

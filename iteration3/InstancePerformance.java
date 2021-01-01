@@ -1,7 +1,5 @@
 package iteration3;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.stream.LongStream;
 
 /*
@@ -29,7 +27,7 @@ public class InstancePerformance {
     public void setCurrentDataset(Dataset currentDataset) {
         this.currentDataset = currentDataset;
     }
-    
+
     public void setFrequency(){
         for (AssignedLabel al : currentDataset.getAssignedLabels()){
             if (al.getClassLabelID().getLabelID()==(long) 1){
@@ -68,6 +66,7 @@ public class InstancePerformance {
 
     // 4- Most frequent class label and percentage (e.g. for labeling assignments of user 1, 2 and 3 -> [(u1,p),(u2,p),(u3,n),(u2,n),(u2,p),(u1,p),(u1,p),(u3,n),(u3,p),(u1,n)] it is p and percentage is 60%)
     public String getMostFrequentClassLabel() {
+        System.out.println("Most Frequent not working yet!");
         return "mostFrequentClassLabel";
     }
 

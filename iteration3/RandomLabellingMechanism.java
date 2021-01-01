@@ -9,9 +9,18 @@ import java.util.Random;
 import java.time.LocalDateTime;
 
 public class RandomLabellingMechanism extends LabellingMechanism{
+    JSONHandler writeJS = new JSONHandler();
+    InstancePerformance iPerformance = new InstancePerformance();
+    DatasetPerformance dPerformance = new DatasetPerformance();
+    UserPerformance uPerformance = new UserPerformance();
 
     // to set assignedLabels
     public void setAssignedLabels(Dataset currentDataset){
+        iPerformance.setCurrentDataset(currentDataset);
+        dPerformance.setCurrentDataset(currentDataset);
+        uPerformance.setCurrentDataset(currentDataset);
+        uPerformance.setCurrentUser(this.getUser());
+
 
         AssignedLabel assignedLabel = new AssignedLabel();
         boolean isSameInstance = false;
@@ -57,6 +66,10 @@ public class RandomLabellingMechanism extends LabellingMechanism{
         }
         
         System.out.println("End of labeling");
+        iPerformance.setFrequency();
+        writeJS.writeUserMetrics(uPerformance);
+        writeJS.writeDatasetMetrics(dPerformance);
+        writeJS.writeInstanceMetrics(iPerformance);
 
         try{
             Thread.sleep(500);
