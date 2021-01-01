@@ -32,7 +32,7 @@ public class JSONHandler {
             JSONObject jsonObject = (JSONObject) obj;
             JSONArray users = (JSONArray) jsonObject.get("users");
             List<User> userList = new ArrayList<>(); 
-            User eachBotUser = new HumanUser();
+            User eachHuman = new HumanUser();
 
             for (int i = 0; i < users.size(); i++){
                 JSONObject user = (JSONObject) users.get(i);
@@ -43,10 +43,11 @@ public class JSONHandler {
                 if (usr.equals(username) && psw.equals(password)){
                     this.dataset.getUsers().remove(this.dataset.getNumberofUsers()-1);
                     userList=this.dataset.getUsers();
-                    eachBotUser.setUserID((long)user.get("user id"));
-                    eachBotUser.setUsername((String)user.get("user name"));
-                    eachBotUser.setUserType((String)user.get("user type"));
-                    userList.add(eachBotUser);
+                    eachHuman.setUserID((long)user.get("user id"));
+                    eachHuman.setUsername((String)user.get("user name"));
+                    eachHuman.setUserType((String)user.get("user type"));
+                    eachHuman.setConsistencyCheckProbability((double)user.get("consistency_check"));
+                    userList.add(eachHuman);
                     this.dataset.setUsers(userList);
                     authentication=true;
                 }
