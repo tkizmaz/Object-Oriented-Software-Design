@@ -1,15 +1,12 @@
 package iteration3;
 
-import java.text.BreakIterator;
 import java.util.Scanner;
 
 class Main {
     public static void main(String[] args) {
         JSONHandler readJS = new JSONHandler();
-        readJS.readConfigFile();
-        
+        readJS.readConfigFile();      
         Scanner scanner = new Scanner(System.in);
-
 
         while (true){
             System.out.println("Enter user name:");

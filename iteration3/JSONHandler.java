@@ -224,7 +224,7 @@ public class JSONHandler {
         for(int i=0;i<assignedLabelList.size();i++){
             JSONObject assignedLabelDetails = new JSONObject();
             assignedLabelDetails.put("instance id", assignedLabelList.get(i).getInstance().getInstanceID());
-            assignedLabelDetails.put("class label id",(assignedLabelList.get(i).getClassLabelID()[0].getLabelID()));
+            assignedLabelDetails.put("class label id",(assignedLabelList.get(i).getClassLabelID().getLabelID()));
             assignedLabelDetails.put("user id", assignedLabelList.get(i).getUser().getUserID());
             assignedLabelDetails.put("datetime", assignedLabelList.get(i).getLocalTime());
             assignments.add(assignedLabelDetails);
@@ -251,7 +251,7 @@ public class JSONHandler {
 
         userMetricDetails.put("UserID", assignedLabel.getUser().getUserID());
         userMetricDetails.put("InstanceID",assignedLabel.getInstance().getInstanceID());
-        userMetricDetails.put("ClassLabelID",(assignedLabel.getClassLabelID()[0].getLabelID()));
+        userMetricDetails.put("ClassLabelID",(assignedLabel.getClassLabelID().getLabelID()));
         userMetricDetails.put("Time", assignedLabel.getLocalTime());
         userMetric.add(userMetricDetails);
         
