@@ -57,6 +57,24 @@
       "user id": 6,
       "user name": "RandomLabelingMechanism6",
       "user type": "RandomBot"
+    },
+    {
+      "user id": 7,
+      "user name": "Ayça",
+      "password": "1234",
+      "user type": "Human"
+    },
+    {
+      "user id": 8,
+      "user name": "Ecem",
+      "password": "1234",
+      "user type": "Human"
+    },
+    {
+      "user id": 9,
+      "user name": "Nusret",
+      "password": "1234",
+      "user type": "Human"
     }
   ]
 }

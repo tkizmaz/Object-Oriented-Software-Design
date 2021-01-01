@@ -24,11 +24,41 @@ public class JSONHandler {
 
     Random rand = new Random();
 
+    public boolean checkUser (String username, String password){
+        JSONParser jsonParser = new JSONParser();
+        boolean authentication=false;
+
+        try(FileReader reader = new FileReader("./iteration3/config.json")){
+            Object obj = jsonParser.parse(reader);
+            JSONObject jsonObject = (JSONObject) obj;
+            JSONArray users = (JSONArray) jsonObject.get("users");
+            
+            for (int i = 0; i < users.size(); i++){
+                JSONObject user = (JSONObject) users.get(i);
+
+                String usr=(String) user.get("user name");
+                String psw= (String) user.get("password");
+
+                if (usr.equals(username) && psw.equals(password)){
+                    authentication=true;
+                }
+            }
+        }
+        catch(IOException ie){ // exception catching
+            ie.printStackTrace();
+        }
+        catch(ParseException ie){
+            ie.printStackTrace();
+        }
+        return authentication;
+
+    }
+
     public void readConfigFile(){
         List<User> userList = new ArrayList<>(); //creating userList to append
         JSONParser jsonParser = new JSONParser();
 
-        try(FileReader reader = new FileReader("./iteration2/config.json")){
+        try(FileReader reader = new FileReader("./iteration3/config.json")){
             Object obj = jsonParser.parse(reader);
             JSONObject jsonObject = (JSONObject) obj;
 
@@ -45,47 +75,49 @@ public class JSONHandler {
                 }
             });
 
-            
             JSONArray users = (JSONArray) jsonObject.get("users");
             long chosenRandomly[]= new long[(int)this.dataset.getNumberofUsers()];
             for(int i=0; i<this.dataset.getNumberofUsers();i++){
                 int x=rand.nextInt((int)users.size())+1;
                 for(long k : chosenRandomly){
-                    while(k == x){
-                        x = rand.nextInt((int)users.size())+1;
+                    JSONObject user = (JSONObject) users.get((int) k);
+                    if (!((String)user.get("user type")).equals("Human")){
+                        while(k == x){
+                            x = rand.nextInt((int)users.size())+1;
+                        }
                     }
                 }
                 chosenRandomly[i]=x;
             }
+        
 
-
-            /*System.out.println(rand.nextInt((int)this.dataset.getNumberofUsers()));
-            System.out.println(rand.nextInt((int)this.dataset.getNumberofUsers()));
-            System.out.println(rand.nextInt((int)this.dataset.getNumberofUsers()));*/
-            users.forEach(entry->{ //getting all the informations in loop
-
-                JSONObject user = (JSONObject) entry;
+            for(int i=0; i<this.dataset.getNumberofUsers();i++){
+                JSONObject user = (JSONObject) users.get(i);
                 User eachUser = new User();
                 long currentUserID=(long)user.get("user id");
-                for(int i=0;i<chosenRandomly.length;i++){
+                if (((String) user.get("user type")).equals("Human")){
+                    eachUser.setUserID((long)user.get("user id"));
+                    eachUser.setUsername((String)user.get("user name"));
+                    eachUser.setUserType((String)user.get("user type"));
+                    userList.add(eachUser);
+                }
+                else{                   
                     if((long)currentUserID==chosenRandomly[i]){
                         eachUser.setUserID((long)user.get("user id"));
                         eachUser.setUsername((String)user.get("user name"));
                         eachUser.setUserType((String)user.get("user type"));
                         userList.add(eachUser);
-                    }
+                    }                    
                 }
-                
-
-            });
+            }
             this.dataset.setUsers(userList);
         }
-            catch(IOException ie){ // exception catching
-                ie.printStackTrace();
-            }
-            catch(ParseException ie){
-                ie.printStackTrace();
-            }
+        catch(IOException ie){ // exception catching
+        ie.printStackTrace();
+        }
+        catch(ParseException ie){
+            ie.printStackTrace();
+        }
     }
 
     public void readDataset(String fileName){
