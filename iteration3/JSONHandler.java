@@ -32,8 +32,8 @@ public class JSONHandler {
             JSONObject jsonObject = (JSONObject) obj;
             JSONArray users = (JSONArray) jsonObject.get("users");
             List<User> userList = new ArrayList<>(); 
-            User eachUser = new User();
-            
+            User eachBotUser = new HumanUser();
+
             for (int i = 0; i < users.size(); i++){
                 JSONObject user = (JSONObject) users.get(i);
 
@@ -43,10 +43,10 @@ public class JSONHandler {
                 if (usr.equals(username) && psw.equals(password)){
                     this.dataset.getUsers().remove(this.dataset.getNumberofUsers()-1);
                     userList=this.dataset.getUsers();
-                    eachUser.setUserID((long)user.get("user id"));
-                    eachUser.setUsername((String)user.get("user name"));
-                    eachUser.setUserType((String)user.get("user type"));
-                    userList.add(eachUser);
+                    eachBotUser.setUserID((long)user.get("user id"));
+                    eachBotUser.setUsername((String)user.get("user name"));
+                    eachBotUser.setUserType((String)user.get("user type"));
+                    userList.add(eachBotUser);
                     this.dataset.setUsers(userList);
                     authentication=true;
                 }
@@ -103,7 +103,7 @@ public class JSONHandler {
             users.forEach(entry->{ //getting all the informations in loop
 
                 JSONObject user = (JSONObject) entry;
-                User eachUser = new User();
+                User eachUser = new BotUser();
                 long currentUserID=(long)user.get("user id");
                 for(int i=0;i<chosenRandomly.length;i++){
                     if((long)currentUserID==chosenRandomly[i]){

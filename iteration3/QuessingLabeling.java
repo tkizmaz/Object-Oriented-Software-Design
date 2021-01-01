@@ -1,18 +1,10 @@
 package iteration3;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-
-
-
 import java.time.LocalDateTime;
-
-public class RandomLabellingMechanism extends LabellingMechanism{
-
-    // to set assignedLabels
-    public void setAssignedLabels(Dataset currentDataset){
-
+public class QuessingLabeling extends LabellingMechanism {
+    
+    @Override
+    public void setAssignedLabels(Dataset currentDataset) {
+  
         AssignedLabel assignedLabel = new AssignedLabel();
         boolean isSameInstance = false;
 
@@ -65,8 +57,6 @@ public class RandomLabellingMechanism extends LabellingMechanism{
             System.out.println("bir problem var");
   
         }
-    
     }
-    
 
 }
