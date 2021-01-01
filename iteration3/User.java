@@ -14,7 +14,7 @@ public class User {
     private List<AssignedLabel> assigneds = new ArrayList<AssignedLabel>();
     private double ConsistencyCheckProbability = 0.1;
     private UserPerformance userPerformance=new UserPerformance();
-    
+
     private int labelCount;
     private int uniqueLabelCount;
     
@@ -62,7 +62,7 @@ public class User {
         randomLabeling.setInstances(currentDataset.getInstances());
         randomLabeling.setAssignedLabels(currentDataset);
         //userPerformance.setCurrentUser(this);
-       // userPerformance.setNInstanceLabelled(1);
+        //userPerformance.setNInstanceLabelled(1);
     }
 
     //assignedlabels should be in a list to store them
