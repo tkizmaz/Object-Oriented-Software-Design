@@ -23,7 +23,6 @@ public class JSONHandler {
     private int nUniqueUsers=0;
 
     Random rand = new Random();
-
     public boolean checkUser (String username, String password){
         JSONParser jsonParser = new JSONParser();
         boolean authentication=false;
@@ -32,6 +31,8 @@ public class JSONHandler {
             Object obj = jsonParser.parse(reader);
             JSONObject jsonObject = (JSONObject) obj;
             JSONArray users = (JSONArray) jsonObject.get("users");
+            List<User> userList = new ArrayList<>(); 
+            User eachUser = new User();
             
             for (int i = 0; i < users.size(); i++){
                 JSONObject user = (JSONObject) users.get(i);
@@ -40,7 +41,15 @@ public class JSONHandler {
                 String psw= (String) user.get("password");
 
                 if (usr.equals(username) && psw.equals(password)){
+                    eachUser.setUserID((long)user.get("user id"));
+                    eachUser.setUsername((String)user.get("user name"));
+                    eachUser.setUserType((String)user.get("user type"));
+                    userList.add(eachUser);
+                    this.dataset.setUsers(userList);
                     authentication=true;
+                    System.out.println(this.dataset.getNumberofUsers());
+                    
+                    
                 }
             }
         }
@@ -75,49 +84,47 @@ public class JSONHandler {
                 }
             });
 
+            
             JSONArray users = (JSONArray) jsonObject.get("users");
             long chosenRandomly[]= new long[(int)this.dataset.getNumberofUsers()];
             for(int i=0; i<this.dataset.getNumberofUsers();i++){
                 int x=rand.nextInt((int)users.size())+1;
                 for(long k : chosenRandomly){
-                    JSONObject user = (JSONObject) users.get((int) k);
-                    if (!((String)user.get("user type")).equals("Human")){
-                        while(k == x){
-                            x = rand.nextInt((int)users.size())+1;
-                        }
+                    while(k == x){
+                        x = rand.nextInt((int)users.size())+1;
                     }
                 }
                 chosenRandomly[i]=x;
             }
-        
 
-            for(int i=0; i<this.dataset.getNumberofUsers();i++){
-                JSONObject user = (JSONObject) users.get(i);
+
+            /*System.out.println(rand.nextInt((int)this.dataset.getNumberofUsers()));
+            System.out.println(rand.nextInt((int)this.dataset.getNumberofUsers()));
+            System.out.println(rand.nextInt((int)this.dataset.getNumberofUsers()));*/
+            users.forEach(entry->{ //getting all the informations in loop
+
+                JSONObject user = (JSONObject) entry;
                 User eachUser = new User();
                 long currentUserID=(long)user.get("user id");
-                if (((String) user.get("user type")).equals("Human")){
-                    eachUser.setUserID((long)user.get("user id"));
-                    eachUser.setUsername((String)user.get("user name"));
-                    eachUser.setUserType((String)user.get("user type"));
-                    userList.add(eachUser);
-                }
-                else{                   
+                for(int i=0;i<chosenRandomly.length;i++){
                     if((long)currentUserID==chosenRandomly[i]){
                         eachUser.setUserID((long)user.get("user id"));
                         eachUser.setUsername((String)user.get("user name"));
                         eachUser.setUserType((String)user.get("user type"));
                         userList.add(eachUser);
-                    }                    
+                    }
                 }
-            }
+                
+
+            });
             this.dataset.setUsers(userList);
         }
-        catch(IOException ie){ // exception catching
-        ie.printStackTrace();
-        }
-        catch(ParseException ie){
-            ie.printStackTrace();
-        }
+            catch(IOException ie){ // exception catching
+                ie.printStackTrace();
+            }
+            catch(ParseException ie){
+                ie.printStackTrace();
+            }
     }
 
     public void readDataset(String fileName){
