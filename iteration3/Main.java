@@ -25,12 +25,9 @@ class Main {
                 break;
             }
             else if (readJS.checkUser(userName, password)){
-                System.out.println("here");
-                
                 for ( User user : readJS.getDataset().getUsers()){
-                    System.out.println(user.getUsername());
-                    if(user.getUsername()==(userName)){
-                        System.out.println(user.getUserID());
+                    if(user.getUsername().equals(userName)){
+                        System.out.println("Current User "+user.getUserID()+" "+user.getUsername());
                         user.makeAssignment(readJS.getDataset());
                     }
                 }                                

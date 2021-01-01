@@ -41,6 +41,8 @@ public class JSONHandler {
                 String psw= (String) user.get("password");
 
                 if (usr.equals(username) && psw.equals(password)){
+                    this.dataset.getUsers().remove(this.dataset.getNumberofUsers()-1);
+                    userList=this.dataset.getUsers();
                     eachUser.setUserID((long)user.get("user id"));
                     eachUser.setUsername((String)user.get("user name"));
                     eachUser.setUserType((String)user.get("user type"));
@@ -48,6 +50,8 @@ public class JSONHandler {
                     this.dataset.setUsers(userList);
                     authentication=true;
                     System.out.println(this.dataset.getNumberofUsers());
+                    System.out.println(this.dataset.getUsers());
+                    
                     
                     
                 }
