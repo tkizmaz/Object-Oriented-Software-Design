@@ -1,7 +1,6 @@
 package iteration3;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.stream.LongStream;
 
 /*
     A- User Performance Metrics and Reports
@@ -15,15 +14,10 @@ import java.util.List;
     */
 
 public class UserPerformance {
+
     private User currentUser;
-    private int nAssignedDatasets;
-    private List<String> datasetComplPerList = new ArrayList<String>();
-    private int nInstanceLabelled=0;
-    private int nUniqueInstancesLabelled=0;
-    private long concistencyPercentage=0;
-    private List<Long> timeSpent= new ArrayList<Long>();
-    private float avgTimeSpent=0;
-    private float stdTimeSpent=0;
+    private Dataset currentDataset;
+
  
     public User getCurrentUser() {
         return currentUser;
@@ -33,91 +27,44 @@ public class UserPerformance {
         this.currentUser = currentUser;
     }
     
-    public int getNAssignedDatasets() {
-        return nAssignedDatasets;
+    public Dataset getCurrentDataset() {
+        return currentDataset;
     }
 
-
-    public void setNAssignedDatasets(int nAssignedDatasets) {
-        this.nAssignedDatasets += nAssignedDatasets;
+    public void setCurrentDataset(Dataset currentDataset) {
+        this.currentDataset = currentDataset;
     }
 
- 
+    // 1- Number of datasets assigned (e.g. 4)
+    public int getNAssignedDatasets() { // we assign users to only one dataset
+         return 1;
+    }
+
+   // 2- List of all datasets with their completeness percentage (e.g. dataset1 %100, dataset2 %90, dataset3 15%, dataset 4 0%)
     public String getDatasetComplPerList() {
-        return datasetComplPerList.get(0);
+        return (""+ currentDataset.getAssignedLabels().size()/currentDataset.getInstances().size()*100+"%");  //returns sth like "0%"
     }
 
-
-    public void setDatasetComplPerList(String datasetComplPerList) { 
-        this.datasetComplPerList.add("Dataset "+datasetComplPerList);
-    }
-
-
+    // 3- Total number of instances labeled 
     public int getNInstanceLabelled() {
-        
-        return nInstanceLabelled;
+        return currentUser.getAssignments().size();
     }
 
- 
-    public void setNInstanceLabelled(int n) {
-        this.nInstanceLabelled += n;
-    }
-
-
+    // 4- Total number of unique instances labeled 
     public int getNUniqueInstancesLabelled() {
-        return nUniqueInstancesLabelled;
-    }
-
-  
-    public void setNUniqueInstancesLabelled(int n) {
-        this.nUniqueInstancesLabelled += n;
-    }
-
- 
-    public long getConcistencyPercentage() {
-        return concistencyPercentage;
-    }
-
-
-    public void setConcistencyPercentage(long concistencyPercentage) {
-        this.concistencyPercentage = concistencyPercentage;
-    }
-
-    public float getAvgTimeSpent() {
-
-        return avgTimeSpent;
-    }
-
-    public void setAvgTimeSpent() {
-        float sum=0;
-        float tho=1000;
-        for(int i=0; i<this.timeSpent.size(); i++){
-            sum += timeSpent.get(i);
-        }      
-        this.avgTimeSpent = sum/(nInstanceLabelled*tho);
-    }
-
-    public float getStdTimeSpent() {
-        return stdTimeSpent;
-    }
-
-    public void setStdTimeSpent() {
-       float standardDeviation=0;
-        for(long num: timeSpent) {
-            standardDeviation += Math.pow(num - avgTimeSpent,2);
-            
+        long[] assignedL= new long[(int)currentUser.getAssignments().size()];
+        int nUnIns=0;
+        for (AssignedLabel al : currentUser.getAssignments()){
+            if (!LongStream.of(assignedL).anyMatch(x ->x == al.getInstance().getInstanceID())){      //???
+                nUnIns++;
+            }
         }
-        this.stdTimeSpent =(float) Math.sqrt(standardDeviation/timeSpent.size());
+        return nUnIns;
     }
-
-    public void extendTimeSpent(long passedTime){
-        this.timeSpent.add(passedTime);
-        setAvgTimeSpent();
-        setStdTimeSpent();
-    }
-
-    public List<Long> getTimeSpent(){
-        return timeSpent;
+ 
+    // 5- Consistency percentage (e.g. %60 of the recurrent instances are labeled with the same class)
+    public double getConcistencyPercentage() {
+        return this.currentUser.getConsistencyCheckProbability()*100;
     }
 
 }

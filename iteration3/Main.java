@@ -20,8 +20,6 @@ class Main {
                         readJS.getDataset().getUsers().get(p).makeAssignment(readJS.getDataset());
                     }
                 }
-
-                readJS.writeNewAssigneeds("SampleOutput2.json", readJS.getDataset().getAssignedLabels());
                 break;
             }
             else if (readJS.checkUser(userName, password)){

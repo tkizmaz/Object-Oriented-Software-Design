@@ -49,11 +49,6 @@ public class JSONHandler {
                     userList.add(eachUser);
                     this.dataset.setUsers(userList);
                     authentication=true;
-                    System.out.println(this.dataset.getNumberofUsers());
-                    System.out.println(this.dataset.getUsers());
-                    
-                    
-                    
                 }
             }
         }
