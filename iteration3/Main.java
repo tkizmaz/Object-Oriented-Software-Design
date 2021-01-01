@@ -4,8 +4,10 @@ import java.util.Scanner;
 
 class Main {
     public static void main(String[] args) {
+
         JSONHandler readJS = new JSONHandler();
         readJS.readConfigFile();      
+
         Scanner scanner = new Scanner(System.in);
 
         while (true){
@@ -20,15 +22,18 @@ class Main {
                         readJS.getDataset().getUsers().get(p).makeAssignment(readJS.getDataset());
                     }
                 }
-
-                readJS.writeNewAssigneeds("SampleOutput2.json", readJS.getDataset().getAssignedLabels());
                 break;
             }
+
             else if (readJS.checkUser(userName, password)){
                 for ( User user : readJS.getDataset().getUsers()){
                     if(user.getUsername().equals(userName)){
                         System.out.println("Current User "+user.getUserID()+" "+user.getUsername());
-                        user.makeAssignment(readJS.getDataset());
+                        for(int i=0;i<10;i++){
+                            for(int p=0;p<readJS.getDataset().getUsers().size();p++){
+                                readJS.getDataset().getUsers().get(p).makeAssignment(readJS.getDataset());
+                    }
+                }
                     }
                 }                                
                 break;

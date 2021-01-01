@@ -3,6 +3,8 @@ package iteration3;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.xml.crypto.Data;
+
 //imports that we use for list and arrays
 public class User {
     
@@ -57,12 +59,7 @@ public class User {
 
     // make assignment to create lists 
     public void makeAssignment(Dataset currentDataset){
-        randomLabeling.setUser(this);
-        randomLabeling.setLabels(currentDataset.getLabels());
-        randomLabeling.setInstances(currentDataset.getInstances());
-        randomLabeling.setAssignedLabels(currentDataset);
-        //userPerformance.setCurrentUser(this);
-        //userPerformance.setNInstanceLabelled(1);
+        System.out.println("In mother class method");
     }
 
     //assignedlabels should be in a list to store them
