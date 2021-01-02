@@ -19,8 +19,8 @@ B- Instance Performance Metrics
 public class InstancePerformance {
 
     private Dataset currentDataset; 
-    int[] frequency={0,0,0}; // Index 0: Positive, Index 1: Negative, Index 2: Notr
-    private List<AssignedLabel> labeledInstanceIDs = new ArrayList<AssignedLabel>();
+    double[] frequency={0,0,0}; // Index 0: Positive, Index 1: Negative, Index 2: Notr
+    private List<Long> labeledInstanceIDs = new ArrayList<Long>();
 
 
     public Dataset getCurrentDataset() {
@@ -57,9 +57,10 @@ public class InstancePerformance {
     //2- Number of unique label assignments (e.g. for labeling assignments of user 1, 2 and 3 -> [(u1,p),(u2,p),(u3,n),(u2,n),(u2,p),(u1,p),(u1,p),(u3,n),(u3,p),(u1,n)] it is 2)
     public int getNUniqueLabelAssignments() {
         for(int i=0;i<this.currentDataset.getAssignedLabels().size();i++){
-            labeledInstanceIDs.add(this.currentDataset.getAssignedLabels().get(i));
+            this.labeledInstanceIDs.add(this.currentDataset.getAssignedLabels().get(i).getInstance().getInstanceID());
         }
-        List<AssignedLabel> withoutDupes = this.labeledInstanceIDs.stream()
+
+        List<Long> withoutDupes = this.labeledInstanceIDs.stream()
                                       .distinct()
                                       .collect(Collectors.toList());
         return withoutDupes.size();
@@ -83,7 +84,7 @@ public class InstancePerformance {
             }
 
         }
-        return (""+labels[index]+", "+max/total+"%");
+        return (""+labels[index]+", "+max/((double) total)*100.0+"%");
     }
 
 
@@ -98,7 +99,7 @@ public class InstancePerformance {
 
     public double getEntropy() {
         double entropy=0;
-        for (int k : frequency){
+        for (double k : frequency){
             double ratio=k/this.getNUniqueLabelAssignments();
             entropy-=ratio*log2(ratio);
         }

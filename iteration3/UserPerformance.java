@@ -43,7 +43,7 @@ public class UserPerformance {
 
    // 2- List of all datasets with their completeness percentage (e.g. dataset1 %100, dataset2 %90, dataset3 15%, dataset 4 0%)
     public String getDatasetComplPerList() {
-        return (""+ (this.currentDataset.getAssignedLabels().size()/this.currentDataset.getInstances().size())*100+"%");  
+        return (""+ (((float)this.currentUser.getAssignments().size())/((float) this.currentDataset.getAssignedLabels().size()))*100.0+"%");  
     }
 
     // 3- Total number of instances labeled 

@@ -17,7 +17,7 @@ C- Dataset Performance Metrics
 public class DatasetPerformance {
 
     private Dataset currentDataset;
-    private List<AssignedLabel> labeledInstanceIDs = new ArrayList<AssignedLabel>();
+    private List<Long> labeledInstanceIDs = new ArrayList<Long>();
     
 
     public void setCurrentDataset(Dataset currentDataset){
@@ -45,23 +45,32 @@ public class DatasetPerformance {
     //2- Class distribution based on final instance labels (e.g. 70% positive, 30% negative )
     public String getDistributionOfInstanceLabels(){
         int numberOfPositives=0;
+        int numberOfNegatives=0;
+        int numberOfNotr=0;
         int size=currentDataset.getAssignedLabels().size();
-        if (currentDataset.getMaximumLabels()==3){
-            for(AssignedLabel al : currentDataset.getAssignedLabels()){
-                if(al.getClassLabelID().getLabelID()==0){ // 0 means positive ?????
-                    numberOfPositives++;
-                }
+    
+        for(AssignedLabel al : currentDataset.getAssignedLabels()){
+            if(al.getClassLabelID().getLabelID()==((long) 1)){ 
+                numberOfPositives++;
+            }
+            else if(al.getClassLabelID().getLabelID()==((long) 2)){ 
+                numberOfNegatives++;
+            }
+            else{
+                numberOfNotr++;
             }
         }
-        return (numberOfPositives/size*100 +"% positive "+ (size-numberOfPositives)/size*100 +"% negative");
+        
+        return ((numberOfPositives/((double) size))*100 +"% positive "+ ((numberOfNegatives)/((double) size))*100 +"% negative "+ ((numberOfNotr)/((double) size))*100 +"% notr");
     }
 
     //3- List number of unique instances for each class label ()
     public int getNUniqueInstancesLabelled() {
         for(int i=0;i<this.currentDataset.getAssignedLabels().size();i++){
-            labeledInstanceIDs.add(this.currentDataset.getAssignedLabels().get(i));
+            this.labeledInstanceIDs.add(this.currentDataset.getAssignedLabels().get(i).getInstance().getInstanceID());
         }
-        List<AssignedLabel> withoutDupes = this.labeledInstanceIDs.stream()
+
+        List<Long> withoutDupes = this.labeledInstanceIDs.stream()
                                       .distinct()
                                       .collect(Collectors.toList());
         return withoutDupes.size();
@@ -77,7 +86,7 @@ public class DatasetPerformance {
     public String getUserAssignedCompleteness(){
         String rValue="";
         for(int i=0;i<currentDataset.getUsers().size();i++){
-            rValue+="(UserID: "+currentDataset.getUsers().get(i).getUserID()+" :"+ ((float)currentDataset.getUsers().get(i).getLabelCount() / (float)currentDataset.getInstances().size() *100+") ");
+            rValue+="(UserID: "+currentDataset.getUsers().get(i).getUserID()+" : "+ ((float)currentDataset.getUsers().get(i).getAssignments().size() / (float)currentDataset.getInstances().size() *100+") ");
         } 
         return rValue;         
     }
@@ -86,7 +95,7 @@ public class DatasetPerformance {
     public String getUserAssignedConsistecy() {
         String rValue="";
         for(int i=0;i<currentDataset.getUsers().size();i++){
-            rValue+=("(UserID: "+currentDataset.getUsers().get(i).getUserID()+" :"+ currentDataset.getUsers().get(i).getConsistencyCheckProbability()*100+") ");
+            rValue+=("(UserID: "+currentDataset.getUsers().get(i).getUserID()+" : "+ currentDataset.getUsers().get(i).getConsistencyCheckProbability()*100+") ");
         }  
         return rValue;      
     }
