@@ -1,6 +1,8 @@
 package iteration3;
 
-import java.util.stream.LongStream;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /*
 B- Instance Performance Metrics
@@ -17,7 +19,8 @@ B- Instance Performance Metrics
 public class InstancePerformance {
 
     private Dataset currentDataset; 
-    int[] frequency= {0,0,0}; // Index 0: Positive, Index 1: Negative, Index 2: Notr
+    int[] frequency={0,0,0}; // Index 0: Positive, Index 1: Negative, Index 2: Notr
+    private List<AssignedLabel> labeledInstanceIDs = new ArrayList<AssignedLabel>();
 
 
     public Dataset getCurrentDataset() {
@@ -29,15 +32,19 @@ public class InstancePerformance {
     }
 
     public void setFrequency(){
+        this.frequency[0]=0;
+        this.frequency[1]=0;
+        this.frequency[2]=0;
+
         for (AssignedLabel al : currentDataset.getAssignedLabels()){
             if (al.getClassLabelID().getLabelID()==(long) 1){
-                frequency[0]+=1;
+                this.frequency[0]+=1;
             }
             if (al.getClassLabelID().getLabelID()==(long) 2){
-                frequency[1]+=1;
+                this.frequency[1]+=1;
             }
             if (al.getClassLabelID().getLabelID()==(long) 3){
-                frequency[2]+=1;
+                this.frequency[2]+=1;
             }
         }
     }
@@ -49,14 +56,13 @@ public class InstancePerformance {
 
     //2- Number of unique label assignments (e.g. for labeling assignments of user 1, 2 and 3 -> [(u1,p),(u2,p),(u3,n),(u2,n),(u2,p),(u1,p),(u1,p),(u3,n),(u3,p),(u1,n)] it is 2)
     public int getNUniqueLabelAssignments() {
-        long[] assignedL= new long[(int)currentDataset.getAssignedLabels().size()];
-        int nUnIns=0;
-        for (AssignedLabel al : currentDataset.getAssignedLabels()){
-            if (!LongStream.of(assignedL).anyMatch(x ->x == al.getInstance().getInstanceID())){      //???
-                nUnIns++;
-            }
+        for(int i=0;i<this.currentDataset.getAssignedLabels().size();i++){
+            labeledInstanceIDs.add(this.currentDataset.getAssignedLabels().get(i));
         }
-        return nUnIns;
+        List<AssignedLabel> withoutDupes = this.labeledInstanceIDs.stream()
+                                      .distinct()
+                                      .collect(Collectors.toList());
+        return withoutDupes.size();
     }
 
     // 3- Number of unique users (e.g. for labeling assignments of user 1, 2 and 3 -> [(u1,p),(u2,p),(u3,n),(u2,n),(u2,p),(u1,p),(u1,p),(u3,n),(u3,p),(u1,n)] it is 3)
@@ -65,15 +71,26 @@ public class InstancePerformance {
     }
 
     // 4- Most frequent class label and percentage (e.g. for labeling assignments of user 1, 2 and 3 -> [(u1,p),(u2,p),(u3,n),(u2,n),(u2,p),(u1,p),(u1,p),(u3,n),(u3,p),(u1,n)] it is p and percentage is 60%)
-    public String getMostFrequentClassLabel() {
-        System.out.println("Most Frequent not working yet!");
-        return "mostFrequentClassLabel";
+    public String getMostFrequentClassLabel() { 
+        String labels[]= {"Positive","Negative","Notr"};
+        int total= currentDataset.getAssignedLabels().size();
+        int max=0;
+        int index=0;
+        for (int i=0; i<frequency.length; i++){
+            if (frequency[i]>max){
+                max = frequency[i];
+                index = i;
+            }
+
+        }
+        return (""+labels[index]+", "+max/total+"%");
     }
 
 
     //5- List class labels and percentages (e.g. for labeling assignments of user 1, 2 and 3 -> [(u1,p),(u2,p),(u3,n),(u2,n),(u2,p),(u1,p),(u1,p),(u3,n),(u3,p),(u1,n)] it is (p, 60%) and (n, 40%))
     public String getClassLabelsPercentages(){
-        String rValue = ("Positive: "+frequency[0]/3*100+"%"+ ", Negative: "+frequency[1]/3*100+"%"+ ", Notr: "+frequency[2]/3*100+"%");
+        int total= currentDataset.getAssignedLabels().size();
+        String rValue = ("Positive: "+frequency[0]/total*100+"%"+ ", Negative: "+frequency[1]/total*100+"%"+ ", Notr: "+frequency[2]/total*100+"%");
         return rValue;
     }
 
@@ -82,7 +99,7 @@ public class InstancePerformance {
     public double getEntropy() {
         double entropy=0;
         for (int k : frequency){
-            double ratio=k/getNUniqueLabelAssignments();
+            double ratio=k/this.getNUniqueLabelAssignments();
             entropy-=ratio*log2(ratio);
         }
         return entropy;
