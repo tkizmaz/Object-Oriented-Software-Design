@@ -77,9 +77,6 @@ public class RandomLabellingMechanism extends LabellingMechanism{
         catch(InterruptedException exception){
             System.out.println("bir problem var");
   
-        }
-    
-    }
-    
-
+        }    
+    }    
 }

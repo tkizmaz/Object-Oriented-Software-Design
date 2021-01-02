@@ -336,7 +336,7 @@ public class JSONHandler {
         writeInstanceMetrics(iPerformance, this.nLabelAssignments, this.nUniqueLabelAssignments, this.nUniqueUsers);
     }
 */
-//parametre değiştirilecek
+
     public void writeInstanceMetrics(InstancePerformance iPerformance){
         JSONObject instanceMetricObject = new JSONObject(); // Top JSON object
         JSONObject instanceObject=new JSONObject();

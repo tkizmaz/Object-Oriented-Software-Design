@@ -60,7 +60,10 @@ public class DatasetPerformance {
     public int getNUniqueInstancesLabelled() {
         long[] assignedL= new long[(int)currentDataset.getAssignedLabels().size()];
         int nUnIns=0;
+        int index=0;
         for (AssignedLabel al : currentDataset.getAssignedLabels()){
+            assignedL[index]=al.getInstance().getInstanceID();
+            index ++;
             if (!LongStream.of(assignedL).anyMatch(x ->x == al.getInstance().getInstanceID())){      //???
                 nUnIns++;
             }

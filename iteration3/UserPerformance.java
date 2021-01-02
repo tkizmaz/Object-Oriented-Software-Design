@@ -54,13 +54,13 @@ public class UserPerformance {
     public int getNUniqueInstancesLabelled() {
         long[] assignedL= new long[(int)currentUser.getAssignments().size()];
         int nUnIns=0;
-        for (int i=0; i<currentUser.getAssignments().size(); i++){
-            assignedL[i]=currentUser.getAssignments().get(i).getInstance().getInstanceID();
-            /*
-            if (!LongStream.of(assignedL).anyMatch(x ->x == currentUser.getAssignments().get(i).getInstance().getInstanceID())){      //???
+        int index=0;
+        for (AssignedLabel al : currentUser.getAssignments()){
+            assignedL[index]=al.getInstance().getInstanceID();
+            index ++;
+            if (!LongStream.of(assignedL).anyMatch(x ->x == al.getInstance().getInstanceID())){      //???
                 nUnIns++;
             }
-            */
         }
         return nUnIns;
     }
