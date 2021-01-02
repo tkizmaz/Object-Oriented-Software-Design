@@ -18,7 +18,7 @@ public class UserPerformance {
 
     private User currentUser;
     private Dataset currentDataset;
-    private List<AssignedLabel> labeledInstanceIDs = new ArrayList<AssignedLabel>();
+    private List<Long> labeledInstanceIDs = new ArrayList<Long>();
  
     public User getCurrentUser() {
         return currentUser;
@@ -54,9 +54,9 @@ public class UserPerformance {
     // 4- Total number of unique instances labeled 
     public int getNUniqueInstancesLabelled() {
         for(int i=0;i<this.currentUser.getAssignments().size();i++){
-            labeledInstanceIDs.add(this.currentUser.getAssignments().get(i));
+            labeledInstanceIDs.add(this.currentUser.getAssignments().get(i).getClassLabelID().getLabelID());
         }
-        List<AssignedLabel> withoutDupes = this.labeledInstanceIDs.stream()
+        List<Long> withoutDupes = this.labeledInstanceIDs.stream()
                                       .distinct()
                                       .collect(Collectors.toList());
         return withoutDupes.size();

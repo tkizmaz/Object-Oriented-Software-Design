@@ -9,10 +9,10 @@ import java.util.Random;
 import java.time.LocalDateTime;
 
 public class RandomLabellingMechanism extends LabellingMechanism{
-    JSONHandler writeJS = new JSONHandler();
-    InstancePerformance iPerformance = new InstancePerformance();
-    DatasetPerformance dPerformance = new DatasetPerformance();
-    UserPerformance uPerformance = new UserPerformance();
+    private JSONHandler writeJS = new JSONHandler();
+    private InstancePerformance iPerformance = new InstancePerformance();
+    private DatasetPerformance dPerformance = new DatasetPerformance();
+    private UserPerformance uPerformance = new UserPerformance();
 
     // to set assignedLabels
     public void setAssignedLabels(Dataset currentDataset){

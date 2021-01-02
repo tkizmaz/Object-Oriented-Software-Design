@@ -198,7 +198,7 @@ public class JSONHandler {
         return this.dataset; //getter for Dataset
 
     }
-/*
+
     public void writeNewAssigneeds(String filename, List<AssignedLabel> assignedLabelList){
         JSONObject samplObject = new JSONObject();
 
@@ -248,7 +248,7 @@ public class JSONHandler {
             assignments.add(assignedLabelDetails);
         
         }
-        System.out.println("done");
+
         samplObject.put("class label assignments", assignments);
 
         try{
@@ -259,7 +259,7 @@ public class JSONHandler {
         }
 
     }
-*/
+
     public void writeDatasetMetrics(DatasetPerformance dPerformance){
         Dataset dataset =dPerformance.getCurrentDataset();
         JSONObject datasetMetricObject = new JSONObject(); // Top JSON object

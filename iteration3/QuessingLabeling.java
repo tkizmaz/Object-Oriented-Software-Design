@@ -1,9 +1,19 @@
 package iteration3;
 import java.time.LocalDateTime;
 public class QuessingLabeling extends LabellingMechanism {
-    
+    private JSONHandler writeJS = new JSONHandler();
+    private InstancePerformance iPerformance = new InstancePerformance();
+    private DatasetPerformance dPerformance = new DatasetPerformance();
+    private UserPerformance uPerformance = new UserPerformance();
+
+
     @Override
     public void setAssignedLabels(Dataset currentDataset) {
+        iPerformance.setCurrentDataset(currentDataset);
+        dPerformance.setCurrentDataset(currentDataset);
+        uPerformance.setCurrentDataset(currentDataset);
+        uPerformance.setCurrentUser(this.getUser());
+
         
         String[] positiveWords = {"teşekkürler", "güzel","memnun","basarili","artı"};
         String[] negativeWords = {"yok","degil","bit","hasar","çalışmıyor"};
@@ -73,6 +83,10 @@ public class QuessingLabeling extends LabellingMechanism {
         }
         
         System.out.println("End of labeling");
+        iPerformance.setFrequency();
+        writeJS.writeUserMetrics(uPerformance);
+        writeJS.writeDatasetMetrics(dPerformance);
+        writeJS.writeInstanceMetrics(iPerformance);
 
         try{
             Thread.sleep(500);

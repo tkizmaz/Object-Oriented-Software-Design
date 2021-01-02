@@ -3,8 +3,20 @@ import java.time.LocalDateTime;
 import java.util.Scanner;
 
 public class HumanLabelingMechanism extends LabellingMechanism {
+
+    private JSONHandler writeJS = new JSONHandler();
+    private InstancePerformance iPerformance = new InstancePerformance();
+    private DatasetPerformance dPerformance = new DatasetPerformance();
+    private UserPerformance uPerformance = new UserPerformance();
+
     @Override
     public void setAssignedLabels(Dataset currentDataset) {
+
+        iPerformance.setCurrentDataset(currentDataset);
+        dPerformance.setCurrentDataset(currentDataset);
+        uPerformance.setCurrentDataset(currentDataset);
+        uPerformance.setCurrentUser(this.getUser());
+
         Scanner scanner = new Scanner(System.in);
         AssignedLabel assignedLabel = new AssignedLabel();
         boolean isSameInstance = false;
@@ -65,6 +77,10 @@ public class HumanLabelingMechanism extends LabellingMechanism {
             System.out.println("User with id of: "+this.getUser().getUserID()+" with user type "+this.getUser().getUserType() +" created an assignment :"+ assignedLabel);
         }
 
+        iPerformance.setFrequency();
+        writeJS.writeUserMetrics(uPerformance);
+        writeJS.writeDatasetMetrics(dPerformance);
+        writeJS.writeInstanceMetrics(iPerformance);
 
         
 

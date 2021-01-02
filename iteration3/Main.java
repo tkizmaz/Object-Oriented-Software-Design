@@ -20,6 +20,7 @@ class Main {
                 for(int i=0;i<10;i++){
                     for(int p=0;p<readJS.getDataset().getUsers().size();p++){
                         readJS.getDataset().getUsers().get(p).makeAssignment(readJS.getDataset());
+                        readJS.writeNewAssigneeds("SampleOutput2.json", readJS.getDataset().getAssignedLabels());
                     }
                 }
                 break;
@@ -32,6 +33,7 @@ class Main {
                         for(int i=0;i<10;i++){
                             for(int p=0;p<readJS.getDataset().getUsers().size();p++){
                                 readJS.getDataset().getUsers().get(p).makeAssignment(readJS.getDataset());
+                                readJS.writeNewAssigneeds("SampleOutput2.json", readJS.getDataset().getAssignedLabels());
                     }
                 }
                     }
@@ -40,7 +42,7 @@ class Main {
                 break;
             }            
         }
-        //readJS.writeNewAssigneeds("SampleOutput2.json", readJS.getDataset().getAssignedLabels());
+        
     }
 
     
