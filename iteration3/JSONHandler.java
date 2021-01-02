@@ -18,10 +18,6 @@ public class JSONHandler {
     
     private Dataset dataset;
     
-    private int nLabelAssignments=0;
-    private int nUniqueLabelAssignments=0;
-    private int nUniqueUsers=0;
-
     Random rand = new Random();
     public boolean checkUser (String username, String password){
         JSONParser jsonParser = new JSONParser();
@@ -47,6 +43,7 @@ public class JSONHandler {
                     eachHuman.setUsername((String)user.get("user name"));
                     eachHuman.setUserType((String)user.get("user type"));
                     eachHuman.setConsistencyCheckProbability((double)user.get("consistency_check"));
+                    System.out.println("User with user id: "+ eachHuman.getUserID() + " created.");
                     userList.add(eachHuman);
                     this.dataset.setUsers(userList);
                     authentication=true;
@@ -87,8 +84,9 @@ public class JSONHandler {
             
             JSONArray users = (JSONArray) jsonObject.get("users");
             long chosenRandomly[]= new long[(int)this.dataset.getNumberofUsers()];
+
             for(int i=0; i<this.dataset.getNumberofUsers();i++){
-                int x=rand.nextInt((int)users.size())+1;
+                int x=rand.nextInt(9)+1;
                 for(long k : chosenRandomly){
                     while(k == x){
                         x = rand.nextInt((int)users.size())+1;
@@ -104,14 +102,27 @@ public class JSONHandler {
             users.forEach(entry->{ //getting all the informations in loop
 
                 JSONObject user = (JSONObject) entry;
-                User eachUser = new BotUser();
+                User eachBotUser = new BotUser();
+                User eachQuessBotUser = new QuessBot();
                 long currentUserID=(long)user.get("user id");
+
                 for(int i=0;i<chosenRandomly.length;i++){
                     if((long)currentUserID==chosenRandomly[i]){
-                        eachUser.setUserID((long)user.get("user id"));
-                        eachUser.setUsername((String)user.get("user name"));
-                        eachUser.setUserType((String)user.get("user type"));
-                        userList.add(eachUser);
+                        if(((String)user.get("user type")).equals("RandomBot")){
+                            eachBotUser.setUserID((long)user.get("user id"));
+                            eachBotUser.setUsername((String)user.get("user name"));
+                            eachBotUser.setUserType((String)user.get("user type"));
+                            System.out.println("User with user id: "+ eachBotUser.getUserID() + " and user type "+ eachBotUser.getUserType()+" created.");
+                            userList.add(eachBotUser);
+                        }
+                        else{
+                            eachQuessBotUser.setUserID((long)user.get("user id"));
+                            eachQuessBotUser.setUsername((String)user.get("user name"));
+                            eachQuessBotUser.setUserType((String)user.get("user type"));
+                            System.out.println("User with user id: "+ eachQuessBotUser.getUserID() + " and user type "+ eachQuessBotUser.getUserType()+" created.");
+                            userList.add(eachQuessBotUser);
+                        }
+                        
                     }
                 }
                 

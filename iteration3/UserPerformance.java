@@ -1,7 +1,8 @@
 package iteration3;
-
+import java.util.stream.Collectors;
 import java.util.stream.LongStream;
-
+import java.util.ArrayList;
+import java.util.List;
 /*
     A- User Performance Metrics and Reports
     1- Number of datasets assigned (e.g. 4)
@@ -17,7 +18,7 @@ public class UserPerformance {
 
     private User currentUser;
     private Dataset currentDataset;
-
+    private List<AssignedLabel> labeledInstanceIDs = new ArrayList<AssignedLabel>();
  
     public User getCurrentUser() {
         return currentUser;
@@ -52,17 +53,13 @@ public class UserPerformance {
 
     // 4- Total number of unique instances labeled 
     public int getNUniqueInstancesLabelled() {
-        long[] assignedL= new long[(int)currentUser.getAssignments().size()];
-        int nUnIns=0;
-        for (int i=0; i<currentUser.getAssignments().size(); i++){
-            assignedL[i]=currentUser.getAssignments().get(i).getInstance().getInstanceID();
-            /*
-            if (!LongStream.of(assignedL).anyMatch(x ->x == currentUser.getAssignments().get(i).getInstance().getInstanceID())){      //???
-                nUnIns++;
-            }
-            */
+        for(int i=0;i<this.currentUser.getAssignments().size();i++){
+            labeledInstanceIDs.add(this.currentUser.getAssignments().get(i));
         }
-        return nUnIns;
+        List<AssignedLabel> withoutDupes = this.labeledInstanceIDs.stream()
+                                      .distinct()
+                                      .collect(Collectors.toList());
+        return withoutDupes.size();
     }
  
     // 5- Consistency percentage (e.g. %60 of the recurrent instances are labeled with the same class)

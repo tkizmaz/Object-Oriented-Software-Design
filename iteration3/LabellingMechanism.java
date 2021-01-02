@@ -14,8 +14,6 @@ public class LabellingMechanism{
     private User currentUser;
     private List<Instance> instances = new ArrayList<Instance>();
     private List<Label> labels = new ArrayList<Label>();
-    private UserPerformance userPerformance=new UserPerformance();
-    private InstancePerformance instancePerformance = new InstancePerformance();
     Random rand = new Random();
 
     // to set userID

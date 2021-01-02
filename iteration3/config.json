@@ -58,15 +58,33 @@
       "user name": "RandomLabelingMechanism6",
       "user type": "RandomBot"
     },
+
     {
       "user id": 7,
+      "user name": "QuessingLabeling1",
+      "user type": "QuessingBot"
+    },
+    {
+      "user id": 8,
+      "user name": "QuessingLabeling2",
+      "user type": "QuessingBot"
+    },
+
+    {
+      "user id": 9,
+      "user name": "QuessingLabeling3",
+      "user type": "QuessingBot"
+    },
+
+    {
+      "user id": 10,
       "user name": "Ayça",
       "password": "1234",
       "user type": "Human",
       "consistency_check":0.10
     },
     {
-      "user id": 8,
+      "user id": 11,
       "user name": "Ecem",
       "password": "1234",
       "user type": "Human",
