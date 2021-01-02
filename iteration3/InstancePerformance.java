@@ -1,6 +1,8 @@
 package iteration3;
 
-import java.util.stream.LongStream;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /*
 B- Instance Performance Metrics
@@ -18,6 +20,7 @@ public class InstancePerformance {
 
     private Dataset currentDataset; 
     int[] frequency={0,0,0}; // Index 0: Positive, Index 1: Negative, Index 2: Notr
+    private List<AssignedLabel> labeledInstanceIDs = new ArrayList<AssignedLabel>();
 
 
     public Dataset getCurrentDataset() {
@@ -53,22 +56,13 @@ public class InstancePerformance {
 
     //2- Number of unique label assignments (e.g. for labeling assignments of user 1, 2 and 3 -> [(u1,p),(u2,p),(u3,n),(u2,n),(u2,p),(u1,p),(u1,p),(u3,n),(u3,p),(u1,n)] it is 2)
     public int getNUniqueLabelAssignments() {
-        long[] assignedL= new long[(int)currentDataset.getAssignedLabels().size()];
-        int nUnIns=0;
-        int index=0;
-        for (AssignedLabel al : currentDataset.getAssignedLabels()){
-            assignedL[index]=al.getInstance().getInstanceID();
-            index ++;
-            System.out.println("budaya");
-            if (!LongStream.of(assignedL).anyMatch(x ->x == ((long) al.getInstance().getInstanceID()))){      //???
-                System.out.println("geldi");
-                nUnIns++;                
-            }
-            else{
-                nUnIns++;
-            }
+        for(int i=0;i<this.currentDataset.getAssignedLabels().size();i++){
+            labeledInstanceIDs.add(this.currentDataset.getAssignedLabels().get(i));
         }
-        return nUnIns;
+        List<AssignedLabel> withoutDupes = this.labeledInstanceIDs.stream()
+                                      .distinct()
+                                      .collect(Collectors.toList());
+        return withoutDupes.size();
     }
 
     // 3- Number of unique users (e.g. for labeling assignments of user 1, 2 and 3 -> [(u1,p),(u2,p),(u3,n),(u2,n),(u2,p),(u1,p),(u1,p),(u3,n),(u3,p),(u1,n)] it is 3)

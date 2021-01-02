@@ -1,7 +1,6 @@
 package iteration3;
 
 import java.util.stream.Collectors;
-import java.util.stream.LongStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,6 +17,7 @@ C- Dataset Performance Metrics
 public class DatasetPerformance {
 
     private Dataset currentDataset;
+    private List<AssignedLabel> labeledInstanceIDs = new ArrayList<AssignedLabel>();
     
 
     public void setCurrentDataset(Dataset currentDataset){
@@ -58,17 +58,13 @@ public class DatasetPerformance {
 
     //3- List number of unique instances for each class label ()
     public int getNUniqueInstancesLabelled() {
-        long[] assignedL= new long[(int)currentDataset.getAssignedLabels().size()];
-        int nUnIns=0;
-        int index=0;
-        for (AssignedLabel al : currentDataset.getAssignedLabels()){
-            assignedL[index]=al.getInstance().getInstanceID();
-            index ++;
-            if (!LongStream.of(assignedL).anyMatch(x ->x == al.getInstance().getInstanceID())){      //???
-                nUnIns++;
-            }
+        for(int i=0;i<this.currentDataset.getAssignedLabels().size();i++){
+            labeledInstanceIDs.add(this.currentDataset.getAssignedLabels().get(i));
         }
-        return nUnIns;
+        List<AssignedLabel> withoutDupes = this.labeledInstanceIDs.stream()
+                                      .distinct()
+                                      .collect(Collectors.toList());
+        return withoutDupes.size();
     }
  
 
