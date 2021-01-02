@@ -19,7 +19,7 @@ B- Instance Performance Metrics
 public class InstancePerformance {
 
     private Dataset currentDataset; 
-    double[] frequency={0,0,0}; // Index 0: Positive, Index 1: Negative, Index 2: Notr
+    private double[] frequency={0,0,0}; // Index 0: Positive, Index 1: Negative, Index 2: Notr
     private List<Long> labeledInstanceIDs = new ArrayList<Long>();
 
 

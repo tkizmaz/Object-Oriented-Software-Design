@@ -12,24 +12,13 @@ public class User {
     private long userID;
     private String username;
     private String userType;
-    private RandomLabellingMechanism randomLabeling = new RandomLabellingMechanism();
     private List<AssignedLabel> assigneds = new ArrayList<AssignedLabel>();
     private double ConsistencyCheckProbability = 0.1;
     private UserPerformance userPerformance=new UserPerformance();
-
-    private int labelCount;
-    private int uniqueLabelCount;
+ 
     
     public void setAssigneeds(AssignedLabel assigned){
         assigneds.add(assigned);
-    }
-
-    public void incrementCount(){
-        labelCount++;
-    }
-    
-    public void uniqueIncrementCount(){
-        uniqueLabelCount++;
     }
 
     //get and set functions that set user information
@@ -71,29 +60,11 @@ public class User {
     public double getConsistencyCheckProbability(){
         return this.ConsistencyCheckProbability;
     }
-    public int getLabelCount(){
-        return this.labelCount;
-    }
 
-    public int getUniqueLabelCount(){
-        return this.uniqueLabelCount;
-    }
 
-    
     public String getUserType() {
         return userType;
     }
-
-
-    public RandomLabellingMechanism getRandomLabeling() {
-        return randomLabeling;
-    }
-
-
-    public void setRandomLabeling(RandomLabellingMechanism randomLabeling) {
-        this.randomLabeling = randomLabeling;
-    }
-
 
     public void setConsistencyCheckProbability(double ConsistencyCheckProbability) {
         this.ConsistencyCheckProbability = ConsistencyCheckProbability;

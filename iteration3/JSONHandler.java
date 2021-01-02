@@ -338,15 +338,7 @@ public class JSONHandler {
             e.printStackTrace();
         }
     }
-/*
-    public void sumInstanceMetrics(InstancePerformance iPerformance){
-        this.nLabelAssignments+=iPerformance.getNLabelAssignments();
-        this.nUniqueLabelAssignments+=iPerformance.getNUniqueLabelAssignments();
-        this.nUniqueUsers+=iPerformance.getNUniqueUsers();
 
-        writeInstanceMetrics(iPerformance, this.nLabelAssignments, this.nUniqueLabelAssignments, this.nUniqueUsers);
-    }
-*/
 
     public void writeInstanceMetrics(InstancePerformance iPerformance){
         JSONObject instanceMetricObject = new JSONObject(); // Top JSON object

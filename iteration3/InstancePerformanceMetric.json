@@ -1,168 +1,46 @@
 
-{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Negative, 1%","Entropy ":null,"Number of unique label assignments ":1,"Total number of label assignments ":1,"Number of unique users ":3,"List class labels and percentages ":"Positive: 0%, Negative: 100%, Notr: 0%"}]}
+{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Negative, 100.0%","Entropy ":null,"Number of unique label assignments ":1,"Total number of label assignments ":1,"Number of unique users ":3,"List class labels and percentages ":"Positive: 0.0%, Negative: 100.0%, Notr: 0.0%"}]}
 
-{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Negative, 1%","Entropy ":null,"Number of unique label assignments ":2,"Total number of label assignments ":2,"Number of unique users ":3,"List class labels and percentages ":"Positive: 0%, Negative: 100%, Notr: 0%"}]}
+{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Positive, 50.0%","Entropy ":null,"Number of unique label assignments ":2,"Total number of label assignments ":2,"Number of unique users ":3,"List class labels and percentages ":"Positive: 50.0%, Negative: 50.0%, Notr: 0.0%"}]}
 
-{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Negative, 0%","Entropy ":null,"Number of unique label assignments ":3,"Total number of label assignments ":3,"Number of unique users ":3,"List class labels and percentages ":"Positive: 0%, Negative: 0%, Notr: 0%"}]}
+{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Positive, 66.66666666666666%","Entropy ":null,"Number of unique label assignments ":3,"Total number of label assignments ":3,"Number of unique users ":3,"List class labels and percentages ":"Positive: 66.66666666666666%, Negative: 33.33333333333333%, Notr: 0.0%"}]}
 
-{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Positive, 0%","Entropy ":null,"Number of unique label assignments ":4,"Total number of label assignments ":4,"Number of unique users ":3,"List class labels and percentages ":"Positive: 0%, Negative: 0%, Notr: 0%"}]}
+{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Positive, 50.0%","Entropy ":1.5,"Number of unique label assignments ":4,"Total number of label assignments ":4,"Number of unique users ":3,"List class labels and percentages ":"Positive: 50.0%, Negative: 25.0%, Notr: 25.0%"}]}
 
-{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Positive, 0%","Entropy ":null,"Number of unique label assignments ":5,"Total number of label assignments ":5,"Number of unique users ":3,"List class labels and percentages ":"Positive: 0%, Negative: 0%, Notr: 0%"}]}
+{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Positive, 40.0%","Entropy ":1.5219280948873621,"Number of unique label assignments ":5,"Total number of label assignments ":5,"Number of unique users ":3,"List class labels and percentages ":"Positive: 40.0%, Negative: 40.0%, Notr: 20.0%"}]}
 
-{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Positive, 0%","Entropy ":null,"Number of unique label assignments ":6,"Total number of label assignments ":6,"Number of unique users ":3,"List class labels and percentages ":"Positive: 0%, Negative: 0%, Notr: 0%"}]}
+{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Negative, 50.0%","Entropy ":1.435336213432141,"Number of unique label assignments ":5,"Total number of label assignments ":6,"Number of unique users ":3,"List class labels and percentages ":"Positive: 33.33333333333333%, Negative: 50.0%, Notr: 16.666666666666664%"}]}
 
-{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Positive, 0%","Entropy ":null,"Number of unique label assignments ":7,"Total number of label assignments ":7,"Number of unique users ":3,"List class labels and percentages ":"Positive: 0%, Negative: 0%, Notr: 0%"}]}
+{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Negative, 42.857142857142854%","Entropy ":1.5566416671474377,"Number of unique label assignments ":6,"Total number of label assignments ":7,"Number of unique users ":3,"List class labels and percentages ":"Positive: 28.57142857142857%, Negative: 42.857142857142854%, Notr: 28.57142857142857%"}]}
 
-{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Negative, 0%","Entropy ":null,"Number of unique label assignments ":8,"Total number of label assignments ":8,"Number of unique users ":3,"List class labels and percentages ":"Positive: 0%, Negative: 0%, Notr: 0%"}]}
+{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Positive, 37.5%","Entropy ":1.564152053161985,"Number of unique label assignments ":7,"Total number of label assignments ":8,"Number of unique users ":3,"List class labels and percentages ":"Positive: 37.5%, Negative: 37.5%, Notr: 25.0%"}]}
 
-{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Negative, 0%","Entropy ":null,"Number of unique label assignments ":9,"Total number of label assignments ":9,"Number of unique users ":3,"List class labels and percentages ":"Positive: 0%, Negative: 0%, Notr: 0%"}]}
+{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Positive, 44.44444444444444%","Entropy ":1.5016152566221384,"Number of unique label assignments ":7,"Total number of label assignments ":9,"Number of unique users ":3,"List class labels and percentages ":"Positive: 44.44444444444444%, Negative: 33.33333333333333%, Notr: 22.22222222222222%"}]}
 
-{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Negative, 0%","Entropy ":null,"Number of unique label assignments ":10,"Total number of label assignments ":10,"Number of unique users ":3,"List class labels and percentages ":"Positive: 0%, Negative: 0%, Notr: 0%"}]}
+{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Positive, 40.0%","Entropy ":1.5,"Number of unique label assignments ":8,"Total number of label assignments ":10,"Number of unique users ":3,"List class labels and percentages ":"Positive: 40.0%, Negative: 40.0%, Notr: 20.0%"}]}
 
-{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Negative, 0%","Entropy ":null,"Number of unique label assignments ":11,"Total number of label assignments ":11,"Number of unique users ":3,"List class labels and percentages ":"Positive: 0%, Negative: 0%, Notr: 0%"}]}
+{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Positive, 36.36363636363637%","Entropy ":1.5306390622295662,"Number of unique label assignments ":8,"Total number of label assignments ":11,"Number of unique users ":3,"List class labels and percentages ":"Positive: 36.36363636363637%, Negative: 36.36363636363637%, Notr: 27.27272727272727%"}]}
 
-{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Negative, 0%","Entropy ":null,"Number of unique label assignments ":12,"Total number of label assignments ":12,"Number of unique users ":3,"List class labels and percentages ":"Positive: 0%, Negative: 0%, Notr: 0%"}]}
+{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Negative, 41.66666666666667%","Entropy ":1.454434002924965,"Number of unique label assignments ":8,"Total number of label assignments ":12,"Number of unique users ":3,"List class labels and percentages ":"Positive: 33.33333333333333%, Negative: 41.66666666666667%, Notr: 25.0%"}]}
 
-{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Negative, 0%","Entropy ":null,"Number of unique label assignments ":13,"Total number of label assignments ":13,"Number of unique users ":3,"List class labels and percentages ":"Positive: 0%, Negative: 0%, Notr: 0%"}]}
+{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Negative, 46.15384615384615%","Entropy ":1.3419171866886992,"Number of unique label assignments ":8,"Total number of label assignments ":13,"Number of unique users ":3,"List class labels and percentages ":"Positive: 30.76923076923077%, Negative: 46.15384615384615%, Notr: 23.076923076923077%"}]}
 
-{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Negative, 0%","Entropy ":null,"Number of unique label assignments ":14,"Total number of label assignments ":14,"Number of unique users ":3,"List class labels and percentages ":"Positive: 0%, Negative: 0%, Notr: 0%"}]}
+{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Negative, 42.857142857142854%","Entropy ":1.4299083350961594,"Number of unique label assignments ":9,"Total number of label assignments ":14,"Number of unique users ":3,"List class labels and percentages ":"Positive: 28.57142857142857%, Negative: 42.857142857142854%, Notr: 28.57142857142857%"}]}
 
-{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Negative, 0%","Entropy ":null,"Number of unique label assignments ":15,"Total number of label assignments ":15,"Number of unique users ":3,"List class labels and percentages ":"Positive: 0%, Negative: 0%, Notr: 0%"}]}
+{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Negative, 46.666666666666664%","Entropy ":1.3219322852479396,"Number of unique label assignments ":9,"Total number of label assignments ":15,"Number of unique users ":3,"List class labels and percentages ":"Positive: 26.666666666666668%, Negative: 46.666666666666664%, Notr: 26.666666666666668%"}]}
 
-{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Negative, 0%","Entropy ":null,"Number of unique label assignments ":16,"Total number of label assignments ":16,"Number of unique users ":3,"List class labels and percentages ":"Positive: 0%, Negative: 0%, Notr: 0%"}]}
+{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Negative, 43.75%","Entropy ":1.273075010470773,"Number of unique label assignments ":9,"Total number of label assignments ":16,"Number of unique users ":3,"List class labels and percentages ":"Positive: 31.25%, Negative: 43.75%, Notr: 25.0%"}]}
 
-{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Negative, 0%","Entropy ":null,"Number of unique label assignments ":17,"Total number of label assignments ":17,"Number of unique users ":3,"List class labels and percentages ":"Positive: 0%, Negative: 0%, Notr: 0%"}]}
+{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Negative, 41.17647058823529%","Entropy ":1.191940618421016,"Number of unique label assignments ":9,"Total number of label assignments ":17,"Number of unique users ":3,"List class labels and percentages ":"Positive: 35.294117647058826%, Negative: 41.17647058823529%, Notr: 23.52941176470588%"}]}
 
-{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Negative, 0%","Entropy ":null,"Number of unique label assignments ":18,"Total number of label assignments ":18,"Number of unique users ":3,"List class labels and percentages ":"Positive: 0%, Negative: 0%, Notr: 0%"}]}
+{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Negative, 38.88888888888889%","Entropy ":1.3023805774805546,"Number of unique label assignments ":10,"Total number of label assignments ":18,"Number of unique users ":3,"List class labels and percentages ":"Positive: 33.33333333333333%, Negative: 38.88888888888889%, Notr: 27.77777777777778%"}]}
 
-{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Positive, 0%","Entropy ":null,"Number of unique label assignments ":19,"Total number of label assignments ":19,"Number of unique users ":3,"List class labels and percentages ":"Positive: 0%, Negative: 0%, Notr: 0%"}]}
+{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Negative, 42.10526315789473%","Entropy ":1.1997218324096135,"Number of unique label assignments ":10,"Total number of label assignments ":19,"Number of unique users ":3,"List class labels and percentages ":"Positive: 31.57894736842105%, Negative: 42.10526315789473%, Notr: 26.31578947368421%"}]}
 
-{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Positive, 0%","Entropy ":null,"Number of unique label assignments ":20,"Total number of label assignments ":20,"Number of unique users ":3,"List class labels and percentages ":"Positive: 0%, Negative: 0%, Notr: 0%"}]}
+{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Negative, 45.0%","Entropy ":1.0789821406002686,"Number of unique label assignments ":10,"Total number of label assignments ":20,"Number of unique users ":3,"List class labels and percentages ":"Positive: 30.0%, Negative: 45.0%, Notr: 25.0%"}]}
 
-{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Negative, 1%","Entropy ":null,"Number of unique label assignments ":1,"Total number of label assignments ":1,"Number of unique users ":3,"List class labels and percentages ":"Positive: 0%, Negative: 100%, Notr: 0%"}]}
+{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Negative, 42.857142857142854%","Entropy ":0.9970040050813758,"Number of unique label assignments ":10,"Total number of label assignments ":21,"Number of unique users ":3,"List class labels and percentages ":"Positive: 33.33333333333333%, Negative: 42.857142857142854%, Notr: 23.809523809523807%"}]}
 
-{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Positive, 0%","Entropy ":null,"Number of unique label assignments ":2,"Total number of label assignments ":2,"Number of unique users ":3,"List class labels and percentages ":"Positive: 0%, Negative: 0%, Notr: 0%"}]}
+{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Negative, 45.45454545454545%","Entropy ":0.8602012209808307,"Number of unique label assignments ":10,"Total number of label assignments ":22,"Number of unique users ":3,"List class labels and percentages ":"Positive: 31.818181818181817%, Negative: 45.45454545454545%, Notr: 22.727272727272727%"}]}
 
-{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Positive, 0%","Entropy ":null,"Number of unique label assignments ":3,"Total number of label assignments ":3,"Number of unique users ":3,"List class labels and percentages ":"Positive: 0%, Negative: 0%, Notr: 0%"}]}
-
-{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Positive, 0%","Entropy ":null,"Number of unique label assignments ":4,"Total number of label assignments ":4,"Number of unique users ":3,"List class labels and percentages ":"Positive: 0%, Negative: 0%, Notr: 0%"}]}
-
-{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Positive, 0%","Entropy ":null,"Number of unique label assignments ":5,"Total number of label assignments ":5,"Number of unique users ":3,"List class labels and percentages ":"Positive: 0%, Negative: 0%, Notr: 0%"}]}
-
-{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Positive, 0%","Entropy ":null,"Number of unique label assignments ":6,"Total number of label assignments ":6,"Number of unique users ":3,"List class labels and percentages ":"Positive: 0%, Negative: 0%, Notr: 0%"}]}
-
-{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Positive, 0%","Entropy ":null,"Number of unique label assignments ":7,"Total number of label assignments ":7,"Number of unique users ":3,"List class labels and percentages ":"Positive: 0%, Negative: 0%, Notr: 0%"}]}
-
-{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Positive, 0%","Entropy ":null,"Number of unique label assignments ":8,"Total number of label assignments ":8,"Number of unique users ":3,"List class labels and percentages ":"Positive: 0%, Negative: 0%, Notr: 0%"}]}
-
-{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Positive, 0%","Entropy ":null,"Number of unique label assignments ":9,"Total number of label assignments ":9,"Number of unique users ":3,"List class labels and percentages ":"Positive: 0%, Negative: 0%, Notr: 0%"}]}
-
-{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Positive, 0%","Entropy ":null,"Number of unique label assignments ":10,"Total number of label assignments ":10,"Number of unique users ":3,"List class labels and percentages ":"Positive: 0%, Negative: 0%, Notr: 0%"}]}
-
-{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Positive, 0%","Entropy ":null,"Number of unique label assignments ":11,"Total number of label assignments ":11,"Number of unique users ":3,"List class labels and percentages ":"Positive: 0%, Negative: 0%, Notr: 0%"}]}
-
-{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Positive, 0%","Entropy ":null,"Number of unique label assignments ":12,"Total number of label assignments ":12,"Number of unique users ":3,"List class labels and percentages ":"Positive: 0%, Negative: 0%, Notr: 0%"}]}
-
-{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Positive, 0%","Entropy ":null,"Number of unique label assignments ":13,"Total number of label assignments ":13,"Number of unique users ":3,"List class labels and percentages ":"Positive: 0%, Negative: 0%, Notr: 0%"}]}
-
-{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Positive, 0%","Entropy ":null,"Number of unique label assignments ":14,"Total number of label assignments ":14,"Number of unique users ":3,"List class labels and percentages ":"Positive: 0%, Negative: 0%, Notr: 0%"}]}
-
-{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Positive, 0%","Entropy ":null,"Number of unique label assignments ":15,"Total number of label assignments ":15,"Number of unique users ":3,"List class labels and percentages ":"Positive: 0%, Negative: 0%, Notr: 0%"}]}
-
-{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Positive, 0%","Entropy ":null,"Number of unique label assignments ":16,"Total number of label assignments ":16,"Number of unique users ":3,"List class labels and percentages ":"Positive: 0%, Negative: 0%, Notr: 0%"}]}
-
-{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Positive, 0%","Entropy ":null,"Number of unique label assignments ":17,"Total number of label assignments ":17,"Number of unique users ":3,"List class labels and percentages ":"Positive: 0%, Negative: 0%, Notr: 0%"}]}
-
-{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Positive, 0%","Entropy ":null,"Number of unique label assignments ":18,"Total number of label assignments ":18,"Number of unique users ":3,"List class labels and percentages ":"Positive: 0%, Negative: 0%, Notr: 0%"}]}
-
-{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Negative, 0%","Entropy ":null,"Number of unique label assignments ":19,"Total number of label assignments ":19,"Number of unique users ":3,"List class labels and percentages ":"Positive: 0%, Negative: 0%, Notr: 0%"}]}
-
-{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Negative, 0%","Entropy ":null,"Number of unique label assignments ":20,"Total number of label assignments ":20,"Number of unique users ":3,"List class labels and percentages ":"Positive: 0%, Negative: 0%, Notr: 0%"}]}
-
-{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Notr, 1%","Entropy ":null,"Number of unique label assignments ":1,"Total number of label assignments ":1,"Number of unique users ":3,"List class labels and percentages ":"Positive: 0%, Negative: 0%, Notr: 100%"}]}
-
-{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Notr, 1%","Entropy ":null,"Number of unique label assignments ":2,"Total number of label assignments ":2,"Number of unique users ":3,"List class labels and percentages ":"Positive: 0%, Negative: 0%, Notr: 100%"}]}
-
-{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Notr, 0%","Entropy ":null,"Number of unique label assignments ":3,"Total number of label assignments ":3,"Number of unique users ":3,"List class labels and percentages ":"Positive: 0%, Negative: 0%, Notr: 0%"}]}
-
-{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Positive, 0%","Entropy ":null,"Number of unique label assignments ":4,"Total number of label assignments ":4,"Number of unique users ":3,"List class labels and percentages ":"Positive: 0%, Negative: 0%, Notr: 0%"}]}
-
-{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Positive, 0%","Entropy ":null,"Number of unique label assignments ":5,"Total number of label assignments ":5,"Number of unique users ":3,"List class labels and percentages ":"Positive: 0%, Negative: 0%, Notr: 0%"}]}
-
-{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Positive, 0%","Entropy ":null,"Number of unique label assignments ":6,"Total number of label assignments ":6,"Number of unique users ":3,"List class labels and percentages ":"Positive: 0%, Negative: 0%, Notr: 0%"}]}
-
-{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Positive, 0%","Entropy ":null,"Number of unique label assignments ":7,"Total number of label assignments ":7,"Number of unique users ":3,"List class labels and percentages ":"Positive: 0%, Negative: 0%, Notr: 0%"}]}
-
-{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Positive, 0%","Entropy ":null,"Number of unique label assignments ":8,"Total number of label assignments ":8,"Number of unique users ":3,"List class labels and percentages ":"Positive: 0%, Negative: 0%, Notr: 0%"}]}
-
-{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Positive, 0%","Entropy ":null,"Number of unique label assignments ":9,"Total number of label assignments ":9,"Number of unique users ":3,"List class labels and percentages ":"Positive: 0%, Negative: 0%, Notr: 0%"}]}
-
-{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Positive, 0%","Entropy ":null,"Number of unique label assignments ":10,"Total number of label assignments ":10,"Number of unique users ":3,"List class labels and percentages ":"Positive: 0%, Negative: 0%, Notr: 0%"}]}
-
-{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Positive, 0%","Entropy ":null,"Number of unique label assignments ":11,"Total number of label assignments ":11,"Number of unique users ":3,"List class labels and percentages ":"Positive: 0%, Negative: 0%, Notr: 0%"}]}
-
-{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Positive, 0%","Entropy ":null,"Number of unique label assignments ":12,"Total number of label assignments ":12,"Number of unique users ":3,"List class labels and percentages ":"Positive: 0%, Negative: 0%, Notr: 0%"}]}
-
-{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Positive, 0%","Entropy ":null,"Number of unique label assignments ":13,"Total number of label assignments ":13,"Number of unique users ":3,"List class labels and percentages ":"Positive: 0%, Negative: 0%, Notr: 0%"}]}
-
-{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Positive, 0%","Entropy ":null,"Number of unique label assignments ":14,"Total number of label assignments ":14,"Number of unique users ":3,"List class labels and percentages ":"Positive: 0%, Negative: 0%, Notr: 0%"}]}
-
-{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Positive, 0%","Entropy ":null,"Number of unique label assignments ":15,"Total number of label assignments ":15,"Number of unique users ":3,"List class labels and percentages ":"Positive: 0%, Negative: 0%, Notr: 0%"}]}
-
-{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Positive, 0%","Entropy ":null,"Number of unique label assignments ":16,"Total number of label assignments ":16,"Number of unique users ":3,"List class labels and percentages ":"Positive: 0%, Negative: 0%, Notr: 0%"}]}
-
-{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Positive, 0%","Entropy ":null,"Number of unique label assignments ":17,"Total number of label assignments ":17,"Number of unique users ":3,"List class labels and percentages ":"Positive: 0%, Negative: 0%, Notr: 0%"}]}
-
-{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Positive, 0%","Entropy ":null,"Number of unique label assignments ":18,"Total number of label assignments ":18,"Number of unique users ":3,"List class labels and percentages ":"Positive: 0%, Negative: 0%, Notr: 0%"}]}
-
-{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Positive, 0%","Entropy ":null,"Number of unique label assignments ":19,"Total number of label assignments ":19,"Number of unique users ":3,"List class labels and percentages ":"Positive: 0%, Negative: 0%, Notr: 0%"}]}
-
-{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Positive, 0%","Entropy ":null,"Number of unique label assignments ":20,"Total number of label assignments ":20,"Number of unique users ":3,"List class labels and percentages ":"Positive: 0%, Negative: 0%, Notr: 0%"}]}
-
-{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Positive, 0%","Entropy ":null,"Number of unique label assignments ":21,"Total number of label assignments ":21,"Number of unique users ":3,"List class labels and percentages ":"Positive: 0%, Negative: 0%, Notr: 0%"}]}
-
-{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Positive, 0%","Entropy ":null,"Number of unique label assignments ":22,"Total number of label assignments ":22,"Number of unique users ":3,"List class labels and percentages ":"Positive: 0%, Negative: 0%, Notr: 0%"}]}
-
-{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Positive, 1%","Entropy ":null,"Number of unique label assignments ":1,"Total number of label assignments ":1,"Number of unique users ":3,"List class labels and percentages ":"Positive: 100%, Negative: 0%, Notr: 0%"}]}
-
-{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Positive, 0%","Entropy ":null,"Number of unique label assignments ":2,"Total number of label assignments ":2,"Number of unique users ":3,"List class labels and percentages ":"Positive: 0%, Negative: 0%, Notr: 0%"}]}
-
-{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Positive, 0%","Entropy ":null,"Number of unique label assignments ":3,"Total number of label assignments ":3,"Number of unique users ":3,"List class labels and percentages ":"Positive: 0%, Negative: 0%, Notr: 0%"}]}
-
-{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Positive, 0%","Entropy ":null,"Number of unique label assignments ":4,"Total number of label assignments ":4,"Number of unique users ":3,"List class labels and percentages ":"Positive: 0%, Negative: 0%, Notr: 0%"}]}
-
-{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Negative, 0%","Entropy ":null,"Number of unique label assignments ":5,"Total number of label assignments ":5,"Number of unique users ":3,"List class labels and percentages ":"Positive: 0%, Negative: 0%, Notr: 0%"}]}
-
-{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Positive, 0%","Entropy ":null,"Number of unique label assignments ":6,"Total number of label assignments ":6,"Number of unique users ":3,"List class labels and percentages ":"Positive: 0%, Negative: 0%, Notr: 0%"}]}
-
-{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Negative, 0%","Entropy ":null,"Number of unique label assignments ":7,"Total number of label assignments ":7,"Number of unique users ":3,"List class labels and percentages ":"Positive: 0%, Negative: 0%, Notr: 0%"}]}
-
-{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Negative, 0%","Entropy ":null,"Number of unique label assignments ":8,"Total number of label assignments ":8,"Number of unique users ":3,"List class labels and percentages ":"Positive: 0%, Negative: 0%, Notr: 0%"}]}
-
-{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Negative, 0%","Entropy ":null,"Number of unique label assignments ":9,"Total number of label assignments ":9,"Number of unique users ":3,"List class labels and percentages ":"Positive: 0%, Negative: 0%, Notr: 0%"}]}
-
-{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Negative, 0%","Entropy ":null,"Number of unique label assignments ":10,"Total number of label assignments ":10,"Number of unique users ":3,"List class labels and percentages ":"Positive: 0%, Negative: 0%, Notr: 0%"}]}
-
-{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Negative, 0%","Entropy ":null,"Number of unique label assignments ":11,"Total number of label assignments ":11,"Number of unique users ":3,"List class labels and percentages ":"Positive: 0%, Negative: 0%, Notr: 0%"}]}
-
-{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Negative, 0%","Entropy ":null,"Number of unique label assignments ":12,"Total number of label assignments ":12,"Number of unique users ":3,"List class labels and percentages ":"Positive: 0%, Negative: 0%, Notr: 0%"}]}
-
-{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Negative, 0%","Entropy ":null,"Number of unique label assignments ":13,"Total number of label assignments ":13,"Number of unique users ":3,"List class labels and percentages ":"Positive: 0%, Negative: 0%, Notr: 0%"}]}
-
-{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Negative, 0%","Entropy ":null,"Number of unique label assignments ":14,"Total number of label assignments ":14,"Number of unique users ":3,"List class labels and percentages ":"Positive: 0%, Negative: 0%, Notr: 0%"}]}
-
-{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Negative, 0%","Entropy ":null,"Number of unique label assignments ":15,"Total number of label assignments ":15,"Number of unique users ":3,"List class labels and percentages ":"Positive: 0%, Negative: 0%, Notr: 0%"}]}
-
-{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Negative, 0%","Entropy ":null,"Number of unique label assignments ":16,"Total number of label assignments ":16,"Number of unique users ":3,"List class labels and percentages ":"Positive: 0%, Negative: 0%, Notr: 0%"}]}
-
-{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Negative, 0%","Entropy ":null,"Number of unique label assignments ":17,"Total number of label assignments ":17,"Number of unique users ":3,"List class labels and percentages ":"Positive: 0%, Negative: 0%, Notr: 0%"}]}
-
-{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Negative, 0%","Entropy ":null,"Number of unique label assignments ":18,"Total number of label assignments ":18,"Number of unique users ":3,"List class labels and percentages ":"Positive: 0%, Negative: 0%, Notr: 0%"}]}
-
-{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Negative, 0%","Entropy ":null,"Number of unique label assignments ":19,"Total number of label assignments ":19,"Number of unique users ":3,"List class labels and percentages ":"Positive: 0%, Negative: 0%, Notr: 0%"}]}
-
-{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Negative, 0%","Entropy ":null,"Number of unique label assignments ":20,"Total number of label assignments ":20,"Number of unique users ":3,"List class labels and percentages ":"Positive: 0%, Negative: 0%, Notr: 0%"}]}
-
-{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Positive, 0%","Entropy ":null,"Number of unique label assignments ":21,"Total number of label assignments ":21,"Number of unique users ":3,"List class labels and percentages ":"Positive: 0%, Negative: 0%, Notr: 0%"}]}
-
-{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Positive, 0%","Entropy ":null,"Number of unique label assignments ":22,"Total number of label assignments ":22,"Number of unique users ":3,"List class labels and percentages ":"Positive: 0%, Negative: 0%, Notr: 0%"}]}
+{"Instance Performance Metrics and Reports":[{"Most frequent class label and percentage ":"Negative, 43.47826086956522%","Entropy ":0.7575424759098899,"Number of unique label assignments ":10,"Total number of label assignments ":23,"Number of unique users ":3,"List class labels and percentages ":"Positive: 34.78260869565217%, Negative: 43.47826086956522%, Notr: 21.73913043478261%"}]}
