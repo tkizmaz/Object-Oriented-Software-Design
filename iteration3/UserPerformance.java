@@ -54,8 +54,9 @@ public class UserPerformance {
     // 4- Total number of unique instances labeled 
     public int getNUniqueInstancesLabelled() {
         for(int i=0;i<this.currentUser.getAssignments().size();i++){
-            labeledInstanceIDs.add(this.currentUser.getAssignments().get(i).getClassLabelID().getLabelID());
+            this.labeledInstanceIDs.add(this.currentUser.getAssignments().get(i).getInstance().getInstanceID());
         }
+
         List<Long> withoutDupes = this.labeledInstanceIDs.stream()
                                       .distinct()
                                       .collect(Collectors.toList());
