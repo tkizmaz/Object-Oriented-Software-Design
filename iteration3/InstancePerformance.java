@@ -73,8 +73,8 @@ public class InstancePerformance {
     // 4- Most frequent class label and percentage (e.g. for labeling assignments of user 1, 2 and 3 -> [(u1,p),(u2,p),(u3,n),(u2,n),(u2,p),(u1,p),(u1,p),(u3,n),(u3,p),(u1,n)] it is p and percentage is 60%)
     public String getMostFrequentClassLabel() { 
         String labels[]= {"Positive","Negative","Notr"};
-        int total= currentDataset.getAssignedLabels().size();
-        int max=0;
+        double total= currentDataset.getAssignedLabels().size();
+        double max=0;
         int index=0;
         for (int i=0; i<frequency.length; i++){
             if (frequency[i]>max){

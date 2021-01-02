@@ -21,7 +21,7 @@ public class UserPerformance {
     private List<Long> labeledInstanceIDs = new ArrayList<Long>();
  
     public User getCurrentUser() {
-        return currentUser;
+        return this.currentUser;
     }
 
     public void setCurrentUser(User currentUser) {
@@ -29,7 +29,7 @@ public class UserPerformance {
     }
     
     public Dataset getCurrentDataset() {
-        return currentDataset;
+        return this.currentDataset;
     }
 
     public void setCurrentDataset(Dataset currentDataset) {
@@ -43,12 +43,12 @@ public class UserPerformance {
 
    // 2- List of all datasets with their completeness percentage (e.g. dataset1 %100, dataset2 %90, dataset3 15%, dataset 4 0%)
     public String getDatasetComplPerList() {
-        return (""+ currentDataset.getAssignedLabels().size()/currentDataset.getInstances().size()*100+"%");  
+        return (""+ (this.currentDataset.getAssignedLabels().size()/this.currentDataset.getInstances().size())*100+"%");  
     }
 
     // 3- Total number of instances labeled 
     public int getNInstanceLabelled() {
-        return currentUser.getAssignments().size();
+        return this.currentUser.getAssignments().size();
     }
 
     // 4- Total number of unique instances labeled 
