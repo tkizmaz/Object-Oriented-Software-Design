@@ -53,20 +53,8 @@ public class UserPerformance {
 
     // 4- Total number of unique instances labeled 
     public int getNUniqueInstancesLabelled() {
-<<<<<<< HEAD
-        long[] assignedL= new long[(int)currentUser.getAssignments().size()];
-        int nUnIns=0;
-        int index=0;
-        for (AssignedLabel al : currentUser.getAssignments()){
-            assignedL[index]=al.getInstance().getInstanceID();
-            index ++;
-            if (!LongStream.of(assignedL).anyMatch(x ->x == al.getInstance().getInstanceID())){      //???
-                nUnIns++;
-            }
-=======
         for(int i=0;i<this.currentUser.getAssignments().size();i++){
             labeledInstanceIDs.add(this.currentUser.getAssignments().get(i));
->>>>>>> a365a0cbdfe72c57f1edb6b4d460fc2dfefd2f72
         }
         List<AssignedLabel> withoutDupes = this.labeledInstanceIDs.stream()
                                       .distinct()
