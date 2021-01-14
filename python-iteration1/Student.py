@@ -8,17 +8,17 @@ class Student:
         self.__studentAttandancePercentage = 0
 
     def setStudentId(self,studentID):
-        self.__student_id = studentID
+        self.__studentID = studentID
     def setStudentName(self,studentName):
-        self.__student_name = studentName
+        self.__studentName = studentName
     def setStudentSurname(self,studentSurname):
-        self.__student_surname = studentSurname
+        self.__studentSurname = studentSurname
     def setStudentEmail(self,studentEmail):
-        self.__student_email = studentEmail
+        self.__studentEmail = studentEmail
     def setStudentAttandanceRate(self,studentAttadanceRate):
-        self.__student_attandance_rate = studentAttadanceRate
+        self.__studentAttandanceRate = studentAttadanceRate
     def setStudentAttandancePercentage(self,studentAttandancePercentage):
-        self.__student_attandance_percentage = studentAttandancePercentage
+        self.__studentAttandancePercentage = studentAttandancePercentage
 
 
 
