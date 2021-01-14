@@ -2,5 +2,6 @@
     "java.project.referencedLibraries": [
         "lib/**/*.jar",
         "c:\\Users\\pc\\Downloads\\json-simple-1.1.1.jar"
-    ]
+    ],
+    "python.pythonPath": "C:\\Users\\pc\\AppData\\Local\\Programs\\Python\\Python39\\python.exe"
 }
