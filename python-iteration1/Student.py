@@ -1,37 +1,37 @@
 class Student:
     def __init__(self):
-        self.__student_id = ""
-        self.__student_name = ""
-        self.__student_surname = ""
-        self.__student_email = ""
-        self.__student_attandance_rate = ""
-        self.__student_attandance_percentage = ""
+        self.__studentID = ""
+        self.__studentName = ""
+        self.__studentSurname = ""
+        self.__studentEmail = ""
+        self.__studentAttandanceRate = 0
+        self.__studentAttandancePercentage = 0
 
-    def setStudentId(self,student_id):
-        self.__student_id = student_id
-    def setStudentName(self,student_name):
-        self.__student_name = student_name
-    def setStudentSurname(self,student_surname):
-        self.__student_surname = student_surname
-    def setStudentEmail(self,student_email):
-        self.__student_email = student_email
-    def setStudentAttandanceRate(self,student_attadance_rate):
-        self.__student_attandance_rate = student_attadance_rate
-    def setStudentAttandancePercentage(self,student_attandance_percentage):
-        self.__student_attandance_percentage = student_attandance_percentage
+    def setStudentId(self,studentID):
+        self.__student_id = studentID
+    def setStudentName(self,studentName):
+        self.__student_name = studentName
+    def setStudentSurname(self,studentSurname):
+        self.__student_surname = studentSurname
+    def setStudentEmail(self,studentEmail):
+        self.__student_email = studentEmail
+    def setStudentAttandanceRate(self,studentAttadanceRate):
+        self.__student_attandance_rate = studentAttadanceRate
+    def setStudentAttandancePercentage(self,studentAttandancePercentage):
+        self.__student_attandance_percentage = studentAttandancePercentage
 
 
 
 
     def getStudentId(self):
-        return self.__student_id
+        return self.__studentID
     def getStudentName(self):
-        return self.__student_name
+        return self.__studentName
     def getStudentSurname(self):
-        return self.__student_surname
+        return self.__studentSurname
     def getStudentEmail(self):
-        return self.__student_email
+        return self.__studentEmail
     def getStudentAttandanceRate(self):
-        return self.__student_attandance_rate
+        return self.__studentAttandanceRate
     def getStudentAttandancePercentage(self):
-        return self.__student_attandance_percentage
+        return self.__studentAttandancePercentage
