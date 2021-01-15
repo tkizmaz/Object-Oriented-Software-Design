@@ -30,19 +30,27 @@ class FileHandler(object):
 
     def readPollFile(self,filename):
         pollStudents={}
-        with open(filename, encoding='utf-8') as csvfile:  # Open the CSV file
+        with open(filename, encoding='latin-1') as csvfile:  # Open the CSV file
             readCSV = csv.reader(csvfile, delimiter=',')
             for row in readCSV:                             # Read each row in the file
                 if row[4] == "Are you attending this lecture?":
                     name=""
                     studentnamelength = len(row[1].upper().split(" "))
                     for z in range(studentnamelength-1):
-                        name+=row[1].upper().split(" ")[z] + " "
-                    surname=row[1].upper().split(" ")[studentnamelength-1]
+                        if(studentnamelength-1==0):
+                            name+=row[1].upper().split(" ")[z].upper()
+                        else:
+                            name+=row[1].upper().split(" ")[z].upper()+" "
+                    surname=row[1].upper().split(" ")[studentnamelength-1].upper()
                     pollStudents[name] = surname
         
-        for i in range (len(pollStudents)):
-            
+        for key in pollStudents:
+            for stname in range(len(self.__studentList)):
+                name=self.__studentList[stname].getStudentName()
+                surname=self.__studentList[stname].getStudentSurname()
+                print("nameinsd "+name)
+                if(key.strip(" ") in name.strip(" ") and pollStudents[key].strip(" ") in surname.strip(" ")):
+                    print(key+" "+pollStudents[key])
 
 
 
@@ -56,7 +64,7 @@ class FileHandler(object):
                 student.setStudentName(sheet.cell_value(row, 4))
                 student.setStudentSurname(sheet.cell_value(row, 7))
                 self.setStudentList(student)
-
+    
 
     def writeAttendence(self):
         pass
