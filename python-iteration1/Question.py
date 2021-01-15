@@ -1,4 +1,4 @@
-class Question
+class Question(object):
 
     def __init__(self):
         self.__question_text = ""
