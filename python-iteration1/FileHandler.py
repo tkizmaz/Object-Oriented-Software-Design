@@ -1,32 +1,31 @@
 import xlrd
+import csv
 #from .Student import Student
 
 class FileHandler(object):
 
-    def __index__(self,studentList=[],pollList=[]):
-        self.__studentList=studentList
-        self.__pollList=pollList
+    def __init__(self):
+        self.__studentList=[]
+        self.__pollList=[]
 
     def setStudentList(self,studentList):
-        self.__studentList=studentList
-        print(self.__studentList)
+        self.__studentList.append(studentList)
 
     def setPollList(self,pollList):
-        self.__pollList=pollList
-        print(self.__pollList)
+        self.__pollList.append(pollList)
+
+    def getStudentList(self):
+        return self.__studentList
+
+    def getPollList(self):
+        return self.__pollList
 
     def readPollFile(self,filename):
-        import csv
         with open(filename, encoding='utf-8') as csvfile:  # Open the CSV file
             readCSV = csv.reader(csvfile, delimiter=',')
             for row in readCSV:                             # Read each row in the file
-                if row[4] == "Are you attending this lecture?":       #
+                if row[4] == "Are you attending this lecture?":
                     print(row)
-
-                rowNumber = row[0]
-                userName = row[1]
-                userEmail = row[2]
-                dateTime = row[3]
 
     def readStudentFile(self,filename):
         wb = xlrd.open_workbook(filename)
