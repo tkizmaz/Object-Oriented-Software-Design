@@ -1,14 +1,14 @@
 import xlrd
 import csv
 from Student import *
-import pandas
+from Question import *
+from QuizPoll import *
 
 class FileHandler(object):
 
     def __init__(self):
         self.__studentList=[]
         self.__pollList=[]
-        self.__quizPollList=[]
 
     def setStudentList(self,studentList):
         self.__studentList.append(studentList)
@@ -16,23 +16,17 @@ class FileHandler(object):
     def setPollList(self,pollList):
         self.__pollList.append(pollList)
 
-    def setQuizPollList(self,pollList):
-        self.__quizPollList.append(pollList)
-
     def getStudentList(self):
         return self.__studentList
 
     def getPollList(self):
         return self.__pollList
 
-    def getQuizPollList(self):
-        return self.__quizPollList
-
     def readPollFile(self,filename):
-        pollStudents={}
-        with open(filename, encoding='latin-1') as csvfile:  # Open the CSV file
+        with open(filename, encoding='utf-8') as csvfile:  # Open the CSV file
             readCSV = csv.reader(csvfile, delimiter=',')
             for row in readCSV:                             # Read each row in the file
+
                 if row[4] == "Are you attending this lecture?":
                     name=""
                     studentnamelength = len(row[1].upper().split(" "))
@@ -51,14 +45,37 @@ class FileHandler(object):
                 print("nameinsd "+name)
                 if(key.strip(" ") in name.strip(" ") and pollStudents[key].strip(" ") in surname.strip(" ")):
                     print(key+" "+pollStudents[key])
+                    pass
+
+
+    def readAnswerSheet(self,filename):
+        with open(filename, encoding='utf-8') as csvfile:  # Open the CSV file
+            readCSV = csv.reader(csvfile, delimiter=';')
+            for row in readCSV:
+                if len(row)==1: #Poll Name
+                    poll = QuizPoll()
+                    poll.setPollName(row[0].split("\\")[-1].split(".")[0])
+                    self.setPollList(poll)
+                    print(poll.getPollName())
+
+                else:
+                    question=Question()
+                    question.setQuestionText(row[0])
+                    question.setQuestionRightAnswer(row[1])
+                    print(question.getQuestionText())
+                    print(question.getQuestionRightAnswer())
+                    print("\n")
+                    poll.addQuestions(question)
 
 
 
     def readStudentFile(self,filename):
         wb = xlrd.open_workbook(filename)
         sheet = wb.sheet_by_index(0)
+
         for row in range(13, sheet.nrows):
             if ((sheet.cell_value(row, 2)).isnumeric()):
+                print(sheet.row_values(row))
                 student = Student()
                 student.setStudentId(sheet.cell_value(row, 2))
                 student.setStudentName(sheet.cell_value(row, 4))
