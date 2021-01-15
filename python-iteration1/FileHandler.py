@@ -1,6 +1,6 @@
 import xlrd
 import csv
-#from .Student import Student
+# from .Student import Student
 
 class FileHandler(object):
 
@@ -34,7 +34,11 @@ class FileHandler(object):
         for row in range(13, sheet.nrows):
             if ((sheet.cell_value(row, 2)).isnumeric()):
                 print(sheet.row_values(row))
-                #student = Student(sheet.cell_value(row, 2), sheet.cell_value(row, 4), sheet.cell_value(row, 6), 'null')
+                # student = Student()
+                # student.setStudentId(sheet.cell_value(row, 2))
+                # student.setStudentName(sheet.cell_value(row, 4))
+                # student.setStudentSurname(sheet.cell_value(row, 6))
+
 
     def writeAttendence(self):
         pass
@@ -48,8 +52,3 @@ class FileHandler(object):
     def writeGlobalStatistic(self):
         pass
 
-
-
-file=FileHandler()
-file.readStudentFile("CES3063_Fall2020_rptSinifListesi.XLS")
-file.readPollFile("CSE3063_20201124_Tue_zoom_PollReport.csv")
