@@ -10,12 +10,3 @@ class Poll:
 
     def getPollName(self):
         return self.__pollName
-
-    def addQuestions(self,question):
-        self.__questionList.append(question)
-    
-    def getQuestions(self):
-        return self.__questionList
-
-    def getHello(self):
-        print ("Helloo")

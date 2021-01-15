@@ -1,5 +1,6 @@
 from Student import *
+from QuizPoll import *
 
-emre=Student()
-emre.setStudentEmail("rock_emrbrky")
-print(emre.getStudentEmail())
+newQP = QuizPoll()
+newQP.setPollName("taha")
+print(newQP.getPollName())

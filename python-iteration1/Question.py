@@ -1,28 +1,27 @@
 class Question
 
-
     def __init__(self):
-        self.question_text = " "
-        self.question_right_answer = " "
-        self.answerList = [ ]
+        self.__question_text = ""
+        self.__question_right_answer = ""
+        self.__answerList = []
 
     def getAnswers(self):
-        return self.answerList
+        return self.__answerList
         
     def setQuestionText(self, questionText ):
-        self.question_text = questionText
+        self.__question_text = questionText
 
     def getQuestionText(self):
-        return self.question_text
+        return self.__question_text
 
     def setQuestionRightAnswer(self, questionRightAnswer):
-        self.question_right_answer = questionRightAnswer
+        self.__question_right_answer = questionRightAnswer
     
     def getQuestionRightAnswer(self):
-        return self.question_right_answer
+        return self.__question_right_answer
 
     def AddAnswer(self, Answer):
-        self.answerList.append(Answer)
+        self.__answerList.append(Answer)
 
 
     
