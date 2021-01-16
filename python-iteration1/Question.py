@@ -2,8 +2,8 @@ class Question(object):
 
     def __init__(self):
         self.__question_text = ""
-        self.__question_right_answer = ""
-        self.__answerList = []
+        self.__question_right_answer = []
+        self.__answerList = []  ## For the students
 
     def getAnswers(self):
         return self.__answerList
@@ -15,7 +15,7 @@ class Question(object):
         return self.__question_text
 
     def setQuestionRightAnswer(self, questionRightAnswer):
-        self.__question_right_answer = questionRightAnswer
+        self.__question_right_answer.append(questionRightAnswer)
     
     def getQuestionRightAnswer(self):
         return self.__question_right_answer

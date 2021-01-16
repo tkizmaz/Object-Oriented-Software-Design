@@ -26,7 +26,7 @@ class FileHandler(object):
         with open(filename, encoding='utf-8') as csvfile:  # Open the CSV file
             readCSV = csv.reader(csvfile, delimiter=',')
             for row in readCSV:                             # Read each row in the file
-
+                pollStudents=[]
                 if row[4] == "Are you attending this lecture?":
                     name=""
                     studentnamelength = len(row[1].upper().split(" "))
@@ -52,20 +52,20 @@ class FileHandler(object):
         with open(filename, encoding='utf-8') as csvfile:  # Open the CSV file
             readCSV = csv.reader(csvfile, delimiter=';')
             for row in readCSV:
+                # print(row)
                 if len(row)==1: #Poll Name
                     poll = QuizPoll()
                     poll.setPollName(row[0].split("\\")[-1].split(".")[0])
                     self.setPollList(poll)
-                    print(poll.getPollName())
+
 
                 else:
                     question=Question()
                     question.setQuestionText(row[0])
-                    question.setQuestionRightAnswer(row[1])
-                    print(question.getQuestionText())
-                    print(question.getQuestionRightAnswer())
-                    print("\n")
+                    for i in range(len(row[1].split(";"))):
+                        question.setQuestionRightAnswer(row[1].split(";")[i])
                     poll.addQuestions(question)
+
 
 
 
