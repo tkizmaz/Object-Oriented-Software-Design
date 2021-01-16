@@ -3,6 +3,7 @@ import csv
 from Student import *
 from Question import *
 from QuizPoll import *
+import re
 
 class FileHandler(object):
 
@@ -25,27 +26,33 @@ class FileHandler(object):
     def readPollFile(self,filename):
         with open(filename, encoding='utf-8') as csvfile:  # Open the CSV file
             readCSV = csv.reader(csvfile, delimiter=',')
-            for row in readCSV:                             # Read each row in the file
-                pollStudents=[]
-                if row[4] == "Are you attending this lecture?":
-                    name=""
-                    studentnamelength = len(row[1].upper().split(" "))
-                    for z in range(studentnamelength-1):
-                        if(studentnamelength-1==0):
-                            name+=row[1].upper().split(" ")[z].upper()
-                        else:
-                            name+=row[1].upper().split(" ")[z].upper()+" "
-                    surname=row[1].upper().split(" ")[studentnamelength-1].upper()
-                    pollStudents[name] = surname
-        
-        for key in pollStudents:
-            for stname in range(len(self.__studentList)):
-                name=self.__studentList[stname].getStudentName()
-                surname=self.__studentList[stname].getStudentSurname()
-                print("nameinsd "+name)
-                if(key.strip(" ") in name.strip(" ") and pollStudents[key].strip(" ") in surname.strip(" ")):
-                    print(key+" "+pollStudents[key])
-                    pass
+            count = 0
+            poll = {}
+            pollstudent={}
+
+            for row in readCSV:
+                pollname = row[1].split(" ")
+                fullname = pollname[0:-1]
+                surname =pollname[-1]
+                if "somemail.com" in row[1]:
+                    continue
+                elif len(fullname) == 1 :
+                    fullname = (''.join([x for x in fullname[0] if not x.isdigit()])).upper()
+
+                elif pollname[0].isnumeric():
+                    pollname[0:-1] = [" ".join(pollname[1:-1])]
+                    fullname = pollname[0].upper()
+
+                elif len(fullname[0:]) > 1:
+                    fullname[0:] = [" ".join(fullname[0:])]
+                    fullname = fullname[0].upper()
+                surname = surname.upper()
+                for student in self.getStudentList():
+                    if surname in student.getStudentSurname():
+                        if fullname.split(" ")[0] in student.getStudentName():
+                            count = count +1
+                            break        
+
 
 
     def readAnswerSheet(self,filename):
@@ -72,15 +79,14 @@ class FileHandler(object):
     def readStudentFile(self,filename):
         wb = xlrd.open_workbook(filename)
         sheet = wb.sheet_by_index(0)
-
         for row in range(13, sheet.nrows):
-            if ((sheet.cell_value(row, 2)).isnumeric()):
-                print(sheet.row_values(row))
-                student = Student()
-                student.setStudentId(sheet.cell_value(row, 2))
-                student.setStudentName(sheet.cell_value(row, 4))
-                student.setStudentSurname(sheet.cell_value(row, 7))
-                self.setStudentList(student)
+             if ((sheet.cell_value(row, 2)).isnumeric()):
+                 print(sheet.row_values(row))
+                 student = Student()
+                 student.setStudentId(sheet.cell_value(row, 2))
+                 student.setStudentName(sheet.cell_value(row, 4))
+                 student.setStudentSurname(sheet.cell_value(row, 7))
+                 self.setStudentList(student)
     
 
     def writeAttendence(self):
@@ -94,4 +100,3 @@ class FileHandler(object):
 
     def writeGlobalStatistic(self):
         pass
-
