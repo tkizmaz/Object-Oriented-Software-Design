@@ -4,6 +4,7 @@ from Student import *
 from Question import *
 from QuizPoll import *
 from AnswerSheet import *
+from AttendancePoll import *
 #coding:utf8
 
 class FileHandler(object):
@@ -76,15 +77,14 @@ class FileHandler(object):
     def readStudentFile(self,filename):
         wb = xlrd.open_workbook(filename)
         sheet = wb.sheet_by_index(0)
-
         for row in range(13, sheet.nrows):
             if ((sheet.cell_value(row, 2)).isnumeric()):
                 student = Student()
-                student.setStudentId(sheet.cell_value(row, 2))
+                #.setStudentId(sheet.cell_value(row, 2))
                 student.setStudentName(sheet.cell_value(row, 4))
                 student.setStudentSurname(sheet.cell_value(row, 7))
                 self.setStudentList(student)
-    
+
 
     def writeAttendence(self):
         pass

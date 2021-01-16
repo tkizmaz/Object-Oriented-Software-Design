@@ -3,7 +3,7 @@ class QuizPoll(Poll):
     def __init__(self):
         super().__init__()
         self.__questionList = []
-        self.__answerSheet= None
+        self.__answerSheet = None
 
     def addQuestions(self, question):
         self.__questionList.append(question)

@@ -4,6 +4,7 @@ class Poll:
     def __init__(self):
         self.__pollName = ""
         self.__studentList=[]
+
     def setPollName(self,pollName):
         self.__pollName = pollName
 
