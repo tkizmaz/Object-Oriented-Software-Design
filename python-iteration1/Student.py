@@ -19,8 +19,8 @@ class Student:
         self.__studentAttandanceRate = studentAttadanceRate
     def setStudentAttandancePercentage(self,studentAttandancePercentage):
         self.__studentAttandancePercentage = studentAttandancePercentage
-
-
+    def answerQuestion(self,questionList):
+        print(questionList)
 
 
     def getStudentId(self):
