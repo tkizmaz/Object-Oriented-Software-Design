@@ -6,7 +6,7 @@ class Student:
         self.__studentEmail = ""
         self.__studentAttandanceRate = 0
         self.__studentAttandancePercentage = 0
-
+        self.__questionList=[]
     def setStudentId(self,studentID):
         self.__studentID = studentID
     def setStudentName(self,studentName):
@@ -20,8 +20,10 @@ class Student:
     def setStudentAttandancePercentage(self,studentAttandancePercentage):
         self.__studentAttandancePercentage = studentAttandancePercentage
 
-
-
+    def setQuestionList(self,question):
+        self.__questionList.append(question)
+    def getQuestionList(self):
+        return self.__questionList
 
     def getStudentId(self):
         return self.__studentID

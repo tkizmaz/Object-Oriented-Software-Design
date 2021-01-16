@@ -1,7 +1,7 @@
 class Answer:
-    def __init__(self, student, question):
-        self.__student=student
-        self.__question=question
+    def __init__(self):
+        self.__student=""
+        self.__question=""
         self.__isTrue=False
     
     def setStudent(self,st):
