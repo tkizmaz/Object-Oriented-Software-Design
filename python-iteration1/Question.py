@@ -1,14 +1,14 @@
 class Question(object):
 
     def __init__(self):
-        self.__question_text = ""
+        self.__question_text=""
         self.__question_right_answer = []
         self.__answerList = []  ## For the students
 
     def getAnswers(self):
         return self.__answerList
-        
-    def setQuestionText(self, questionText ):
+
+    def setQuestionText(self, questionText):
         self.__question_text = questionText
 
     def getQuestionText(self):
