@@ -71,7 +71,11 @@ class FileHandler(object):
                             eachPoll.append(row[i].rstrip())
                             if(len(eachPoll)==int((len(row)-5)/2) and (eachPoll not in allPolls)):
                                 allPolls.append(eachPoll)
-                                
+
+        list(dict.fromkeys(allPolls[0]))
+        list(dict.fromkeys(allPolls[1]))
+        print(allPolls[0])
+        print(allPolls[1])
 
         for i in range(0,len(allPolls)):
             questionPoll = QuizPoll()

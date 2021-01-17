@@ -23,9 +23,11 @@ class QuizPoll(Poll):
         return self.__quizStudents
 
     def setAnswerSheetList(self,answerSheetList):
+        print("hello in as")
         questionListInPoll=[]
         for eachQ in self.__questionList:
             questionListInPoll.append(eachQ.getQuestionText())
+        print("hi",questionListInPoll)
         for answerSheet in answerSheetList:
             eachAnswerSheetQuestions=[]
             for eachQuestion in answerSheet.getQuestionList():
@@ -105,10 +107,3 @@ class QuizPoll(Poll):
 
         wb.save(self.getPollName()+".xls")            
 
-    def getCharts(self):
-        questionAnswers={}
-        for i in range(0,len(self.__quizStudents)):
-            for eachQuestion in range(0,len(self.__quizStudents[i].getQuestionList())):
-                questionAnswers[self.__quizStudents[i].getQuestionList()[eachQuestion].getAnswers()[0].getAnswers()[0]].append("taha")
-        
-        print(questionAnswers)
