@@ -157,8 +157,6 @@ class FileHandler(object):
                         # print("Name: ", pollstudentname[i], b)
                         # print(student.getStudentName(), student.getStudentSurname(), "attended.")
                         count = count + 1
-
-
                         # return (student.getStudentName(), student.getStudentSurname())            #isim d
                         return student
 
