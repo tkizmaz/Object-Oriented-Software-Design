@@ -40,7 +40,9 @@ class FileHandler(object):
             count = 0
             poll = {}
             pollstudent={}
-
+            pollstudentname = []
+            pollstudentsurname = []
+            counter1 = 0
             for row in readCSV:
                 pollname = row[1].split(" ")
                 fullname = pollname[0:-1]
@@ -58,30 +60,53 @@ class FileHandler(object):
                     fullname[0:] = [" ".join(fullname[0:])]
                     fullname = fullname[0].upper()
                 surname = surname.upper()
-                for student in self.getStudentList():
-                    if surname in student.getStudentSurname():
-                        if fullname.split(" ")[0] in student.getStudentName():
+                pollstudentname.append(fullname)
+                pollstudentname.append(surname)
+
+
+
+            for student in self.getStudentList():
+                for i in range(0,len(pollstudentname),2):
+                    if pollstudentname[i+1] in student.getStudentSurname():
+                        if pollstudentname[i] in student.getStudentName():
+                            #print(student.getStudentName(),student.getStudentSurname(), "attended.")
                             count = count +1
-                            break        
-
-            for row in readCSV: # Read each row in the fil
-                if (len(row[4]) > 5 and row[4] != "Are you attending this lecture?"):
-                    eachPoll=[]
-                    for i in range(4,len(row)-2,2):
-                        if(row[i] not in eachPoll):
-                            eachPoll.append(row[i].rstrip())
-                            if(len(eachPoll)==int((len(row)-5)/2) and (eachPoll not in allPolls)):
-                                allPolls.append(eachPoll)
+                            print(count)
+                    # else:
+                    #     print(pollstudentname,"not attended")
+                    #     counter1 = counter1+1
+                    #     print(counter1)
 
 
-        for i in range(0,len(allPolls)):
-            questionPoll = QuizPoll()
-            for p in(allPolls[i]):
-                questionPoll.addQuestions(p)
-            self.setPollList(questionPoll)
 
-        for i in self.getPollList():
-            print(i)
+
+
+
+
+
+
+
+
+
+
+            # for row in readCSV: # Read each row in the fil
+            #     if (len(row[4]) > 5 and row[4] != "Are you attending this lecture?"):
+            #         eachPoll=[]
+            #         for i in range(4,len(row)-2,2):
+            #             if(row[i] not in eachPoll):
+            #                 eachPoll.append(row[i].rstrip())
+            #                 if(len(eachPoll)==int((len(row)-5)/2) and (eachPoll not in allPolls)):
+            #                     allPolls.append(eachPoll)
+
+
+        # for i in range(0,len(allPolls)):
+        #     questionPoll = QuizPoll()
+        #     for p in(allPolls[i]):
+        #         questionPoll.addQuestions(p)
+        #     self.setPollList(questionPoll)
+
+        # for i in self.getPollList():
+        #     print(i)
 
 
     def readAnswerSheet(self,filename):
@@ -106,20 +131,20 @@ class FileHandler(object):
         wb = xlrd.open_workbook(filename)
         sheet = wb.sheet_by_index(0)
         for row in range(13, sheet.nrows):
-             if ((sheet.cell_value(row, 2)).isnumeric()):
-                 print(sheet.row_values(row))
-                 student = Student()
-                 student.setStudentId(sheet.cell_value(row, 2))
-                 student.setStudentName(sheet.cell_value(row, 4))
-                 student.setStudentSurname(sheet.cell_value(row, 7))
-                 self.setStudentList(student)
-    
             if ((sheet.cell_value(row, 2)).isnumeric()):
+                #print(sheet.row_values(row))
                 student = Student()
-                #.setStudentId(sheet.cell_value(row, 2))
+                student.setStudentId(sheet.cell_value(row, 2))
                 student.setStudentName(sheet.cell_value(row, 4))
                 student.setStudentSurname(sheet.cell_value(row, 7))
                 self.setStudentList(student)
+    
+            # if ((sheet.cell_value(row, 2)).isnumeric()):
+            #     student = Student()
+            #     #.setStudentId(sheet.cell_value(row, 2))
+            #     student.setStudentName(sheet.cell_value(row, 4))
+            #     student.setStudentSurname(sheet.cell_value(row, 7))
+            #     self.setStudentList(student)
 
 
     def writeAttendence(self):
