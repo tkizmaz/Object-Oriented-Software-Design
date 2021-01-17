@@ -5,6 +5,7 @@ class Poll:
         self.__pollName = ""
         self.__studentList=[]
 
+
     def setPollName(self,pollName):
         self.__pollName = pollName
 
@@ -16,3 +17,4 @@ class Poll:
 
     def getStudentList(self):
         return  self.__studentList
+
