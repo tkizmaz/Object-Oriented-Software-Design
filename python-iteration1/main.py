@@ -3,8 +3,12 @@ from FileHandler import *
 
 fileHandler=FileHandler()
 fileHandler.readStudentFile("python-iteration1\CES3063_Fall2020_rptSinifListesi.XLS")
-fileHandler.readPollFile("python-iteration1\CSE3063_20201116_Mon_zoom_PollReport.csv")
-fileHandler.readAnswerSheet("python-iteration1\QA2.csv")
+
+pollFileInput = input("Please import poll file")
+answerSheetInput = input("Please import answersheet")
+
+fileHandler.readPollFile(pollFileInput)
+fileHandler.readAnswerSheet(answerSheetInput)
 for i in fileHandler.getQuizPollList():
     try:
         i.setAnswerSheetList(fileHandler.getAnswerSheetList())

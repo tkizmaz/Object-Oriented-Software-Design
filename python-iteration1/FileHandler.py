@@ -112,16 +112,20 @@ class FileHandler(object):
                     try:
                         quizStudent.setStudentName(self.findStudent(row[1]).getStudentName())
                         quizStudent.setStudentSurname(self.findStudent(row[1]).getStudentSurname())
+                        print(str(quizStudent)+"created")
                         for i in range(4,len(row)-1,2):
                             eachQuestion=Question()
                             eachQuestion.setQuestionText(row[i])
+                            print(str(eachQuestion)+"created")
                             newAnswer=Answer()
                             if ";" in row[i+1]:
                                 answerList=row[i+1].split(";")
                                 for ea in answerList:
                                     newAnswer.addAnswer(ea)
+                                    print(str(newAnswer)+"created")
                             else:
                                 newAnswer.addAnswer(row[i+1])
+                                print(str(newAnswer)+"created")
                             eachQuestion.AddAnswer(newAnswer)
                             quizStudent.setQuestionList(eachQuestion) 
                         self.__quizStudentList.append(quizStudent)
