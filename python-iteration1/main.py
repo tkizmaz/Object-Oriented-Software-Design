@@ -16,3 +16,4 @@ fileHandler.getQuizPollList()[1].differantiateStudents(fileHandler.getQuizStuden
 fileHandler.getQuizPollList()[1].getQuizStudents()
 fileHandler.getQuizPollList()[1].calculatePoints()
 fileHandler.getQuizPollList()[1].getReportForQuestions()
+fileHandler.getQuizPollList()[1].getCharts()

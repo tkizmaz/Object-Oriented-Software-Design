@@ -1,6 +1,9 @@
 from Poll import *
 from FileHandler import *
 from xlwt import Workbook
+import matplotlib.pyplot as plt
+import numpy as np
+
 class QuizPoll(Poll):
     def __init__(self):
         super().__init__()
@@ -101,3 +104,11 @@ class QuizPoll(Poll):
         sheet1.write(1,11,len(cols)-4)
 
         wb.save(self.getPollName()+".xls")            
+
+    def getCharts(self):
+        questionAnswers={}
+        for i in range(0,len(self.__quizStudents)):
+            for eachQuestion in range(0,len(self.__quizStudents[i].getQuestionList())):
+                questionAnswers[self.__quizStudents[i].getQuestionList()[eachQuestion].getAnswers()[0].getAnswers()[0]].append("taha")
+        
+        print(questionAnswers)
