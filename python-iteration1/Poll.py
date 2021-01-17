@@ -17,4 +17,3 @@ class Poll:
 
     def getStudentList(self):
         return  self.__studentList
-

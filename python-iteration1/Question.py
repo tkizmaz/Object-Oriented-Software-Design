@@ -4,7 +4,7 @@ class Question(object):
         self.__question_text=""
         self.__question_right_answer = []
         self.__answerList = []  ## For the students
-
+        self.__isTrue = None
     def getAnswers(self):
         return self.__answerList
 
@@ -22,6 +22,10 @@ class Question(object):
 
     def AddAnswer(self, Answer):
         self.__answerList.append(Answer)
-
-
+    
+    def setIsTrue(self,isTrue):
+        self.__isTrue = isTrue
+    
+    def getIsTrue(self):
+        return self.__isTrue
     

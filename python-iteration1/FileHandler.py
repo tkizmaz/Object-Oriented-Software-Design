@@ -6,6 +6,7 @@ from QuizPoll import *
 import re
 from AnswerSheet import *
 from AttendancePoll import *
+from Answer import *
 #coding:utf8
 import xlwt
 from xlwt import Workbook
@@ -18,18 +19,30 @@ class FileHandler(object):
         self.__quizPollList=[]
         self.__answerSheetList=[]
         self.__attendancePolls=[]
-
+        self.__quizStudentList=[]
     def setStudentList(self,studentList):
         self.__studentList.append(studentList)
 
     def setPollList(self,pollList):
         self.__pollList.append(pollList)
+    
+    def setQuizPollList(self,pollList):
+        self.__quizPollList.append(pollList)
+
+    def getQuizPollList(self):
+        return self.__quizPollList
 
     def setAnswerSheetList(self,answerSheet):
         self.__answerSheetList.append(answerSheet)
 
     def getAnswerSheetList(self):
         return self.__answerSheetList
+
+    def setQuizStudentList(self,student):
+        self.__quizStudentList.append(student)
+    
+    def getQuizStudentList(self):
+        return self.__quizStudentList
 
     def getStudentList(self):
         return self.__studentList
@@ -50,62 +63,49 @@ class FileHandler(object):
         self.setAttencePolls(attencePoll)
         with open(filename, encoding='utf-8') as csvfile:  # Open the CSV file
             readCSV = csv.reader(csvfile, delimiter=',')
-
-            i=0
-            for row in readCSV:
-                if i>0:
-                    # print(self.findStudent(row[1]))
-                    std=self.findStudent(row[1])
-                    if std == None:
-                        # print(row)
-                        continue
-
-                i+=1
-
-                if row[4]=="Are you attending this lecture?":
-                    date=row[3].split(" ")
-                    date[0:]=[" ".join(date[0:-1])]
-                    # if(date[0])
-                    # print(date)
-                    if len(row[3].split(" ")) < 4:  # basligi siliyor
-                        continue
-                    if int(row[3].split(" ")[3].split(":")[0]) > 9:
-                        ten = row[4:]  # saat 10 ve sonrasi yapilan poll
-                        for row in ten:
-                            print(row)
-                    if int(row[3].split(" ")[3].split(":")[0]) == 9:
-                        nine = row[4:]  # 9 ve sonrasi yapilan poll
-
-                    attencePoll.setStudentList(std)
-                    attencePoll.setPollName(date[0])
+            for row in readCSV: # Read each row in the fil,
+                if (len(row[4]) > 5 and row[4] != "Are you attending this lecture?"):
+                    eachPoll=[]
+                    for i in range(4,len(row)-2,2):
+                        if(row[i] not in eachPoll):
+                            eachPoll.append(row[i].rstrip())
+                            if(len(eachPoll)==int((len(row)-5)/2) and (eachPoll not in allPolls)):
+                                allPolls.append(eachPoll)
 
 
+        for i in range(0,len(allPolls)):
+            questionPoll = QuizPoll()
+            for p in(allPolls[i]):
+                newQuestion=Question()
+                newQuestion.setQuestionText(p)
+                questionPoll.addQuestions(newQuestion)
+            self.setQuizPollList(questionPoll)
 
-
-
-
-
-
-
-            # for row in readCSV: # Read each row in the fil
-            #     if (len(row[4]) > 5 and row[4] != "Are you attending this lecture?"):
-            #         eachPoll=[]
-            #         for i in range(4,len(row)-2,2):
-            #             if(row[i] not in eachPoll):
-            #                 eachPoll.append(row[i].rstrip())
-            #                 if(len(eachPoll)==int((len(row)-5)/2) and (eachPoll not in allPolls)):
-            #                     allPolls.append(eachPoll)
-
-
-        # for i in range(0,len(allPolls)):
-        #     questionPoll = QuizPoll()
-        #     for p in(allPolls[i]):
-        #         questionPoll.addQuestions(p)
-        #     self.setPollList(questionPoll)
-
-        # for i in self.getPollList():
-        #     print(i)
-
+        with open(filename, encoding='utf-8') as csvfile:  # Open the CSV file
+            readCSV = csv.reader(csvfile, delimiter=',')
+            for row in readCSV: # Read each row in the fil,
+                if (len(row[4]) > 5 and row[4] != "Are you attending this lecture?"):
+                    quizStudent=Student()
+                    try:
+                        quizStudent.setStudentName(self.findStudent(row[1]).getStudentName())
+                        quizStudent.setStudentSurname(self.findStudent(row[1]).getStudentSurname())
+                        for i in range(4,len(row)-1,2):
+                            eachQuestion=Question()
+                            eachQuestion.setQuestionText(row[i])
+                            newAnswer=Answer()
+                            if ";" in row[i+1]:
+                                answerList=row[i+1].split(";")
+                                for ea in answerList:
+                                    newAnswer.addAnswer(ea)
+                            else:
+                                newAnswer.addAnswer(row[i+1])
+                            eachQuestion.AddAnswer(newAnswer)
+                            quizStudent.setQuestionList(eachQuestion) 
+                        self.__quizStudentList.append(quizStudent)
+                    except AttributeError:
+                        print("")
+                    
+                    
 
 
     def findStudent(self,row):
@@ -231,12 +231,6 @@ class FileHandler(object):
                         continue
         wb.save('AttendanceOutput.xls')
 
-
-    def writePollResult(self):
-        pass
-
-    def writeStatistic(self):
-        pass
 
     def writeGlobalStatistic(self):
         pass
