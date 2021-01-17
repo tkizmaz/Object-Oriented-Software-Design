@@ -106,4 +106,3 @@ class QuizPoll(Poll):
         sheet1.write(1,11,len(cols)-4)
 
         wb.save(self.getPollName()+".xls")            
-
