@@ -64,7 +64,26 @@ class FileHandler(object):
         with open(filename, encoding='utf-8') as csvfile:  # Open the CSV file
             readCSV = csv.reader(csvfile, delimiter=',')
             for row in readCSV: # Read each row in the fil,
-                if (len(row[4]) > 5 and row[4] != "Are you attending this lecture?"):
+                if row[4]=="Are you attending this lecture?":
+                    date=row[3].split(" ")
+                    date[0:]=[" ".join(date[0:-1])]
+                    # if(date[0])
+                    # print(date)
+                    if len(row[3].split(" ")) < 4:  # basligi siliyor
+                        continue
+                    if int(row[3].split(" ")[3].split(":")[0]) > 9:
+                        ten = row[4:]  # saat 10 ve sonrasi yapilan poll
+                        for row in ten:
+                            print(row)
+                    if int(row[3].split(" ")[3].split(":")[0]) == 9:
+                        nine = row[4:]  # 9 ve sonrasi yapilan poll
+
+                    attencePoll.setStudentList(std)
+                    attencePoll.setPollName(date[0])
+
+
+
+                elif (len(row[4]) > 5 and row[4] != "Are you attending this lecture?"):
                     eachPoll=[]
                     for i in range(4,len(row)-2,2):
                         if(row[i] not in eachPoll):
