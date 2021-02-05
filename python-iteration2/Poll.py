@@ -4,6 +4,7 @@ class Poll:
     def __init__(self):
         self.__pollName = ""
         self.__studentList=[]
+        self.__dateTime=""
 
 
     def setPollName(self,pollName):
@@ -17,3 +18,9 @@ class Poll:
 
     def getStudentList(self):
         return  self.__studentList
+
+    def setDateTime(self,dateTime):
+        self.__dateTime=dateTime
+
+    def getDateTime(self):
+        return self.__dateTime
