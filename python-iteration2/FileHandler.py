@@ -20,6 +20,8 @@ class FileHandler(object):
         self.__answerSheetList=[]
         self.__attendancePolls=[]
         self.__quizStudentList=[]
+        self. __pollDateList=[]
+
     def setStudentList(self,studentList):
         self.__studentList.append(studentList)
 
@@ -56,112 +58,60 @@ class FileHandler(object):
     def getAttendancePolls(self):
         return self.__attendancePolls
 
+    def setPollDateList(self,date):
+        self.__pollDateList.append(date)
+
+    def getPollDateList(self):
+        return self.__pollDateList
 
     def readPollFile(self,filename):
-        unmatchedRows=[]
-        allPolls = []
-        attencePoll=AttendancePoll()
-        self.setAttencePolls(attencePoll)
+        currentPollDate=""
+        attencePoll = AttendancePoll()
+
         with open(filename, encoding='utf-8') as csvfile:  # Open the CSV file
             readCSV = csv.reader(csvfile, delimiter=',')
             for row in readCSV: # Read each row in the fil,
-                # print(row)
-                if len(row) > 5 and row[4]=="Are you attending this lecture?":
-                    # print("attence poll")
-                    date=row[3].split(" ")
-                    date[0:]=[" ".join(date[0:-1])]
-                    # if(date[0])
-                    # print(date)
-                    # if len(row[3].split(" ")) < 4:  # basligi siliyor
-                    #     continue
-                    # if int(row[3].split(" ")[3].split(":")[0]) > 9:
-                    #     ten = row[4:]  # saat 10 ve sonrasi yapilan poll
-                    #     for row in ten:
-                    #         print(row)
-                    # if int(row[3].split(" ")[3].split(":")[0]) == 9:
-                    #     nine = row[4:]  # 9 ve sonrasi yapilan poll
+
+                if "CSE3063 OOSD" in row[0]:  # check for course title
+                    currentPollDate=row[2]
+
+                    if currentPollDate not in self.getPollDateList():     # check there is any other poll on the same date/time # if no, add the new poll to pollList
+                        self.setPollDateList(currentPollDate)
+                        attencePoll.setDateTime(currentPollDate)
+                        attencePoll.setPollName("Attendance Poll (" + currentPollDate + ")")
+                        self.setPollList(attencePoll)
+                        self.setAttencePolls(attencePoll)
+
+                    else:
+                        break    # if yes, pass to next file
+
+
+
+                elif len(row) == 7 and (row[5]=="Yes" or row[5]=="No"):
                     std = self.findStudent(row[1])
                     if std == None:
-                        print(std)
-                        unmatchedRows.append(row)
+                        attencePoll.setUnmatchedStudents(row)
                         continue
-
-                    print(std.getStudentName())
                     attencePoll.setStudentList(std)
-                    attencePoll.setPollName(date[0])
-
-
-
-                elif (len(row) > 5  and len(row[4]) > 5 and row[4] != "Are you attending this lecture?"):
-                    eachPoll=[]
-                    for i in range(4,len(row)-2,2):
-                        if(row[i] not in eachPoll):
-                            eachPoll.append(row[i].rstrip())
-                            if(len(eachPoll)==int((len(row)-5)/2) and (eachPoll not in allPolls)):
-                                allPolls.append(eachPoll)
 
                 else:
-                    if row[0]=="Report Generated:":
-                        print("Row{1] Poll tarihi", row[1])
-                        attencePoll.setDateTime(row[1])
+                    if "CSE3063 OOSD" in row[0]:
+                        print("Row{1] Poll tarihi", row[2])
                     continue  ## For the intro rows
-
-        list(dict.fromkeys(allPolls[0]))
-        list(dict.fromkeys(allPolls[1]))
-        print(allPolls[0])
-        print(allPolls[1])
-
-        for i in range(0,len(allPolls)):
-            questionPoll = QuizPoll()
-            for p in(allPolls[i]):
-                newQuestion=Question()
-                newQuestion.setQuestionText(p)
-                questionPoll.addQuestions(newQuestion)
-            self.setQuizPollList(questionPoll)
-
-        with open(filename, encoding='utf-8') as csvfile:  # Open the CSV file
-            readCSV = csv.reader(csvfile, delimiter=',')
-            for row in readCSV: # Read each row in the fil,
-                if (len(row[4]) > 5 and row[4] != "Are you attending this lecture?"):
-                    quizStudent=Student()
-                    try:
-                        quizStudent.setStudentName(self.findStudent(row[1]).getStudentName())
-                        quizStudent.setStudentSurname(self.findStudent(row[1]).getStudentSurname())
-                        print(str(quizStudent)+"created")
-                        for i in range(4,len(row)-1,2):
-                            eachQuestion=Question()
-                            eachQuestion.setQuestionText(row[i])
-                            print(str(eachQuestion)+"created")
-                            newAnswer=Answer()
-                            if ";" in row[i+1]:
-                                answerList=row[i+1].split(";")
-                                for ea in answerList:
-                                    newAnswer.addAnswer(ea)
-                                    print(str(newAnswer)+"created")
-                            else:
-                                newAnswer.addAnswer(row[i+1])
-                                print(str(newAnswer)+"created")
-                            eachQuestion.AddAnswer(newAnswer)
-                            quizStudent.setQuestionList(eachQuestion)
-                        self.__quizStudentList.append(quizStudent)
-                    except AttributeError:
-                        print("")
-
 
 
 
     def findStudent(self,row):
-        count=0
         pollstudentname = []
-
-
         pollname = row.split(" ")
         fullname = pollname[0:-1]
         surname = pollname[-1]
-        if "@" in row:   # if the name contains "@"
+        if "@" in row:   # if the name contains "@" hamiorak@marun.edu.tr
+
             return
 
-        elif len(fullname) == 1 and any(char.isdigit() for char in fullname[0]):        # adını numara ile birleşik yazan kişiler
+        elif len(fullname) == 1 and any(char.isdigit() for char in fullname[0]):        # For the names that contain student number unified with name 150118504MehmetEtka Uzun
+
             fullname = (''.join([x for x in fullname[0] if not x.isdigit()]))
             for i in range(1, len(fullname)):
                 if fullname[i].isupper():
@@ -171,7 +121,8 @@ class FileHandler(object):
         elif len(fullname)==1:
             fullname = pollname[0].upper()
 
-        elif pollname[0].isnumeric():       # adında numarası olanlar
+        elif pollname[0].isnumeric():       #  For the names that contain student number 150117017 Efe Berke Erkeskin
+
             pollname[0:-1] = [" ".join(pollname[1:-1])]
             fullname = pollname[0].upper()
 
@@ -182,22 +133,15 @@ class FileHandler(object):
         pollstudentname.append(fullname)
         pollstudentname.append(surname)
 
-        # print("Len pol studen", len(pollstudentname))
         for i in range(0, len(pollstudentname)):
             pollstudentname[i] = self.changeTurkishChar(pollstudentname[i])
 
         for student in self.getStudentList():
-            # print(" \nRegistred", student.getStudentName(), student.getStudentSurname())
             for i in range(0, len(pollstudentname), 2):
                 a = self.changeTurkishChar(student.getStudentSurname())
                 if pollstudentname[i + 1] in a:
-                    # print("Surname: ", pollstudentname[i + 1], a)
                     b = self.changeTurkishChar((student.getStudentName()))
                     if pollstudentname[i] in b:
-                        # print("Name: ", pollstudentname[i], b)
-                        # print(student.getStudentName(), student.getStudentSurname(), "attended.")
-                        # count = count + 1
-                        # return (student.getStudentName(), student.getStudentSurname())            #isim d
                         return student
 
 
@@ -240,7 +184,6 @@ class FileHandler(object):
     def writeAttendence(self):
         wb = Workbook()
 
-        print(self.__attendancePolls[0].getDateTime())
         sheet1 = wb.add_sheet('Sheet 1')
         sheet1.write(0, 0, "Poll Date Time")
         sheet1.write(1,0, "Student ID")
@@ -257,19 +200,25 @@ class FileHandler(object):
 
         columnNo=0
         for attenPollItem in self.getAttendancePolls():
-            sheet1.write(0, columnNo+3, attenPollItem.getDateTime())
-            absentStdList=[x for x in  self.getStudentList() if x not in attenPollItem.getStudentList() ]
+            sheet1.write(0, columnNo + 3, " ")
+            sheet1.write(1, columnNo+3, attenPollItem.getDateTime())
+            absentStdList=[x for x in self.getStudentList() if x not in attenPollItem.getStudentList()]
+
             for stdInPoll in attenPollItem.getStudentList():
                 i = 2
                 for im in self.getStudentList():
-                    if stdInPoll == im:
-                        sheet1.write(i, columnNo+3, "True")
-                    i+=1
+                    try:
+                        if stdInPoll == im:
+                            sheet1.write(i, columnNo+3, "True")
+                        i+=1
+
+                    except:
+                        continue
 
             for x in absentStdList:
                 for i in range(len(self.getStudentList())):
                     try:
-                        sheet1.write(i, columnNo+3, "False")
+                        sheet1.write(i+2, columnNo+3, "False")
                         break
 
                     except:

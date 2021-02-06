@@ -24,7 +24,7 @@ fileHandler.readStudentFile("CES3063_Fall2020_rptSinifListesi.XLS")
 
 entries = os.listdir('Polls')
 for entry in entries:
-     print(entry)
+     # print(entry)
      fileHandler.readPollFile("Polls/"+entry)
 
 # for poll in pollList:

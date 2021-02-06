@@ -5,6 +5,7 @@ class Poll:
         self.__pollName = ""
         self.__studentList=[]
         self.__dateTime=""
+        self.__unmatchedStudents=[]
 
 
     def setPollName(self,pollName):
@@ -24,3 +25,9 @@ class Poll:
 
     def getDateTime(self):
         return self.__dateTime
+
+    def setUnmatchedStudents(self,unmatchedStudent):
+        self.__unmatchedStudents.append(unmatchedStudent)
+
+    def getUnmatchedStudents(self):
+        return self.__unmatchedStudents
