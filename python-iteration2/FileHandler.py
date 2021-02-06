@@ -136,8 +136,6 @@ class FileHandler(object):
                                 x+=1
                             break
                 else:
-                    if "CSE3063 OOSD" in row[0]:
-                        print("Row{1] Poll tarihi", row[2])
                     continue  ## For the intro rows
 
 
