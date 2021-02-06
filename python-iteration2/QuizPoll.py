@@ -11,7 +11,7 @@ class QuizPoll(Poll):
         self.__answerSheet = None
         self.__quizStudents=[]
     def addQuestions(self, question):
-        self.__questionList.append(question)
+        self.__questionList=question
 
     def getQuestions(self):
         return self.__questionList
