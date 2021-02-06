@@ -13,3 +13,7 @@ for entry in entries:
 
 fileHandler.writeAttendence()
 
+
+## The only output we get the overall attendance. You can find the result in the AttendanceOutput.xls file.
+
+
