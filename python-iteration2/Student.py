@@ -21,7 +21,7 @@ class Student:
         self.__studentAttandancePercentage = studentAttandancePercentage
 
     def setQuestionList(self,question):
-        self.__questionList.append(question)
+        self.__questionList = question
     def getQuestionList(self):
         return self.__questionList
 

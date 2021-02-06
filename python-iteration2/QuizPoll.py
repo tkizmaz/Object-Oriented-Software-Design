@@ -23,40 +23,22 @@ class QuizPoll(Poll):
         return self.__quizStudents
 
     def setAnswerSheetList(self,answerSheetList):
-        print("hello in as")
-        questionListInPoll=[]
-        for eachQ in self.__questionList:
-            questionListInPoll.append(eachQ.getQuestionText())
-        print("hi",questionListInPoll)
-        for answerSheet in answerSheetList:
-            eachAnswerSheetQuestions=[]
-            for eachQuestion in answerSheet.getQuestionList():
-                eachAnswerSheetQuestions.append(eachQuestion.getQuestionText())
-            if(eachAnswerSheetQuestions == questionListInPoll):
-                self.__answerSheet = answerSheet
-        self.setPollName(self.__answerSheet.getPollName())
+        self.__answerSheet = answerSheetList
 
     def getAnswerSheetList(self):
         return self.__answerSheet
 
-    def differantiateStudents(self,students):
-        questionListInPoll=[]
-        for eachQ in self.__questionList:
-            questionListInPoll.append(eachQ.getQuestionText())
-        for i in students:
-            eachStudentQuestions=[]
-            for eachQuestion in i.getQuestionList():
-                eachStudentQuestions.append(eachQuestion.getQuestionText())
-            if(eachStudentQuestions == questionListInPoll):
-                self.setQuizStudents(i)
 
     def calculatePoints(self):
         questionAnswers={}
         for i in self.getAnswerSheetList().getQuestionList():
             questionAnswers[i.getQuestionText()] = i.getQuestionRightAnswer()
         for i in self.getQuizStudents():
+            print(i)
             for eq in i.getQuestionList():
                 questionText=eq.getQuestionText()
+                print(questionText)
+                print(questionAnswers)
                 for ea in eq.getAnswers():
                     if (len(ea.getAnswers()) == 1 and (ea.getAnswers()[0]) == questionAnswers[questionText][0]):
                         eq.setIsTrue(True)

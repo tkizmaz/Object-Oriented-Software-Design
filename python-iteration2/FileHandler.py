@@ -86,6 +86,7 @@ class FileHandler(object):
                         break    # if yes, pass to next file
 
 
+
                 elif len(row) == 7 and (row[5]=="Yes" or row[5]=="No"):
                     std = self.findStudent(row[1])
                     if std == None:
@@ -135,18 +136,26 @@ class FileHandler(object):
                                 x+=1
                             break
                 else:
+                    if "CSE3063 OOSD" in row[0]:
+                        print("Row{1] Poll tarihi", row[2])
                     continue  ## For the intro rows
 
 
+
     def findStudent(self,row):
+        count=0
         pollstudentname = []
+
+
         pollname = row.split(" ")
         fullname = pollname[0:-1]
         surname = pollname[-1]
         if "@" in row:   # if the name contains "@" hamiorak@marun.edu.tr
+
             return
 
         elif len(fullname) == 1 and any(char.isdigit() for char in fullname[0]):        # For the names that contain student number unified with name 150118504MehmetEtka Uzun
+
             fullname = (''.join([x for x in fullname[0] if not x.isdigit()]))
             for i in range(1, len(fullname)):
                 if fullname[i].isupper():
@@ -157,6 +166,7 @@ class FileHandler(object):
             fullname = pollname[0].upper()
 
         elif pollname[0].isnumeric():       #  For the names that contain student number 150117017 Efe Berke Erkeskin
+
             pollname[0:-1] = [" ".join(pollname[1:-1])]
             fullname = pollname[0].upper()
 
@@ -167,16 +177,25 @@ class FileHandler(object):
         pollstudentname.append(fullname)
         pollstudentname.append(surname)
 
+        # print("Len pol studen", len(pollstudentname))
         for i in range(0, len(pollstudentname)):
             pollstudentname[i] = self.changeTurkishChar(pollstudentname[i])
 
         for student in self.getStudentList():
+            # print(" \nRegistred", student.getStudentName(), student.getStudentSurname())
             for i in range(0, len(pollstudentname), 2):
                 a = self.changeTurkishChar(student.getStudentSurname())
                 if pollstudentname[i + 1] in a:
+                    # print("Surname: ", pollstudentname[i + 1], a)
                     b = self.changeTurkishChar((student.getStudentName()))
                     if pollstudentname[i] in b:
+                        # print("Name: ", pollstudentname[i], b)
+                        # print(student.getStudentName(), student.getStudentSurname(), "attended.")
+                        # count = count + 1
+                        # return (student.getStudentName(), student.getStudentSurname())            #isim d
                         return student
+
+
 
     def changeTurkishChar(self, strList):
         tr_chars = {'Ç': 'C', 'Ğ': 'G', 'İ': 'I', 'Ö': 'O', 'Ş': 'S', 'Ü': 'U'}
@@ -237,6 +256,8 @@ class FileHandler(object):
 
     def writeAttendence(self):
         wb = Workbook()
+
+        print(self.__attendancePolls[0].getDateTime())
         sheet1 = wb.add_sheet('Sheet 1')
         sheet1.write(0, 0, "Poll Date Time")
         sheet1.write(1,0, "Student ID")
@@ -249,6 +270,7 @@ class FileHandler(object):
             sheet1.write(rowNo, 1, stu.getStudentName())
             sheet1.write(rowNo, 2, stu.getStudentSurname())
             rowNo+=1
+
 
         columnNo=0
         for attenPollItem in self.getAttendancePolls():
