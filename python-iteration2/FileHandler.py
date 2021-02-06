@@ -95,7 +95,39 @@ class FileHandler(object):
                     attencePoll.setStudentList(std)
 
                 elif (len(row) > 5):
-                    print(row[4])
+                    questionList=[]
+                    answerList=[]
+                    questionObjects=[]
+                    for m in range(4,len(row),2):
+                        questionList.append(row[m])
+                    questionList.pop(len(questionList)-1)
+
+                    for el in questionList:
+                        newQuestion = Question()
+                        newQuestion.setQuestionText(el)
+                        questionObjects.append(newQuestion)
+
+                    for x in range(5,len(row),2):
+                        newAnswer= Answer()
+                        newAnswer.addAnswer(row[x])
+                        answerList.append(newAnswer)
+
+                    for k in range(len(questionObjects)):
+                        questionObjects[k].AddAnswer(answerList[k])
+
+                    for eqp in self.__quizPollList:
+                        pollQuestionList = []
+                        for eq in eqp.getAnswerSheetList().getQuestionList():
+                            pollQuestionList.append(eq.getQuestionText())
+                        eqp.setPollName(eqp.getAnswerSheetList().getPollName())
+                        check = all(item in pollQuestionList for item in questionList)
+                        if check == True:
+                            student=self.findStudent(row[1])
+                            if student == None:
+                                eqp.setUnmatchedStudents(student)
+                                continue
+                            student.setQuestionList(questionObjects)
+                            eqp.setQuizStudents(student)
 
                 else:
                     if "CSE3063 OOSD" in row[0]:
@@ -175,6 +207,7 @@ class FileHandler(object):
                     newQuizPoll = QuizPoll()
                     newAnswerSheet = AnswerSheet()
                     questionCount = row[0].split("\t")[1].split(" ")[0]
+                    newAnswerSheet.setPollName(row[0].split("\t")[0].lstrip().replace(" ","_"))
 
                 elif len(row) > 0 and row[0][0].isnumeric():
                     for i in range(int(questionCount)):
@@ -196,11 +229,10 @@ class FileHandler(object):
                     if newQuestion:
                         newQuestion.setQuestionRightAnswer(newAnswer)
                     if len(newAnswerSheet.getQuestionList()) == int(questionCount) and len(newQuestion.getQuestionRightAnswer()) == answerCount:
-                        self.__answerSheetList.append(newAnswerSheet)
-                        self.__quizPollList.append(newAnswerSheet)
+                        newQuizPoll.setAnswerSheetList(newAnswerSheet)
+                        newQuizPoll.addQuestions(newAnswerSheet.getQuestionList())
+                        self.__quizPollList.append(newQuizPoll)
 
-        print(len(self.__answerSheetList))
-        print(len(self.__quizPollList))
     def readStudentFile(self,filename):
         wb = xlrd.open_workbook(filename)
         sheet = wb.sheet_by_index(0)
