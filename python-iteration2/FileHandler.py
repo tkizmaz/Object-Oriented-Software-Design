@@ -94,6 +94,9 @@ class FileHandler(object):
                         continue
                     attencePoll.setStudentList(std)
 
+                elif (len(row) > 5):
+                    print(row[4])
+
                 else:
                     if "CSE3063 OOSD" in row[0]:
                         print("Row{1] Poll tarihi", row[2])
@@ -102,7 +105,10 @@ class FileHandler(object):
 
 
     def findStudent(self,row):
+        count=0
         pollstudentname = []
+
+
         pollname = row.split(" ")
         fullname = pollname[0:-1]
         surname = pollname[-1]
@@ -133,15 +139,22 @@ class FileHandler(object):
         pollstudentname.append(fullname)
         pollstudentname.append(surname)
 
+        # print("Len pol studen", len(pollstudentname))
         for i in range(0, len(pollstudentname)):
             pollstudentname[i] = self.changeTurkishChar(pollstudentname[i])
 
         for student in self.getStudentList():
+            # print(" \nRegistred", student.getStudentName(), student.getStudentSurname())
             for i in range(0, len(pollstudentname), 2):
                 a = self.changeTurkishChar(student.getStudentSurname())
                 if pollstudentname[i + 1] in a:
+                    # print("Surname: ", pollstudentname[i + 1], a)
                     b = self.changeTurkishChar((student.getStudentName()))
                     if pollstudentname[i] in b:
+                        # print("Name: ", pollstudentname[i], b)
+                        # print(student.getStudentName(), student.getStudentSurname(), "attended.")
+                        # count = count + 1
+                        # return (student.getStudentName(), student.getStudentSurname())            #isim d
                         return student
 
 
@@ -156,19 +169,38 @@ class FileHandler(object):
     def readAnswerSheet(self,filename):
         with open(filename, encoding='utf-8') as csvfile:  # Open the CSV file
             readCSV = csv.reader(csvfile, delimiter=';')
+            questionCount = 0
             for row in readCSV:
-                if len(row)==1: #Poll Name
-                    answerSheet = AnswerSheet()
-                    answerSheet.setPollName(row[0].split("\\")[-1].split(".")[0])
-                    self.setAnswerSheetList(answerSheet)
-                else:
-                    question=Question()
-                    question.setQuestionText(row[0])
-                    for i in range(len(row[1].split(";"))):
-                        question.setQuestionRightAnswer(row[1].split(";")[i])
-                    answerSheet.addQuestions(question)
+                if(len(row) > 0 and "Poll" in row[0]):
+                    newQuizPoll = QuizPoll()
+                    newAnswerSheet = AnswerSheet()
+                    questionCount = row[0].split("\t")[1].split(" ")[0]
 
+                elif len(row) > 0 and row[0][0].isnumeric():
+                    for i in range(int(questionCount)):
+                        if(int((row[0].split(" "))[0].strip(".")) == int(i+1)):
+                            answerCount = 0
+                            newQuestion = Question()
+                            newLine=""
+                            if(" ( Single Choice)" in row[0]):
+                                newLine=(row[0].strip(str(i + 1)).strip(". ").replace(" ( Single Choice)" , ""))
+                            elif(" ( Multiple Choice)" in row[0]):
+                                newLine=(row[0].strip(str(i + 1)).strip(". ").replace(" ( Multiple Choice)" , ""))
+                            newQuestion.setQuestionText(newLine)
+                            newAnswerSheet.addQuestions(newQuestion)
 
+                elif len(row) > 0 and "Answer" in row[0]:
+                    answerCount = answerCount+1
+                    newAnswer = Answer()
+                    newAnswer.addAnswer(row[0].split(":")[1].strip(" "))
+                    if newQuestion:
+                        newQuestion.setQuestionRightAnswer(newAnswer)
+                    if len(newAnswerSheet.getQuestionList()) == int(questionCount) and len(newQuestion.getQuestionRightAnswer()) == answerCount:
+                        self.__answerSheetList.append(newAnswerSheet)
+                        self.__quizPollList.append(newAnswerSheet)
+
+        print(len(self.__answerSheetList))
+        print(len(self.__quizPollList))
     def readStudentFile(self,filename):
         wb = xlrd.open_workbook(filename)
         sheet = wb.sheet_by_index(0)
@@ -184,6 +216,7 @@ class FileHandler(object):
     def writeAttendence(self):
         wb = Workbook()
 
+        print(self.__attendancePolls[0].getDateTime())
         sheet1 = wb.add_sheet('Sheet 1')
         sheet1.write(0, 0, "Poll Date Time")
         sheet1.write(1,0, "Student ID")
