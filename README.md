@@ -1,4 +1,4 @@
-# CSE3063F20P1_GRP15
+# CSE3063 - Object Oriented Software Design Projects
 Marmara University Faculty of Engineering, Computer Engineering Department - CSE3063 Object Oriented Software Design Projects using Java and Python.
 Includes design documents, UML diagrams and source code.
 
