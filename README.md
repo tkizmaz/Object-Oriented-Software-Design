@@ -2,6 +2,9 @@
 Marmara University Faculty of Engineering, Computer Engineering Department - CSE3063 Object Oriented Software Design Projects using Java and Python.
 Includes design documents, UML diagrams and source code.
 
+**JAVA PROJECT**
+- Implementing data labeling system using Java.
+
 Contributors:
 
 Taha KIZMAZ
