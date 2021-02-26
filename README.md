@@ -5,7 +5,10 @@ Includes design documents, UML diagrams and source code.
 **JAVA PROJECT**
 - Implementing data labeling system using Java.
 
-Contributors:
+**PYTHON PROJECT**
+- Implementing Zoom polling evaluation system using Python.
+
+**Contributors:**
 
 Taha KIZMAZ
 Zeynep Naz AKYOKUŞ
