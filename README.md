@@ -10,12 +10,12 @@ Includes design documents, UML diagrams and source code.
 
 **Contributors:**
 
-Taha KIZMAZ
-Zeynep Naz AKYOKUŞ
-Mustafa GÜREL
-Hafsa ULUSAL
-Ayça İdil KAYA
-Mehmet Nusret ODABAŞI
-Ecem ÇEŞMECİLER
+-Taha KIZMAZ
+-Zeynep Naz AKYOKUŞ
+-Mustafa GÜREL
+-Hafsa ULUSAL
+-Ayça İdil KAYA
+-Mehmet Nusret ODABAŞI
+-Ecem ÇEŞMECİLER
 
 Supervised by Murat Can GANİZ
